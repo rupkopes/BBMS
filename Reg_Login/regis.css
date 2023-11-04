@@ -26,32 +26,32 @@
    backdrop-filter: blur(70px);
 }
 
- .admin-login {
-   background: url("/images/admin.jpg") no-repeat;
+.admin-regis {
+   background: url("/BBMS/images/admin.jpg") no-repeat;
    background-size: cover;
    background-position: center;
 }
 
-.staff-login {
-   background: url("/images/staff.jpg") no-repeat;
+.staff-regis {
+   background: url("/BBMS/images/staff.jpg") no-repeat;
    background-size: cover;
    background-position: center;
 }
 
-.org-login {
-   background: url("/images/org.jpg") no-repeat;
+.org-regis {
+   background: url("/BBMS/images/org.jpg") no-repeat;
    background-size: cover;
    background-position: center;
 }
 
-.hos-login {
-   background: url("/images/hos.jpg") no-repeat;
+.hos-regis {
+   background: url("/BBMS/images/hos.jpg") no-repeat;
    background-size: cover;
    background-position: center;
 }
 
-.donor-login {
-   background: url("/images/donor.jpeg") no-repeat;
+.donor-regis {
+   background: url("/BBMS/images/donor.jpeg") no-repeat;
    background-size: cover;
    background-position: center;
 }

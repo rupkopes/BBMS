@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donar Register</title>
+    <title>Staff Register</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"/>
-    <link rel="stylesheet" href="/Reg_Login/regis.css"/>
+    <link rel="stylesheet" href="/BBMS/Reg_Login/regis.css"/>
 </head>
-<body class= "donor-login">
+<body class= "staff-regis">
     <section class="container">
         <div class="reg_arrow1">
             <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
@@ -27,27 +27,27 @@
         <form action="#" class="form">
             <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" name="d_name" placeholder="Enter Your Full Name" required>
+                <input type="text" name="name" placeholder="Enter Your Full Name" required>
             </div>
 
             <div class="input-box">
                 <label>Email</label>
-                <input type="text" name="d_email" placeholder="Enter Your Email Address" required>
+                <input type="text" name="email" placeholder="Enter Your Email Address" required>
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label>Phone</label>
-                    <input type="text" name="d_phone1" placeholder="Enter Your Phone Number" required>
+                    <input type="text" name="phone1" placeholder="Enter Your Phone Number" required>
                 </div>
                 <div class="input-box">
                     <label>Date of Birth</label>
-                    <input type="date" name="d_dob" placeholder="" required>
+                    <input type="date" name="dob" placeholder="" required>
                 </div>  
             </div>
             <div class="column">
                 <div class="input-box">
-                    <input type="text" name="d_phone2" placeholder="Enter Another Phone Number">
+                    <input type="text" name="phone2" placeholder="Enter Another Phone Number">
                 </div>
 
                 <div class="select-box-2">
@@ -85,17 +85,17 @@
                     <h3><u>Gender</u></h3>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" id="check-male" name="d_gender" value="m" checked/>
+                            <input type="radio" id="check-male" name="gender" value="m" checked/>
                             <label for="check-male">Male</label>
                         </div>
                             
                         <div class="gender">
-                            <input type="radio" id="check-female" name="d_gender" value="f"/>
+                            <input type="radio" id="check-female" name="gender" value="f"/>
                             <label for="check-female">Female</label>
                         </div>
     
                         <div class="gender">
-                            <input type="radio" id="check-other" name="d_gender" value="o"/>
+                            <input type="radio" id="check-other" name="gender" value="o"/>
                             <label for="check-other">Prefer Not To Say</label>
                         </div>
                     </div>
@@ -326,76 +326,6 @@
             <button>Next</button>
         </form>
     </section>
-    <script src="/Reg_Login/eye.js"></script>
+    <script src="/BBMS/Reg_Login/eye.js"></script>
 </body>
 </html>
-
-
-    <!-- --------------------------------- Login form for Donor -----------------------------
-    <div class="container_1 donor-login">
-        <div class="login-box">
-            <form action="">
-                <div class="reg_arrow1">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
-                </div>
-                <div class="reg_arrow1">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
-                </div>
-                <div class="reg_arrow2">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
-                </div>
-                <div class="reg_arrow2">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
-                </div> 
-                <h1>Donor</h1>
-                <h2>Register</h2>
-                <div class="input-box">
-                    <input type="name" name="name" id="fname" placeholder="Your First Name" required>
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="mname" placeholder="Your Middle Name">
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="lname" placeholder="Your Last Name" required>
-                </div>
-                <div class="input-box"><h2>Gender:</h2>
-                    <input type="radio" name="gender" id="gender" >Male
-                    <input type="radio" name="gender" id="gender" >Female
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="c_address" placeholder="Your Current Address" required>
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="p_address" placeholder="Your Permanent Address" required>
-                </div>
-                <div class="input-box">
-                    <input type="email" name="email" id="email" placeholder="Email" required>
-                </div>
-                <div class="input-box">
-                    <input type="number" name="number" id="number" placeholder="Your Phone Number" required>
-                </div>
-
-                <div class="input-box">
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                        <i class="material-symbols-sharp">visibility</i>
-                    </span>
-                </div>
-                
-                <div class="input-box">
-                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('c_password')">
-                        <i class="material-symbols-sharp">visibility</i>
-                    </span>
-                </div>
-
-                <button type="submit">Register</button>
-                <div class="register-link">
-                    <a href="/Reg_Login/login/donor_login.html">Already Have Account! Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="/Reg_Login/eye.js"></script>
-</body>
-</html> -->

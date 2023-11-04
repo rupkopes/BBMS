@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donar Login</title>
+    <title>Hospital Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"/>
-    <link rel="stylesheet" href="/Reg_Login/login.css"/>
+    <link rel="stylesheet" href="/BBMS/Reg_Login/login.css"/>
 </head>
 <body>
 
-    <!-- Login form for Donor -->
-    <div class="container donor-login">
+    <!-- Login form for Hospital -->
+    <div class="container hos-login">
         <div class="login-box">
             <form action="">
                 <div class="arrow1">
-                    <a href="admin_login.html"><span class="material-symbols-sharp">keyboard_double_arrow_left</span></a>
+                    <a href="staff_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_left</span></a>
                 </div>
                 <div class="arrow2">
-                    <a href="staff_login.html"><span class="material-symbols-sharp">keyboard_double_arrow_right</span></a>
+                    <a href="org_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_right</span></a>
                 </div>
-                <h1>Donor</h1>
+                <h1>Hospital</h1>
                 <h2>Login</h2>
                 <div class="input-box">
                     <span class="icon"><i class="material-symbols-sharp">mail</i></span>
@@ -38,11 +38,11 @@
                 </div>
                 <button type="submit">Login</button>
                 <div class="register-link">
-                    <a href="/Reg_Login/register/donor_register.html">Don't have an account? Create Now!</a>
+                    <a href="/BBMS/Reg_Login/register/hos_register.php">Don't have an account? Create Now!</a>
                 </div>
             </form>
         </div>
     </div>
-    <script src="/Reg_Login/eye.js"></script>
+    <script src="/BBMS/Reg_Login/eye.js"></script>
 </body>
 </html>

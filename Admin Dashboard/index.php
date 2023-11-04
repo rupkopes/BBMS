@@ -12,7 +12,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/images/blood3.png" alt="person">
+                    <img src="/BBMS/images/blood3.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -248,7 +248,7 @@
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="/images/person.png" alt="Profile">
+                        <img src="/BBMS/images/person.png" alt="Profile">
                     </div>
                 </div>
             </div>
@@ -259,7 +259,7 @@
                 <div class="updates">
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="/images/srk.jpg">
+                            <img src="/BBMS/images/srk.jpg">
                         </div>
                         <div class="message">
                             <p><b>Shah Rukh Khan</b> liked the hardwork of BBMS's creators.</p>
@@ -269,7 +269,7 @@
                     
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="/images/mrunal.jpg">
+                            <img src="/BBMS/images/mrunal.jpg">
                         </div>
                         <div class="message">
                             <p><b>Mrunal Thakur</b> never been happier like this before.</p>
@@ -279,7 +279,7 @@
 
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="/images/gates.jpg">
+                            <img src="/BBMS/images/gates.jpg">
                         </div>
                         <div class="message">
                             <p><b>Bill Gates</b> keep on doing hard work to be like me, guys.</p>
@@ -289,7 +289,7 @@
 
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="/images/jassita.jpg">
+                            <img src="/BBMS/images/jassita.jpg">
                         </div>
                         <div class="message">
                             <p><b>Jassita Gurung</b> saved by BBMS, accident held on Kathmandu.</p>
