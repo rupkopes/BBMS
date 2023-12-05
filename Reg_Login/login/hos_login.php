@@ -10,7 +10,7 @@
 <body>
 
     <!-- Login form for Hospital -->
-    <div class="container hos-login">
+    <div class="bbms hos-login">
         <div class="login-box">
             <form action="">
                 <div class="arrow1">

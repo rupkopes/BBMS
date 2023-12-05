@@ -10,7 +10,7 @@
 <body>
 
     <!-- Login form for Donor -->
-    <div class="container donor-login">
+    <div class="bbms donor-login">
         <div class="login-box">
             <form action="">
                 <div class="arrow1">

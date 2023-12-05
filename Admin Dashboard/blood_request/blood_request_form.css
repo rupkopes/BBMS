@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.bbms {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* From register start */
+
+ .column .input_box input,
+ .column .select_box {
+    position: relative;
+    height: 40px;
+    width: 50%;
+    outline: none;
+    font-size: 1rem;
+    color: #f9f9f9;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+ }
+
+/* .column {
+    display: flex;
+    column-gap: 10px;
+ } */
+
+ .input_box input::placeholder {
+    color: #f9f9f9;
+}
+
+ .input_box input:focus {
+   box-shadow: 0 2.5px blue;
+ }
+
+ .column .select_box:focus-within,
+ .column .input_box input:focus {
+    box-shadow: 1.5px 1.5px 1.5px 1.5px blue;
+
+ }
+
+.select_box select {
+   height: 100%;
+   width: 100%;
+   outline: none;
+   border: none;
+   color: #f9f9f9;
+   font-size: 1rem;
+   background-color: transparent;
+   backdrop-filter: blur(70px);
+ }
+
+ select option {
+   color: #f9f9f9;
+   background-color: rgba(0, 0, 0, 0.7);
+ }
+
+
+
+
+
+
+  /* From register ends */
+
+.blood_request_form {
+    background: url("/BBMS/images/hos.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bbms .login_box {
+    position: absolute;
+    width: 390px;
+    height: 400px;
+    background-color: transparent;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(11px);
+}
+
+.login_box h1 {
+    border: 8px solid rgba(0, 0, 255, 0.2);
+    background: rgba(0, 200, 255, 0.2);
+    border-radius: 20px;
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+}
+
+.arrow1 .material-symbols-sharp {
+    font-size: 38px;
+    position: absolute;
+    left: 45px;
+    color: rgb(50, 255, 255);
+    line-height: 60px;
+    cursor: pointer;
+  }
+
+.arrow2 .material-symbols-sharp {
+    font-size: 38px;
+    position: absolute;
+    right: 45px;
+    color: rgb(50, 255, 255);
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.login_box .input_box {
+    position: relative;
+    width: 320px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+
+.input_box input {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 55px 0 5px;
+}
+
+.input_box input::placeholder {
+    color: #f9f9f9;
+}
+
+
+.login_box button {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    transition: all 0.3s;
+}
+
+.login_box button:hover {
+    background: rgb(0, 0, 180);
+    color: #fff;
+}
+
+/*----------------------------------Responsive Design---------------------------------*/
+@media (max-width: 460px) {
+    .bbms .login_box {
+        width: 350px;
+        height: 100vh;
+    }
+    .login_box .input_box {
+        width: 290px;
+    }
+    .login_box h1 {
+        width: 300px;
+        font-size: 40px;
+    }
+    .arrow1 .material-symbols-sharp {
+        top:-5px;
+    }
+    .arrow2 .material-symbols-sharp {
+        top:-5px;
+    }
+}
+
+@media (max-width: 360px) {
+    .bbms .login_box {
+        width: 100%;
+        height: 100vh;    
+    }
+}
+
+
+/* ------------------------------------------Transition Effect----------------------------------- */
+
+body {
+    animation: transitionEffect 2s;
+}
+
+@keyframes transitionEffect {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/BBMS/Reg_Login/regis.css"/>
 </head>
 <body class= "staff-regis">
-    <section class="container">
+    <section class="bbms">
         <div class="reg_arrow1">
             <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
         </div>

@@ -10,7 +10,7 @@
 <body>
 
     <!-- Login form for Organization -->
-    <div class="container org-login">
+    <div class="bbms org-login">
         <div class="login-box">
             <form action="">
                 <div class="arrow1">

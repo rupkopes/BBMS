@@ -10,7 +10,7 @@
 <body>
 
     <!-- Login form for Admin -->
-    <div class="container admin-login">
+    <div class="bbms admin-login">
         <div class="login-box">
             <form action="">
                 <div class="arrow1">

@@ -25,9 +25,9 @@ themeToggler.addEventListener('click', () => {
 Orders.forEach(order => {
     const tr = document.createElement('tr');
     const trContent = `
-                        <td>${order.orderID}</td>
-                        <td>${order.orgName}</td>
-                        <td>${order.bloodType}</td>
+                        <td>${order.org_id}</td>
+                        <td>${order.org_name}</td>
+                        <td>${order.blood_type}</td>
                         <td>${order.quantity}</td>
                         <td class="${order.status === 'Rejected' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
 
@@ -36,3 +36,18 @@ Orders.forEach(order => {
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
 })
+
+
+//--------------------------------Dropdown sub-menu items in sidebar-------------------------------
+        const dropDowns = document.querySelectorAll('.drop_down');
+        dropDowns.forEach(dropDown => {
+            dropDown.addEventListener('click', function () {
+                const subMenu = this.nextElementSibling;
+                if (subMenu.style.display === 'block') {
+                    subMenu.style.display = 'none';
+                } else {
+                    subMenu.style.display = 'block';
+                }
+            });
+        });
+    

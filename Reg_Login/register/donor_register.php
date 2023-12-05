@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/BBMS/Reg_Login/regis.css"/>
 </head>
 <body class= "donor-regis">
-    <section class="container">
+    <section class="bbms">
         <div class="reg_arrow1">
             <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
         </div>
@@ -21,28 +21,80 @@
         <div class="reg_arrow2">
             <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
         </div>
+
+        <?php
+            if (isset($_POST["submit"])) {
+                $full_name = $_POST["name"];
+                $email = $_POST["email"];
+                $phone1 = $_POST["phone1"];
+                $phone2 = $_POST["phone2"];
+                // $d_o_b = $_POST["dob"];
+                // $occup = $_POST["occup"];
+                // $type = $_POST["blood_type"];
+                // $gender = $_POST["gender"];
+                // $p_address = $_POST["p_address"];
+                // $p_district = $_POST["p_district"];
+                // $p_province = $_POST["p_province"];
+                // $c_address = $_POST["c_address"];
+                // $c_district = $_POST["c_district"];
+                // $c_province = $_POST["c_province"];
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+                $c_password = $_POST["c_password"];
+
+                $errors = array();
+
+                if (empty($full_name) || empty($email) || empty($phone1) || empty($phone2) || empty($username) || empty($password) || empty($c_password)) {
+                    array_push($errors,"All fields are required");
+                }
+
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    array_push($errors, "This email is not registered");
+                }
+
+                if (strlen($password)<8) {
+                    array_push($errors,"Password must be at least 8 characters long");
+                }
+
+                if ($password!==$c_password) {
+                    array_push($errors,"Password does not match");
+                }
+
+                if (count($errors)>0) {
+                    foreach ($errors as $error) {
+                        echo "<div class='alert alert-danger'>$error</div>";
+                    }
+                }
+                else {
+                
+                }
+
+            }
+            
+        ?>
+
         <h1>Donor</h1>
         <header><u>Registration Form</u></header>
         <h2><u>Personal Details</u>:</h2>
-        <form action="#" class="form">
+        <form action="donor_register.php" method="post" class="form">
             <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" name="name" placeholder="Enter Your Full Name" required>
+                <input type="text" name="name" placeholder="Enter Your Full Name">
             </div>
 
             <div class="input-box">
                 <label>Email</label>
-                <input type="text" name="email" placeholder="Enter Your Email Address" required>
+                <input type="text" name="email" placeholder="Enter Your Email Address">
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label>Phone</label>
-                    <input type="text" name="phone1" placeholder="Enter Your Phone Number" required>
+                    <input type="text" name="phone1" placeholder="Enter Your Phone Number">
                 </div>
                 <div class="input-box">
                     <label>Date of Birth</label>
-                    <input type="date" name="dob" placeholder="" required>
+                    <input type="date" name="dob" placeholder="" >
                 </div>  
             </div>
             <div class="column">
@@ -104,7 +156,7 @@
 
             <div class="input-box address">
                 <label>Permanent Adress</label>
-                <input type="text" placeholder="Enter Your Village/Town" required>
+                <input type="text" placeholder="Enter Your Village/Town">
 
                 <div class="column">
                     <div class="select-box">
@@ -203,7 +255,7 @@
             
             <div class="input-box address">
                 <label>Current Adress</label>
-                <input type="text" placeholder="Enter Your Village/Town" required>
+                <input type="text" placeholder="Enter Your Village/Town">
 
                 <div class="column">
                     <div class="select-box">
@@ -304,11 +356,11 @@
                 <h2><u>Login Details</u>:</h2>
                 <div class="input-box">
                     <!-- <label>Username</label> -->
-                    <input type="text" placeholder="Enter Username" required>
+                    <input type="text" placeholder="Enter Username" name="username" >
                 </div>
                 <div class="input-box">
                     <!-- <label>Password</label> -->
-                    <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" >
                     <span class="toggle-password" onclick="togglePasswordVisibility('password')">
                         <i class="material-symbols-sharp">visibility</i>
                     </span>
@@ -316,14 +368,14 @@
                 
                 <div class="input-box">
                     <!-- <label>Re-Type Passowrd</label> -->
-                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
+                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" >
                     <span class="toggle-password" onclick="togglePasswordVisibility('c_password')">
                         <i class="material-symbols-sharp">visibility</i>
                     </span>
                 </div>
             </div>      
 
-            <button>Next</button>
+            <button type="submit" name="submit">Submit</button>
         </form>
     </section>
     <script src="/BBMS/Reg_Login/eye.js"></script>
@@ -332,7 +384,7 @@
 
 
     <!-- --------------------------------- Login form for Donor -----------------------------
-    <div class="container_1 donor-login">
+    <div class="bbms_1 donor-login">
         <div class="login-box">
             <form action="">
                 <div class="reg_arrow1">
