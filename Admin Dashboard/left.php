@@ -1,7 +1,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/BBMS/images/logo1.jpg" alt="person">
+                    <img src="/BBMS/images/logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">

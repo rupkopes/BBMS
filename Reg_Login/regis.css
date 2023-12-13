@@ -10,8 +10,8 @@
  body {
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 100px;
  }
 
@@ -22,38 +22,16 @@
    padding: 25px;
    border-radius: 25px;
    border:  4px double red;
+   /* background: rgba(100, 100, 100, 0.7); */
+   background: rgba(0, 20, 30, 0.7);
+}
+
+.regis_image {
+   background: url("/BBMS/images/regis_back.png") no-repeat fixed;
+   background-size: 100%;
+   /* background-position: center; */
    background-color: transparent;
-   backdrop-filter: blur(70px);
-}
-
-.admin-regis {
-   background: url("/BBMS/images/admin.jpg") no-repeat;
-   background-size: cover;
-   background-position: center;
-}
-
-.staff-regis {
-   background: url("/BBMS/images/staff.jpg") no-repeat;
-   background-size: cover;
-   background-position: center;
-}
-
-.org-regis {
-   background: url("/BBMS/images/org.jpg") no-repeat;
-   background-size: cover;
-   background-position: center;
-}
-
-.hos-regis {
-   background: url("/BBMS/images/hos.jpg") no-repeat;
-   background-size: cover;
-   background-position: center;
-}
-
-.donor-regis {
-   background: url("/BBMS/images/donor.jpeg") no-repeat;
-   background-size: cover;
-   background-position: center;
+   backdrop-filter: blur(6px);
 }
 
 .bbms h1 {
@@ -261,7 +239,8 @@
    border-radius: 30px;
    font-weight: 400;
    transition: all 0.2s ease;
-   background-color: rgb(130, 106, 251);
+   /* background-color: rgb(130, 106, 251); */
+   background: blue;
 }
 
 .form button:hover {

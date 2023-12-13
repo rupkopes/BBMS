@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"/>
     <link rel="stylesheet" href="/BBMS/Reg_Login/regis.css"/>
 </head>
-<body class= "donor-regis">
+<body class= "regis_image">
     <section class="bbms">
         <div class="reg_arrow1">
             <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
