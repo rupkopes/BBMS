@@ -29,12 +29,12 @@
             <div class="recent-orders">
                 <h2>Blood Requests</h2>
                 <!-- <a class="button" href="blood_request_form.php" role="button">Make New Request</a> -->
-                <a href="blood_request_form.php"><button type="submit" name="submit">Make New Request</button></a>
+                <a href="blood_request_form.php"><div class="mnr"><button type="submit" name="submit">Make New Request</button></div></a>
                 <table>
                     <thead>
                         <tr>
                             <th>S.No.</th>
-                            <th>Order ID</th>
+                            <th>ID</th>
                             <th>Organization Name</th>
                             <th>Blood Type</th>
                             <th>Quantity(Pints)</th>
@@ -47,6 +47,7 @@
                     <tbody>
 
                     <?php
+                            
                             include ("../admin_connect.php");
 
                             $sql = "SELECT * FROM `blood_requests`";
@@ -61,14 +62,15 @@
                                 <td><?php echo $row['quantity'] ?></td>
                                 <td><?php echo $row['date_requests'] ?></td>
                                 <td><?php echo $row['status'] ?></td>
-                                <!-- <td>
-                                    <a href="team_members_edit.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                                    <a href="team_members_delete.php?id=<?php echo $row['id'] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
-                                </td> -->
+                                <td>
+                                    <a href="edit_blood_request.php?id=<?php echo $row['org_id'] ?>"><div class="modify1"><span class="material-symbols-sharp">edit_square</span></div></a>
+                                </td>
+                                <td>
+                                    <a href="delete_blood_request.php?id=<?php echo $row['org_id'] ?>"><div class="modify2"><span class="material-symbols-sharp">delete</span></div></a>
+                                </td>
                             </tr>
 
                         <?php
-
                             }
                         ?>
 

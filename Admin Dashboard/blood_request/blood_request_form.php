@@ -62,8 +62,8 @@
                             <option>O-</option>
                         </select>
                     </div>
-                    <div class="input_box">
-                        <input type="number" name="quantity" placeholder="Quantity">
+                    <div class="input_quantity">
+                        <input type="number" name="quantity" placeholder="Quantity" required>
                     </div>
                 </div>
                 <a href="blood_request_table.php"><button type="submit" name="submit">Request</button></a>

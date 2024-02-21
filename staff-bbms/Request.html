@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Request Management</title>
+    <style>
+        /* Basic CSS styles for the application */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .blood-request {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+        }
+        .approved {
+            background-color: #8BC34A; /* Green */
+        }
+        .unapproved {
+            background-color: #FF5733; /* Red */
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Blood Request Management</h1>
+</header>
+
+    <div id="bloodRequests">
+        <!-- Requests will be dynamically added here using JavaScript -->
+    </div>
+
+    <script>
+        // Sample blood requests (you can replace this with real data from your backend)
+        let bloodRequests = [
+            { id: 1, hospital: 'Hospital A', bloodType: 'A+', approved: true, bloodUnits: 5 },
+            { id: 2, hospital: 'Hospital B', bloodType: 'O-', approved: false, bloodUnits: 10 },
+            { id: 3, hospital: 'Hospital C', bloodType: 'B+', approved: true, bloodUnits: 7 },
+    ];
+
+        // Function to display blood requests
+        function displayBloodRequests() {
+            const bloodRequestsContainer = document.getElementById('bloodRequests');
+            bloodRequestsContainer.innerHTML = '';
+
+            bloodRequests.forEach(request => {
+                const requestElement = document.createElement('div');
+                requestElement.classList.add('blood-request');
+                requestElement.classList.add(request.approved ? 'approved' : 'unapproved');
+                requestElement.innerHTML = `
+                    <h3>${request.hospital}</h3>
+                    <p>Blood Type: ${request.bloodType}</p>
+                    <p>Blood Units: ${request.bloodUnits}</p>
+                    <p>Status: ${request.approved ? 'Approved' : 'Unapproved'}</p>
+                    <button onclick="approveRequest(${request.id})">Approved</button>
+                    <button onclick="notApproveRequest(${request.id})">Unapproved</button>
+                `;
+                bloodRequestsContainer.appendChild(requestElement);
+            });
+        }
+
+        // Function to approve a blood request
+        function approveRequest(requestId) {
+            const requestToApprove = bloodRequests.find(request => request.id === requestId);
+            if (requestToApprove) {
+                requestToApprove.approved = true;
+                displayBloodRequests(); // Redraw the list with updated status
+            }
+        }
+
+        // Function to mark a blood request as "Not Approved"
+        function notApproveRequest(requestId) {
+            const requestToNotApprove = bloodRequests.find(request => request.id === requestId);
+            if (requestToNotApprove) {
+                requestToNotApprove.approved = false;
+                displayBloodRequests(); // Redraw the list with updated status
+            }
+        }
+        displayBloodRequests();
+    </script>
+</body>
+</html>

@@ -1,3 +1,63 @@
+<?php
+    include ("../regis_connect.php");
+
+    if (isset($_POST["submit"])) {
+        $full_name = $_POST['full_name'];
+        $email = $_POST['email'];
+        $phone1 = $_POST['phone1'];
+        $phone2 = $_POST['phone2'];
+        $dob = $_POST['dob'];
+        $occup = $_POST['occup'];
+        $blood_type = $_POST['blood_type'];
+        $gender = $_POST['gender'];
+        $p_address = $_POST['p_address'];
+        $p_district = $_POST['p_district'];
+        $p_province = $_POST['p_province'];
+        $c_address = $_POST['c_address'];
+        $c_district = $_POST['c_district'];
+        $c_province = $_POST['c_province'];
+        $user_name = $_POST['user_name'];
+        $pass = $_POST['pass'];
+        $c_pass = $_POST['c_pass'];
+
+        $sql = "INSERT INTO `d_user`(`id`, `full_name`, `email`, `phone1`, `phone2`, `dob`, `occup`, `blood_type`, `gender`, `p_address`, `p_district`, `p_province`, `c_address`, `c_district`, `c_province`, `user_name`, `pass`, `c_pass`) VALUES (NULL,'$full_name','$email','$phone1','$phone2','$dob','$occup','$blood_type','$gender','$p_address','$p_district','$p_province','$c_address','$c_district','$c_province','$user_name','$pass','$c_pass')";
+
+        $result = mysqli_query($conn, $sql);
+
+        // $errors = array();
+
+        // if (empty($full_name) || empty($email) || empty($phone1) || empty($phone2) || empty($username) || empty($pass) || empty($c_pass)) {
+        //     array_push($errors,"All fields are required");
+        // }
+
+        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //     array_push($errors, "This email is not registered");
+        // }
+
+        // if (strlen($pass)<8) {
+        //     array_push($errors,"Password must be at least 8 characters long");
+        // }
+
+        // if ($pass!==$c_pass) {
+        //     array_push($errors,"Password does not match");
+        // }
+
+        // if (count($errors)>0) {
+        //     foreach ($errors as $error) {
+        //         echo "<div class='alert alert-danger'>$error</div>";
+        //     }
+        // }
+        // else {
+                
+        // }
+
+    }
+            
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,65 +81,13 @@
         <div class="reg_arrow2">
             <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
         </div>
-
-        <?php
-            if (isset($_POST["submit"])) {
-                $full_name = $_POST["name"];
-                $email = $_POST["email"];
-                $phone1 = $_POST["phone1"];
-                $phone2 = $_POST["phone2"];
-                // $d_o_b = $_POST["dob"];
-                // $occup = $_POST["occup"];
-                // $type = $_POST["blood_type"];
-                // $gender = $_POST["gender"];
-                // $p_address = $_POST["p_address"];
-                // $p_district = $_POST["p_district"];
-                // $p_province = $_POST["p_province"];
-                // $c_address = $_POST["c_address"];
-                // $c_district = $_POST["c_district"];
-                // $c_province = $_POST["c_province"];
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-                $c_password = $_POST["c_password"];
-
-                $errors = array();
-
-                if (empty($full_name) || empty($email) || empty($phone1) || empty($phone2) || empty($username) || empty($password) || empty($c_password)) {
-                    array_push($errors,"All fields are required");
-                }
-
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    array_push($errors, "This email is not registered");
-                }
-
-                if (strlen($password)<8) {
-                    array_push($errors,"Password must be at least 8 characters long");
-                }
-
-                if ($password!==$c_password) {
-                    array_push($errors,"Password does not match");
-                }
-
-                if (count($errors)>0) {
-                    foreach ($errors as $error) {
-                        echo "<div class='alert alert-danger'>$error</div>";
-                    }
-                }
-                else {
-                
-                }
-
-            }
-            
-        ?>
-
         <h1>Donor</h1>
         <header><u>Registration Form</u></header>
         <h2><u>Personal Details</u>:</h2>
-        <form action="donor_register.php" method="post" class="form">
+        <form action="" method="post" class="form">
             <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" name="name" placeholder="Enter Your Full Name">
+                <input type="text" name="full_name" id="nameInput" placeholder="Enter Your Full Name" oninput="capitalizeName(this)" required>
             </div>
 
             <div class="input-box">
@@ -90,7 +98,7 @@
             <div class="column">
                 <div class="input-box">
                     <label>Phone</label>
-                    <input type="text" name="phone1" placeholder="Enter Your Phone Number">
+                    <input type="text" name="phone1" placeholder="Enter Your Phone Number" required>
                 </div>
                 <div class="input-box">
                     <label>Date of Birth</label>
@@ -99,20 +107,20 @@
             </div>
             <div class="column">
                 <div class="input-box">
-                    <input type="text" name="phone2" placeholder="Enter Another Phone Number">
+                    <input type="text" name="phone2" placeholder="Enter Another Phone Number" required>
                 </div>
 
                 <div class="select-box-2">
-                    <select>
+                    <select name="occup">
                         <option hidden>Occupation</option>
-                        <option>a</option>
-                        <option>b</option>
-                        <option>c</option>
-                        <option>d</option>
-                        <option>e</option>
-                        <option>f</option>
-                        <option>g</option>
-                        <option>h</option>
+                        <option>Student</option>
+                        <option>Teacher</option>
+                        <option>Medicine</option>
+                        <option>Businessman</option>
+                        <option>Employee</option>
+                        <option>Politician</option>
+                        <option>Civil Service</option>
+                        <option>Worker</option>
                     </select>
                 </div>
             </div>
@@ -120,7 +128,7 @@
             <div class="blood">
                 <h3><u>Blood Type</u></h3>
                 <div class="select-box">
-                    <select>
+                    <select name="blood_type">
                         <option hidden>Type</option>
                         <option>A+</option>
                         <option>B+</option>
@@ -137,17 +145,17 @@
                     <h3><u>Gender</u></h3>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" id="check-male" name="gender" value="m" checked/>
+                            <input type="radio" id="check-male" name="gender" value="Male" checked required/>
                             <label for="check-male">Male</label>
                         </div>
                             
                         <div class="gender">
-                            <input type="radio" id="check-female" name="gender" value="f"/>
+                            <input type="radio" id="check-female" name="gender" value="Female" required/>
                             <label for="check-female">Female</label>
                         </div>
     
                         <div class="gender">
-                            <input type="radio" id="check-other" name="gender" value="o"/>
+                            <input type="radio" id="check-other" name="gender" value="Other" required/>
                             <label for="check-other">Prefer Not To Say</label>
                         </div>
                     </div>
@@ -156,11 +164,11 @@
 
             <div class="input-box address">
                 <label>Permanent Adress</label>
-                <input type="text" placeholder="Enter Your Village/Town">
+                <input type="text" id="nameInput" name="p_address" placeholder="Enter Your Village/Town" oninput="capitalizeName(this)" required>
 
                 <div class="column">
                     <div class="select-box">
-                        <select>
+                        <select name="p_district">
                             <option hidden> Your District</option>
                             <option>Achham</option>
                             <option>Arghakhanchi</option>
@@ -239,7 +247,7 @@
                         </select>
                     </div>
                     <div class="select-box">
-                        <select>
+                        <select name="p_province">
                             <option hidden>Your Province</option>
                             <option>Province 1</option>
                             <option>Province 2</option>
@@ -255,11 +263,11 @@
             
             <div class="input-box address">
                 <label>Current Adress</label>
-                <input type="text" placeholder="Enter Your Village/Town">
+                <input type="text" id="nameInput" name="c_address" placeholder="Enter Your Village/Town" oninput="capitalizeName(this)" required>
 
                 <div class="column">
                     <div class="select-box">
-                        <select>
+                        <select name="c_district">
                             <option hidden> Your District</option>
                             <option>Achham</option>
                             <option>Arghakhanchi</option>
@@ -338,7 +346,7 @@
                         </select>
                     </div>
                     <div class="select-box">
-                        <select>
+                        <select name="c_province">
                             <option hidden>Your Province</option>
                             <option>Province 1</option>
                             <option>Province 2</option>
@@ -356,11 +364,11 @@
                 <h2><u>Login Details</u>:</h2>
                 <div class="input-box">
                     <!-- <label>Username</label> -->
-                    <input type="text" placeholder="Enter Username" name="username" >
+                    <input type="text" placeholder="Enter Username" name="user_name" >
                 </div>
                 <div class="input-box">
                     <!-- <label>Password</label> -->
-                    <input type="password" name="password" id="password" placeholder="Enter Password" >
+                    <input type="password" name="pass" id="password" placeholder="Enter Password" >
                     <span class="toggle-password" onclick="togglePasswordVisibility('password')">
                         <i class="material-symbols-sharp">visibility</i>
                     </span>
@@ -368,86 +376,25 @@
                 
                 <div class="input-box">
                     <!-- <label>Re-Type Passowrd</label> -->
-                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" >
+                    <input type="password" name="c_pass" id="c_password" placeholder="Confirm Password" >
                     <span class="toggle-password" onclick="togglePasswordVisibility('c_password')">
                         <i class="material-symbols-sharp">visibility</i>
                     </span>
                 </div>
             </div>      
 
-            <button type="submit" name="submit">Submit</button>
+
+            <a href="/BBMS/Reg_Login/login/donor_login.php"><button type="submit" name="submit">Register</button></a>
+            <a href="/BBMS/Reg_Login/login/donor_login.php" class="cancel">Cancel</a>
+
         </form>
     </section>
+    <script>
+        // JavaScript function to capitalize the first letter of each word
+        function capitalizeName(input) {
+        input.value = input.value.replace(/\b\w/g, match => match.toUpperCase());
+        }
+    </script>
     <script src="/BBMS/Reg_Login/eye.js"></script>
 </body>
 </html>
-
-
-    <!-- --------------------------------- Login form for Donor -----------------------------
-    <div class="bbms_1 donor-login">
-        <div class="login-box">
-            <form action="">
-                <div class="reg_arrow1">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
-                </div>
-                <div class="reg_arrow1">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
-                </div>
-                <div class="reg_arrow2">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_left</span>
-                </div>
-                <div class="reg_arrow2">
-                    <span class="material-symbols-sharp">keyboard_double_arrow_right</span>
-                </div> 
-                <h1>Donor</h1>
-                <h2>Register</h2>
-                <div class="input-box">
-                    <input type="name" name="name" id="fname" placeholder="Your First Name" required>
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="mname" placeholder="Your Middle Name">
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="lname" placeholder="Your Last Name" required>
-                </div>
-                <div class="input-box"><h2>Gender:</h2>
-                    <input type="radio" name="gender" id="gender" >Male
-                    <input type="radio" name="gender" id="gender" >Female
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="c_address" placeholder="Your Current Address" required>
-                </div>
-                <div class="input-box">
-                    <input type="name" name="name" id="p_address" placeholder="Your Permanent Address" required>
-                </div>
-                <div class="input-box">
-                    <input type="email" name="email" id="email" placeholder="Email" required>
-                </div>
-                <div class="input-box">
-                    <input type="number" name="number" id="number" placeholder="Your Phone Number" required>
-                </div>
-
-                <div class="input-box">
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                        <i class="material-symbols-sharp">visibility</i>
-                    </span>
-                </div>
-                
-                <div class="input-box">
-                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('c_password')">
-                        <i class="material-symbols-sharp">visibility</i>
-                    </span>
-                </div>
-
-                <button type="submit">Register</button>
-                <div class="register-link">
-                    <a href="/Reg_Login/login/donor_login.html">Already Have Account! Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="/Reg_Login/eye.js"></script>
-</body>
-</html> -->

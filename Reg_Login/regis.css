@@ -258,6 +258,10 @@
    cursor: pointer;
 }
 
+form .cancel {
+   color: pink;
+}
+
  /* ---------------Responsive Design------------ */
  @media screen and (max-width: 500px) {
     .form .column {

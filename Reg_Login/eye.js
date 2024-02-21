@@ -1,3 +1,4 @@
+// for eye button in password
 function togglePasswordVisibility(inputId) {
     const passwordInput = document.getElementById(inputId);
     const toggleButton = passwordInput.nextElementSibling.querySelector("i");
@@ -10,5 +11,3 @@ function togglePasswordVisibility(inputId) {
         toggleButton.textContent = "visibility";
     }
 }
-
-
