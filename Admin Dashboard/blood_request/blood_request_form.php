@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <a href="blood_request_table.php"><button type="submit" name="submit">Request</button></a>
-                <a href="blood_request_table.php">Cancel</a>
+                <a href="blood_request_table.php"><div class="cancel">Cancel</div></a>
             </form>
         </div>
     </div>

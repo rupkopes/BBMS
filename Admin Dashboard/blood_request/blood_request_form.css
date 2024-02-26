@@ -77,6 +77,12 @@
     background-position: center;
 }
 
+.login_box .cancel {
+    font-size: 20px;
+    color: red;
+    /* text-align: center; */
+}
+
 .bbms .login_box {
     position: absolute;
     width: 390px;

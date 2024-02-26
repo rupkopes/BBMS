@@ -435,6 +435,15 @@ main .insights small {
     display: flex;
 }
 
+main .comment-photo {
+    width: 11rem;
+    height: 11rem;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 /* -----------------------------------Tables-------------------------------------------- */
 
 main .recent-orders {

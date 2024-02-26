@@ -36,17 +36,17 @@
                         <span class="material-symbols-sharp">arrow_forward_ios</span>
                     </a>
                     <div class="sub_menu">
-                        <a href="/BBMS/Admin Dashboard/blood_request/blood_request_table.php">
+                        <a href="/BBMS/Admin Dashboard/blood_request/blood_request_form.php">
+                            <span class="material-symbols-sharp">add</span>
+                            <h3>Add Requests</h3>
+                        </a>
+                        <a href="/BBMS/Admin Dashboard/blood_request/blood_request_category.php">
                             <span class="material-symbols-sharp">format_list_bulleted</span>
+                            <h3>Category</h3>
+                        </a>
+                        <a href="/BBMS/Admin Dashboard/blood_request/blood_request_table.php">
+                            <span class="material-symbols-sharp">receipt_long</span>
                             <h3>Requests List</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-symbols-sharp">done</span>
-                            <h3>Requests Approved</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-symbols-sharp">delete_forever</span>
-                            <h3>Requests Declined</h3>
                         </a>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             <span class="material-symbols-sharp">schedule</span>
                             <h3>Camp Schedule</h3>
                         </a>
-                        <a href="#">
+                        <a href="/BBMS/Admin Dashboard/camps/blood_collection_form.php">
                             <span class="material-symbols-sharp">bloodtype</span>
                             <h3>Blood Collection</h3>
                         </a>

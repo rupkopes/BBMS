@@ -1,14 +1,16 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "admin";
-    // $dbname = "admin";
+// Database configuration
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "admin";
 
-    $conn = mysqli_connect($servername, $username, $password, $database);
+// Create Connection
+$conn = mysqli_connect($servername, $username, $password, $database);
 
-    if(!$conn) {
-                    die("Connection Failed". mysqli_connect_error());
-    }
-    // echo "Connection Successfully";
+// Check Connection
+if(!$conn) {
+            die("Connection Failed". mysqli_connect_error());
+}
+// echo "Connection Successfully";
 ?>                

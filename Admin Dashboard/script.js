@@ -14,12 +14,34 @@ closeBtn.addEventListener('click', () => {
 })
 
 // -------------------------------Change theme-----------------------------
-themeToggler.addEventListener('click', () => {
+// Function to toggle between light and dark theme
+function toggleTheme() {
+    // Toggle the dark-theme-variables class on the body
     document.body.classList.toggle('dark-theme-variables');
 
+    // Toggle the active class on the themeToggler span elements
     themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
-})
+
+    // Update URL with theme parameter only when the theme toggler button is clicked
+    const currentTheme = document.body.classList.contains('dark-theme-variables') ? 'dark' : 'light';
+    const url = new URL(window.location.href);
+    url.searchParams.set('theme', currentTheme);
+    history.replaceState(null, '', url.toString());
+}
+
+// Add event listener for theme toggler
+themeToggler.addEventListener('click', toggleTheme);
+
+// Apply the theme based on URL parameter on page load only if the theme toggler button was not clicked
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const theme = urlParams.get('theme');
+    if (theme === 'dark' && !document.body.classList.contains('dark-theme-variables')) {
+        toggleTheme(); // Apply dark theme if 'dark' theme parameter is present
+    }
+});
+
 
 // -----------------------Fill orders in table------------------------------------
 Orders.forEach(order => {

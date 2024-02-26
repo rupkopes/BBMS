@@ -1,19 +1,18 @@
 <?php
     include ("../admin_connect.php");
-    $org_id = $_GET['org_id'];
 
     if (isset($_POST["submit"])) {
-        $org_name = $_POST['org_name'];
+        $camp_name = $_POST['camp_name'];
         $blood_type = $_POST['blood_type'];
         $quantity = $_POST['quantity'];
   
 
-        $sql = "UPDATE `blood_requests` SET `org_name`='$org_name',`blood_type`='$blood_type',`quantity`='$quantity' WHERE org_id=$org_id";
+        $sql = "INSERT INTO `blood_collect`(`camp_id`, `camp_name`, `blood_type`, `quantity`) VALUES (NULL,'$camp_name','$blood_type','$quantity')";
 
         $result = mysqli_query($conn, $sql);
 
         if($result) {
-            header("Location: blood_request_table.php?msg=Record updated successfully");
+            header("Location: collection_table.php?msg=New record created successfully");
         }
         else {
             echo "Failed: " .mysqli_error($conn);
@@ -30,16 +29,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Request Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp"/>
-    <link rel="stylesheet" href="blood_request_form.css">
+    <link rel="stylesheet" href="/BBMS/Admin Dashboard/blood_request/blood_request_form.css">
 </head>
 <body>
 
     <div class="bbms blood_request_form">
-        <?php
-            $sql = "SELECT * FROM `blood_requests` WHERE org_id = $org_id LIMIT 1";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-        ?>
         <div class="login_box">
             <form action="" method="post">
                 <div class="arrow1">
@@ -51,7 +45,7 @@
 
                 <h1>Blood Request</h1>
                 <div class="input_box">
-                    <input type="text" name="org_name" value = "<?php echo $row['org_name']?>">
+                    <input type="text" name="Camp_name" placeholder="Camp Name" required>
                 </div>
 
                 <div class="column">
@@ -69,11 +63,11 @@
                         </select>
                     </div>
                     <div class="input_quantity">
-                        <input type="number" name="quantity" value = "<?php echo $row['quantity']?>">
+                        <input type="number" name="quantity" placeholder="Quantity" required>
                     </div>
                 </div>
-                <a href="blood_request_table.php"><button type="submit" name="submit">Update</button></a>
-                <a href="blood_request_table.php"><div class="cancel">Cancel</div></a>
+                <a href=""><button type="submit" name="submit">Done</button></a>
+                <a href="collection_table.php"><div class="cancel">Cancel</div></a>
             </form>
         </div>
     </div>

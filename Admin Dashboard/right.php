@@ -14,14 +14,14 @@
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="/BBMS/images/person.png" alt="Profile">
+                        <img src="/BBMS/images/rupkopes.jpg" alt="Profile">
                     </div>
                 </div>
             </div>
             <!------------------------------------- End of Top --------------------------------------->
 
             <div class="recent-updates">
-                <h2>Recent Updates</h2>
+                <h2>Comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/BBMS/Admin Dashboard/updates.php"><span class="material-symbols-sharp">draw</span></a></h2>
                 <div class="updates">
                     <div class="update">
                         <div class="profile-photo">

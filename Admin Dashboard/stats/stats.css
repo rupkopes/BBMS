@@ -1,0 +1,8 @@
+stats {
+    margin: 1.4rem 8vw 0 8vw;
+}
+
+#chartContainer {
+    height: 370px;
+    width: 59vw;
+}
