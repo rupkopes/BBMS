@@ -1,5 +1,5 @@
 <?php
-include "../admin_connect.php";
+include "../ad_min_connect.php";
 $org_id = $_GET['org_id'];
 $sql = "DELETE FROM `blood_requests` WHERE org_id = $org_id";
 $result = mysqli_query($conn, $sql);

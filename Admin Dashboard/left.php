@@ -90,13 +90,17 @@
                             <span class="material-symbols-sharp">arrow_forward_ios</span>
                     </a>
                     <div class="sub_menu">
+                        <a href="/BBMS/Admin Dashboard/camps/blood_collection_form.php">
+                            <span class="material-symbols-sharp">bloodtype</span>
+                            <h3>Collect</h3>
+                        </a>
                         <a href="/BBMS/Admin Dashboard/camps/camps_table.php">
                             <span class="material-symbols-sharp">schedule</span>
                             <h3>Camp Schedule</h3>
                         </a>
-                        <a href="/BBMS/Admin Dashboard/camps/blood_collection_form.php">
-                            <span class="material-symbols-sharp">bloodtype</span>
-                            <h3>Blood Collection</h3>
+                        <a href="/BBMS/Admin Dashboard/camps/collection_table.php">
+                            <span class="material-symbols-sharp">database</span>
+                            <h3>Total Collection</h3>
                         </a>
                     </div>
                 </div>

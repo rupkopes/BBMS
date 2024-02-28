@@ -27,20 +27,15 @@
             ?>
 
             <div class="recent-orders">
-                <h2>Blood Requests</h2>
-                <!-- <a class="button" href="blood_request_form.php" role="button">Make New Request</a> -->
-                <a href="blood_request_form.php"><div class="mnr"><button type="submit" name="submit">Make New Request</button></div></a>
+                <h2>Blood Percent</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>S.No.</th>
-                            <th>ID</th>
-                            <th>Organization Name</th>
                             <th>Blood Type</th>
-                            <th>Quantity(Pints)</th>
-                            <th>Date Requested</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Requests(pints)</th>
+                            <th>Available(Pints)</th>
+                            <th>Requests(%)</th>
+                            <th>Available(%)</th>
                         </tr>
                     </thead>
 
@@ -48,40 +43,28 @@
 
                     <?php
                             
-                            include ("../ad_min_connect.php");
+                            include ("progress_bar_connect.php");
 
-                            $sql = "SELECT * FROM `blood_requests`";
+                            $sql = "SELECT * FROM `blood_percent` WHERE blood_type = 'AB-'";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td><?php echo $row['sno'] ?></td>
-                                <td><?php echo $row['org_id'] ?></td>
-                                <td><?php echo $row['org_name'] ?></td>
                                 <td><?php echo $row['blood_type'] ?></td>
-                                <td><?php echo $row['quantity'] ?></td>
-                                <td><?php echo $row['date_requests'] ?></td>
-                                <td><?php echo $row['status'] ?></td>
-                                <td>
-                                    <a href="edit_blood_request.php?org_id=<?php echo $row['org_id'] ?>"><div class="modify1"><span class="material-symbols-sharp">edit_square</span></div></a>
-                                </td>
-                                <td>
-                                    <a href="delete_blood_request.php?org_id=<?php echo $row['org_id'] ?>"><div class="modify2"><span class="material-symbols-sharp">delete</span></div></a>
-                                </td>
+                                <td><?php echo $row['request'] ?></td>
+                                <td><?php echo $row['available'] ?></td>
+                                <td><?php echo $row['r_percent'] ?></td>
+                                <td><?php echo $row['a_percent'] ?></td>
                             </tr>
 
                         <?php
                             }
                         ?>
 
-
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
             </div>
         </main>
-
-
 
 
         <?php

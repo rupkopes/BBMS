@@ -1,5 +1,5 @@
 <?php
-    include ("../admin_connect.php");
+    include ("../ad_min_connect.php");
     $org_id = $_GET['org_id'];
 
     if (isset($_POST["submit"])) {

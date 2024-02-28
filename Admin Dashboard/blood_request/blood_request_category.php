@@ -28,7 +28,6 @@
 
             <div class="recent-orders">
                 <h2>Blood Category</h2>
-                <!-- <a class="button" href="blood_request_form.php" role="button">Make New Request</a> -->
                 <table>
                     <thead>
                         <tr>
@@ -42,7 +41,7 @@
 
                     <?php
                             
-                            include ("../admin_connect.php");
+                            include ("../ad_min_connect.php");
 
                             $sql = "SELECT * FROM `blood_request_category`";
                             $result = mysqli_query($conn, $sql);

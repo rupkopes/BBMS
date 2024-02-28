@@ -1,5 +1,5 @@
 <?php
-    include ("../admin_connect.php");
+    include ("../ad_min_connect.php");
 
     if (isset($_POST["submit"])) {
         $camp_name = $_POST['camp_name'];

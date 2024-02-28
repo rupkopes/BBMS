@@ -293,6 +293,7 @@ main .date input[type="date"] {
     color: var(--color-dark);
 }
 
+/* ************************************ figure starts********************************* */
 main .insights {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -375,48 +376,48 @@ main .insights svg circle {
     stroke-width: 13;
     stroke-linecap: round;
     transform: translate(5px, 5px);
-    stroke-dasharray: 110;
-    stroke-dashoffset: 92;    
+    /* stroke-dasharray: 110; */
+    /* stroke-dashoffset: 92;     */
 }
 
 main .insights .Aplus svg circle {
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
+    stroke-dasharray: 223;
+    stroke-dashoffset: 130;
 }
 
 main .insights .Bplus svg circle {
+    stroke-dasharray: 223;
     stroke-dashoffset: 30;
-    stroke-dasharray: 200;
 }
 
 main .insights .Oplus svg circle {
+    stroke-dasharray: 223;
     stroke-dashoffset: 20;
-    stroke-dasharray: 100;
 }
 
 main .insights .ABplus svg circle {
+    stroke-dasharray: 223;
     stroke-dashoffset: 50;
-    stroke-dasharray: 100;
 }
 
 main .insights .Aminus svg circle {
-    stroke-dashoffset: 200;
-    stroke-dasharray: 150;
+    stroke-dasharray: 223;
+    stroke-dashoffset: 100;
 }
 
 main .insights .Bminus svg circle {
+    stroke-dasharray: 223;
     stroke-dashoffset: 150;
-    stroke-dasharray: 100;
 }
 
 main .insights .Ominus svg circle {
-    stroke-dashoffset: -50;
-    stroke-dasharray: 200;
+    stroke-dasharray: 223;
+    stroke-dashoffset: 50;
 }
 
 main .insights .ABminus svg circle {
+    stroke-dasharray: 223;
     stroke-dashoffset: 50;
-    stroke-dasharray: 190;
 }
 
 main .insights .progress .number {
@@ -434,6 +435,9 @@ main .insights small {
     margin-top: 1rem;
     display: flex;
 }
+
+/* **********************figure ends******************** */
+
 
 main .comment-photo {
     width: 11rem;
