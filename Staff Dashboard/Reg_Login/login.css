@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.bbms {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .bbms_1 {
+    width: 100%;
+    min-height: 180vh;
+    display: flex;
+    justify-content: center;
+    align-items: top center;
+} */
+
+.admin-login {
+    background: url("../images/admin.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.staff-login {
+    background: url("../images/staff.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.org-login {
+    background: url("../images/org.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hos-login {
+    background: url("../images/hos.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.donor-login {
+    background: url("../images/donor.jpeg") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bbms .login-box {
+    position: absolute;
+    width: 390px;
+    height: 415px;
+    background-color: transparent;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(11px);
+}
+
+/* .bbms_1 .login-box {
+    position: absolute;
+    width: 390px;
+    height: 1040px;
+    background-color: transparent;
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    display: flex;
+    margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(11px);
+} */
+/* -----------------done */
+.login-box h1 {
+    border: 10px solid rgba(0, 0, 255, 0.2);
+    background: rgba(0, 200, 255, 0.2);
+    border-radius: 25px;
+    font-size: 40px;
+    color: #000;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.arrow1 .material-symbols-sharp {
+    font-size: 45px;
+    position: absolute;
+    left: 38px;
+    color: rgb(50, 255, 255);
+    line-height: 100px;
+    cursor: pointer;
+    /* &:hover {
+      width: 10px;
+      height: 10px;
+    } */
+  }
+
+.arrow2 .material-symbols-sharp {
+    font-size: 45px;
+    position: absolute;
+    right: 38px;
+    color: rgb(50, 255, 255);
+    line-height: 100px;
+    cursor: pointer;
+}
+
+.arrow1 a:hover span {
+    margin-left: -0.3rem;
+}
+
+.arrow2 a:hover span {
+    margin-right: -0.3rem;
+}
+
+/* .reg_arrow1 .material-symbols-sharp {
+    font-size: 55px;
+    position: absolute;
+    left: 38px;
+    color: #000;
+    line-height: 100px;
+}
+
+.reg_arrow2 .material-symbols-sharp {
+    font-size: 55px;
+    position: absolute;
+    right: 38px;
+    color: #000;
+    line-height: 100px;
+} */
+
+.login-box h2 {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+.login-box .input-box {
+    position: relative;
+    width: 320px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+
+.input-box input {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 55px 0 5px;
+}
+
+.input-box input::placeholder {
+    color: #f9f9f9;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 6px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 35px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.login-box .remember-forget {
+    margin: -15px 0 15px;
+    font-size: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forget label input {
+    margin-right: 3px;
+}
+
+.login-box button {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    transition: all 0.3s;
+}
+
+.login-box button:hover {
+    background: rgb(0, 0, 180);
+    color: #fff;
+}
+
+.login-box .register-link {
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.remember-forget a,
+.register-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forget a:hover,
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/*----------------------------------Responsive Design---------------------------------*/
+@media (max-width: 460px) {
+    .bbms .login-box {
+        width: 350px;
+        height: 100vh;
+    }
+    .bbms_1 .login-box {
+        width: 350px;
+        height: 100vh;
+    }
+    .login-box .input-box {
+        width: 290px;
+    }
+    .login-box h1 {
+        width: 300px;
+        font-size: 40px;
+    }
+    .login-box h2 {
+        font-size: 25px;
+    }
+    .arrow1 .material-symbols-sharp {
+        top:-5px;
+    }
+    .arrow2 .material-symbols-sharp {
+        top:-5px;
+    }
+}
+
+@media (max-width: 360px) {
+    .bbms .login-box {
+        width: 100%;
+        height: 100vh;    
+    }
+    .bbms_1 .login-box {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+
+/* ------------------------------------------Transition Effect----------------------------------- */
+
+body {
+    animation: transitionEffect 2s;
+}
+
+@keyframes transitionEffect {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

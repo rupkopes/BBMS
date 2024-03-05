@@ -42,14 +42,14 @@
         <br><br><h2><marquee bgcolor="green">*******<em>Blood Bank Management System</em>*******</marquee></h2><br><br>
         <h1><i>Comments:</i></h1><br>
         <form action="" method="post">
-        <!-- <div class="profile-photo">
-            <img src="/BBMS/images/rupkopes.jpg" alt="Profile">
-        </div> -->
+        <div class="profile-photo">
+            <!-- <img src="/BBMS/images/camera.jpg" alt="Profile"> -->
+        </div>
 
         <div class="comment-photo">
             <img src="/BBMS/images/camera.jpg" alt="Profile">
-            <!-- <label for="photo">Profile Photo:</label>
-            <input type="file" name="photo" accept="image/*"> -->
+            <label for="photo">Profile Photo:</label>
+            <input type="file" name="photo" accept="image/*">
         </div>
         <table>
         <tr>

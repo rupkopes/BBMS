@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+ body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+ }
+
+ .bbms {
+   position: relative;
+   max-width: 600px;
+   width: 100%;
+   padding: 25px;
+   border-radius: 25px;
+   border:  4px double red;
+   background-color: transparent;
+   backdrop-filter: blur(70px);
+}
+
+.admin-regis {
+   background: url("../images/admin.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.staff-regis {
+   background: url("../images/staff.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.org-regis {
+   background: url("../images/org.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.hos-regis {
+   background: url("../images/hos.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.donor-regis {
+   background: url("../images/donor.jpeg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.bbms h1 {
+   border: 10px solid rgba(0, 0, 255, 0.2);
+   background: rgba(0, 200, 255, 0.2);
+   border-radius: 25px;
+   margin: 0 0 10px 0;
+   font-size: 50px;
+   color: #000;
+   text-align: center;
+ }
+
+ .bbms header {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+ }
+
+ .bbms h2 {
+   font-size: 1.4rem;
+   color: #fff;
+   margin: 15px 0 -20px;
+ }
+
+ .bbms .form {
+    margin-top: 30px;
+ }
+
+ .reg_arrow1 .material-symbols-sharp {
+    font-size: 55px;
+    position: absolute;
+    left: 38px;
+    color: #000;
+    line-height: 100px;
+}
+
+.reg_arrow2 .material-symbols-sharp {
+    font-size: 55px;
+    position: absolute;
+    right: 38px;
+    color: #000;
+    line-height: 100px;
+}
+
+ .form .input-box {
+    width: 100%;
+    margin-top: 20px;
+ }
+
+ .input-box label {
+    color: #fff;
+ }
+
+ .form .input-box input,
+ .form .select-box {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #f9f9f9;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+ }
+
+ .form .select-box-2 {
+   position: relative;
+   height: 40px;
+   width: 94%;
+   outline: none;
+   font-size: 1rem;
+   color: #f9f9f9;
+   margin-top: 28px;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   padding: 0 15px;
+   background-color: transparent;
+   backdrop-filter: blur(70px);
+ }
+
+ .input-box input:focus,
+ .blood .select-box:focus-within,
+ .column .select-box:focus-within,
+ .column .select-box-2:focus-within {
+   box-shadow: 2.5px 2.5px red;
+ }
+
+
+ /* -------------These are for individual box-shadow effect--------------------- */
+ /* .select-box select:focus {
+   box-shadow: 0 0 2px 2px red;
+ }
+ 
+ .blood .select-box:focus-within {
+   box-shadow: 0 0 2px 2px red;
+}
+
+.column .select-box:focus-within {
+   box-shadow: 0 0 2px 2px red;
+} */
+
+.address input,
+.address .select-box {
+   margin-top: 10px;
+}
+
+.select-box select,
+.select-box-2 select {
+   height: 100%;
+   width: 100%;
+   outline: none;
+   border: none;
+   color: #f9f9f9;
+   font-size: 1rem;
+   background-color: transparent;
+   backdrop-filter: blur(70px);
+ }
+
+ select option {
+   color: #f9f9f9;
+   background-color: rgba(0, 0, 0, 0.7);
+ }
+
+/* 
+ .select-box select option[hidden] {
+   color: #707070;
+ }
+ 
+ .select-box select option:selected {
+   color: #f9f9f9;
+ } */
+
+
+ .form .column {
+    display: flex;
+    column-gap: 15px;
+ }
+
+ .blood {
+   margin: 30px 40px;
+   width: 18%;
+
+ }
+.blood .select-box {
+   height: 40px;
+}
+
+ .gender-box {
+   position: absolute;
+   margin-left: 150px;
+ }
+
+.form .gender-box {
+    margin-top: -70px;
+}
+
+.gender-box h3,
+.blood h3 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+ .form .gender-option,
+ .form .gender {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+
+ .form .gender {
+    column-gap: 5px;
+ }
+
+.gender label {
+   color: rgb(200, 200, 200);
+
+}
+
+ .gender input{
+   accent-color: blue;
+ }
+
+ .form .gender input,
+ .form .gender label {
+    cursor: pointer;
+}
+
+.form button {
+   height: 55px;
+   width: 100%;
+   color: #fff;
+   font-size: 1rem;
+   border: none;
+   margin-top: 25px;
+   cursor: pointer;
+   border-radius: 30px;
+   font-weight: 400;
+   transition: all 0.2s ease;
+   background-color: rgb(130, 106, 251);
+}
+
+.form button:hover {
+   background-color: green;
+   /* color: black; */
+   font-size: 25px;
+}
+
+.toggle-password {
+   position: absolute;
+   right: 45px;
+   color: #fff;
+   font-size: 18px;
+   line-height: 65px;
+   cursor: pointer;
+}
+
+ /* ---------------Responsive Design------------ */
+ @media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+
+    .form .gender-option,
+    .form .gender {
+      row-gap: 15px;
+
+    }
+ }

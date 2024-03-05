@@ -28,7 +28,7 @@
                             <img src="/BBMS/images/srk.jpg">
                         </div>
                         <div class="message">
-                            <p><b>Shah Rukh Khan</b> liked the hardwork of BBMS's creators.</p>
+                            <p><b>David Henry</b> liked the hardwork of BBMS's creators.</p>
                             <small class="text-muted">53 Seconds Ago</small>
                         </div>
                     </div>
@@ -38,17 +38,17 @@
                             <img src="/BBMS/images/mrunal.jpg">
                         </div>
                         <div class="message">
-                            <p><b>Mrunal Thakur</b> never been happier like this before.</p>
+                            <p><b>Shreya Thakur</b> never been happier like this before.</p>
                             <small class="text-muted">5 Days Ago</small>
                         </div>
                     </div>
 
                     <div class="update">
                         <div class="profile-photo">
-                            <img src="/BBMS/images/gates.jpg">
+                            <img src="/BBMS/images/gates.jpeg">
                         </div>
                         <div class="message">
-                            <p><b>Bill Gates</b> keep on doing hard work to be like me, guys.</p>
+                            <p><b>Jonathan Methau </b> keep on doing hard work guys and never give up.</p>
                             <small class="text-muted">1 Week Ago</small>
                         </div>
                     </div>

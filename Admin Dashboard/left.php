@@ -52,12 +52,12 @@
                 </div>
 
 
-                <div class="menu">
+                <!-- <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">monitoring</span>
                             <h3>Stats</h3>
                     </a>
-                </div>
+                </div> -->
 
 
                 <div class="menu">
@@ -94,7 +94,7 @@
                             <span class="material-symbols-sharp">bloodtype</span>
                             <h3>Collect</h3>
                         </a>
-                        <a href="/BBMS/Admin Dashboard/camps/camps_table.php">
+                        <a href="/BBMS/Admin Dashboard/camps/campschedule.php">
                             <span class="material-symbols-sharp">schedule</span>
                             <h3>Camp Schedule</h3>
                         </a>
@@ -121,12 +121,14 @@
                     </a>    
                 </div>
             </div>
+            <div class="sidebar">
 
-
-            <div class="menu">
-                    <a href="#">
+                <div class="menu">
+                    <a href="/BBMS/Reg_Login/login/admin_login.php">
                         <span class="material-symbols-sharp">logout</span>
+                            <h3>Logout</h3>
                     </a>    
                 </div>
+            </div>
         </aside>
         <!--------------------------------------------- End of Aside ------------------------------------>

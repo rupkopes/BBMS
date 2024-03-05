@@ -59,7 +59,6 @@ Orders.forEach(order => {
     document.querySelector('table tbody').appendChild(tr);
 })
 
-
 //--------------------------------Dropdown sub-menu items in sidebar-------------------------------
         const dropDowns = document.querySelectorAll('.drop_down');
         dropDowns.forEach(dropDown => {

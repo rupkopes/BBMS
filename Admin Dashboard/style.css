@@ -14,7 +14,7 @@
     --color-primary-variant: #111e88;
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
-    --color-background1: #7e7e7e;
+    --color-background2: #f6f6f9;
 
     --color-info: #677483;
 
@@ -38,6 +38,7 @@
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-background2: #7e7e7e;
 
     --color-info: #181a1e;
 }
@@ -183,7 +184,7 @@ aside .close {
 aside .sidebar {
     display: flex;
     flex-direction: column;
-    height: 86vh;
+    height: 76vh;
     position: relative;
     top: 1.3rem;
 }
@@ -198,7 +199,7 @@ aside .sidebar {
 
 aside .sub_menu {
     display: none;
-    height: 26vh;
+    height: 20vh;
     width: 16vw;
     position: relative;
     left: 1.5rem;
@@ -347,11 +348,6 @@ main .insights > div .middle {
     align-items: center;
     justify-content: space-between;
 }
-
-/* main .insights h3 {
-    margin: 1rem 0 0.6rem;
-    font-size: 1rem;
-} */
 
 main .insights h1 {
     margin: 3rem 0 0 -0.4rem;

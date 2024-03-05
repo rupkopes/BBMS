@@ -10,17 +10,15 @@
 <body>
     <div class="bbms">
 
-    <?php
-        include_once("left.php");        
-    ?>    
-    <?php
-        include_once("middle.php");        
-    ?>
-    <?php
-        include_once("right.php");        
-    ?>
-
-        
+        <?php
+            include_once("left.php");        
+        ?>    
+        <?php
+            include_once("middle.php");        
+        ?>
+        <?php
+            include_once("right.php");        
+        ?> 
         
     </div>
     <!---------------------- order.js must be before script.js -------------->
