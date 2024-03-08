@@ -10,13 +10,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-        .list {
-            padding: 8px 16px;
-            background-color: #2c3e50;
-            color: #fff;
-            width:90%;
-            margin-left: 335px;
+        header {
+            margin-left: 340px;
         }
+        
 
         .body1 {
             font-family: Arial, sans-serif;
@@ -32,7 +29,7 @@
             padding: 20px;
             margin-bottom: 20px;
             width: 60%;
-            margin-left: 335px;
+            margin-left: 340px;
         }
 
         .camp h2 {
@@ -61,8 +58,13 @@
             color: #fff;
         }
 
+
+        .delete {
+            background-color: #e74c3c; /* Red */
+        }
+
         .search {
-            margin-left: 350px;
+            margin-left: 340px;
         }
     </style>
 </head>
@@ -88,22 +90,26 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Inventory</h3>
                 </a>
-                <a href="../donor/Donor.html">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3>Donor Records</h3>
-                </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="Camp.php"  class="active">
+                <a href="../donor/Donor.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="Camp.html"  class="active">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
                 <a href="../request/Request.html">
                     <span class="material-symbols-sharp">local_hospital</span>
-                    <h3>Blood Request</h3>
+                    <h3>Blood Request by Hospital</h3>
                 </a>
+                <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
+            </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
@@ -124,7 +130,9 @@
     </main>
     <br>
 
-    <h2 class="list">List of Camps</h2>
+    <header>
+        <h1>List Of Camps</h1>
+    </header>
     <br>
 
     <form method="get" action="" class="search">
@@ -180,7 +188,7 @@ if ($result->num_rows > 0) {
         // Add a delete button for each camp
         echo "<form style='display: inline-block; margin-right: 10px;' method='post' action='delete_camp.php'>";
         echo "<input type='hidden' name='camp_id' value='" . $row["id"] . "'>";
-        echo "<button type='submit'>Delete</button>";
+        echo "<button type='submit' class='delete'>Delete</button>";
         echo "</form>";
 
         // Only show detail button if the camp is green (past)

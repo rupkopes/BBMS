@@ -11,22 +11,26 @@
         .body1 {
             font-family: Arial, sans-serif;
         }
-        header {
+        /* header {
             background-color: #2c3e50;
             color: #ecf0f1;
             text-align: center;
             padding: 10px;
             margin-bottom: 10px;
-        }
+        } */
         
+        header {
+            margin-left: 340px;
+        }
+
         h1 {
             margin: 0;
         }
 
         .containers {
-            max-width: 1000px;
+            max-width: 100vw;
             margin: 0 auto;
-            margin-left: 340px;
+            /* margin-left: 340px; */
         }
         .form-group {
             margin: 10px 0;
@@ -51,6 +55,7 @@
         }
         .appointment-list {
             margin-top: 30px;
+            margin-left: 340px;
         }
         .appointment-item {
             display: flex;
@@ -77,11 +82,45 @@
         }
 
         input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
         input[type="date"] {
+            width: 100%;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 12px;
+            font-family:'Courier New', Courier, monospace;
+        }
+
+        select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 12px;
+            font-family:'Courier New', Courier, monospace;
+        }
+
+        section {
+            margin: 20px;
+            margin-left: 340px;
+            background-color: var(--color-white); /* Change section background color using CSS variables */
+            border-radius: var(--card-border-radius); /* Utilize CSS variable for border radius */
+            box-shadow: var(--box-shadow); /* Utilize CSS variable for box shadow */
+            width: 45%;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-left: 15px;
         }
     </style>
 </head>
@@ -107,21 +146,25 @@
                 <span class="material-symbols-sharp">bloodtype</span>
                 <h3>Blood Inventory</h3>
             </a>
-            <a href="../donor/Donor.html">
-                <span class="material-symbols-sharp">person</span>
-                <h3>Donor Records</h3>
-            </a>
             <a href="Appointment.html" class="active">
                 <span class="material-symbols-sharp">calendar_today</span>
                 <h3>Appointment</h3>
             </a>
-            <a href="../camp/Camp.php">
+            <a href="../donor/Donor.html">
+                <span class="material-symbols-sharp">person</span>
+                <h3>Donor Records</h3>
+            </a>
+            <a href="../camp/Camp.html">
                 <span class="material-symbols-sharp">campaign</span>
                 <h3>Camps</h3>
             </a>
             <a href="../request/Request.html">
                 <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request</h3>
+                <h3>Blood Request by Hospital</h3>
+            </a>
+            <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
             </a>
             <a href="../logout/logout.php" id="logout-btn">
                 <span class="material-symbols-sharp">logout</span>
@@ -147,31 +190,61 @@
     <h1>Donor Appointment</h1>
 </header>
 <br>
-    <div class="containers">
-        
-        <form action="appointment.php" method="post">
-            <div class="form-group">
-                <label for="donor_name">Donor Name:</label>
-                <input type="text" id="donor_name" name="donor_name" required>
-            </div>
-            <div class="form-group">
-                <label for="appointment_date">Appointment Date:</label>
-                <input type="date" id="appointment_date" name="appointment_date" required>
-            </div><br>
-            <div class="form-group">
-                <button type="submit">Schedule Appointment</button>
-            </div>
-        </form>
-        <br>
-
-        <div class="appointment-list">
-            <p>To access the list of appointments, please click the list below.</p>
-            <br>
-            <a href="appointment_list.php" class="list">list</a>
-            <?php include 'appointment_list.php'; ?>
+<div class="containers">
+    <section id="donor-form">
+    <form action="appointment.php" method="post">
+        <div class="form-group">
+            <label for="name">Donor Name:</label>
+            <input type="text" id="name" name="name" required>
         </div>
-        
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="blood-group">Blood Group:</label>
+            <select id="blood-group" name="blood_group" required>
+                <option value="" disabled selected>Please select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_number">Contact Number:</label>
+            <input type="tel" id="contact_number" name="contact_number" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div class="form-group">
+            <label for="appointment_date">Appointment Date:</label>
+            <input type="date" id="appointment_date" name="appointment_date" required>
+        </div><br>
+        <div class="form-group">
+            <button type="submit">Schedule Appointment</button>
+        </div>
+    </form>
+    </section>
+
+    <div class="appointment-list">
+        <p>To access the list of appointments, please click the list below.</p>
+        <br>
+        <a href="appointment_list.php" class="list">list</a>
+        <?php include 'appointment_list.php'; ?>
     </div>
+    
+</div>
 
     <div class="right">
         <div class="top">

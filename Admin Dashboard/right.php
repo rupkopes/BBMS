@@ -19,51 +19,72 @@
                 </div>
             </div>
             <!------------------------------------- End of Top --------------------------------------->
-
             <div class="recent-updates">
-                <h2>Comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/BBMS/Admin Dashboard/updates.php"><span class="material-symbols-sharp">draw</span></a></h2>
+                <h2>Comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comments/comments.php"><span class="material-symbols-sharp">draw</span></a></h2>
                 <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/BBMS/images/srk.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>David Henry</b> liked the hardwork of BBMS's creators.</p>
-                            <small class="text-muted">53 Seconds Ago</small>
-                        </div>
-                    </div>
-                    
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/BBMS/images/mrunal.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>Shreya Thakur</b> never been happier like this before.</p>
-                            <small class="text-muted">5 Days Ago</small>
-                        </div>
-                    </div>
+                
 
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/BBMS/images/gates.jpeg">
-                        </div>
-                        <div class="message">
-                            <p><b>Jonathan Methau </b> keep on doing hard work guys and never give up.</p>
-                            <small class="text-muted">1 Week Ago</small>
-                        </div>
-                    </div>
+                <?php
+// Include database connection
+include_once("comments/comment_connect.php");
 
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="/BBMS/images/jassita.jpg">
-                        </div>
-                        <div class="message">
-                            <p><b>Jassita Gurung</b> saved by BBMS, accident held on Kathmandu.</p>
-                            <small class="text-muted">10 Days Ago</small>
-                        </div>
-                    </div>
+// Fetch comments from the database, limited to four latest comments
+$sql = "SELECT * FROM comments ORDER BY id DESC LIMIT 4";
+$result = mysqli_query($conn, $sql);
+
+// Check if there are any comments
+if (mysqli_num_rows($result) > 0) {
+    // Loop through each row of the result set
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Get the current time on your laptop
+        $current_time = new DateTime();
+
+        // Get the timestamp from the database
+        $timestamp = new DateTime($row['timestamp']);
+
+        // Calculate the time difference
+        $interval = $current_time->diff($timestamp);
+
+        // Convert the time difference to a human-readable format
+        $time_message = "";
+        if ($interval->y > 0) {
+            $time_message = $interval->y . " year" . ($interval->y > 1 ? 's' : '') . " ago";
+        } elseif ($interval->m > 0) {
+            $time_message = $interval->m . " month" . ($interval->m > 1 ? 's' : '') . " ago";
+        } elseif ($interval->d > 0) {
+            $time_message = $interval->d . " day" . ($interval->d > 1 ? 's' : '') . " ago";
+        } elseif ($interval->h > 0) {
+            $time_message = $interval->h . " hour" . ($interval->h > 1 ? 's' : '') . " ago";
+        } elseif ($interval->i > 0) {
+            $time_message = $interval->i . " minute" . ($interval->i > 1 ? 's' : '') . " ago";
+        } else {
+            $time_message = $interval->s . " second" . ($interval->s > 1 ? 's' : '') . " ago";
+        }
+
+        ?>
+        <div class="update">
+            <div class="profile-photo">
+                <img src="/BBMS/images/<?php echo $row['photo']; ?>">
+            </div>
+            <div class="message">
+                <p><b><?php echo $row['name']; ?></b> <?php echo $row['message']; ?></p>
+                <small class="text-muted"><?php echo $time_message; ?></small>
+            </div>
+        </div>
+        <?php
+    }
+} else {
+    echo "<span style='color:pink;'>No comments found.</span>";
+}
+
+// Close database connection
+mysqli_close($conn);
+?>
+
+
 
                 </div>
             </div>
-            <!--------------------------- End of Recent Updates ------------------------------>
+
+            <!--------------------------- End of Comments ------------------------------>
         </div>

@@ -71,4 +71,54 @@ Orders.forEach(order => {
                 }
             });
         });
-    
+
+
+        // const menuItems = document.querySelectorAll('.sidebar .menu');
+
+        // menuItems.forEach(menuItem => {
+        //     menuItem.addEventListener('click', function (event) {
+        //         // Prevent the default behavior of the hyperlink
+        //         event.preventDefault();
+        
+        //         // Remove 'active' class from all menu items
+        //         menuItems.forEach(item => {
+        //             item.classList.remove('active');
+        //         });
+        
+        //         // Add 'active' class to the clicked menu item
+        //         this.classList.add('active');
+        
+        //         // Close all dropdowns except the clicked one
+        //         const subMenu = this.querySelector('.sub_menu');
+        //         if (subMenu) {
+        //             const openSubMenus = document.querySelectorAll('.sidebar .sub_menu');
+        //             openSubMenus.forEach(openSubMenu => {
+        //                 if (openSubMenu !== subMenu && openSubMenu.style.display === 'block') {
+        //                     openSubMenu.style.display = 'none';
+        //                 }
+        //             });
+        //             subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+        //         }
+        //     });
+        // });
+
+
+        
+        //..................... Preview photo in comment section ..........................
+        function previewFile() {
+            const preview = document.getElementById('preview-image');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "/BBMS/images/camera.jpg";
+            }
+        }
+
+

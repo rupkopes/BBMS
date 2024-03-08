@@ -41,12 +41,21 @@
             color: var(--color-dark);
         }
 
-        header {
+        /* header {
             background-color: #2c3e50;
             color: #ecf0f1;
             text-align: center;
             padding: 5px;
             margin-bottom: 10px;
+        } */
+
+        header {
+            margin-left: 350px;
+        }
+
+        h1 {
+            font-size: 35px ;
+            margin-left: 350px;
         }
 
         /* Dark Mode */
@@ -82,14 +91,14 @@
 
 
         h1 {
-            text-align: center;
-            margin-top: 5px;
+            margin: 5px;
         }
 
         table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
+            margin-left: 240px;
         }
 
         th,
@@ -159,21 +168,25 @@
                 <span class="material-symbols-sharp">bloodtype</span>
                 <h3>Blood Inventory</h3>
             </a>
-            <a href="../donor/Donor.html">
-                <span class="material-symbols-sharp">person</span>
-                <h3>Donor Records</h3>
-            </a>
             <a href="../appointment/Appointment.html">
                 <span class="material-symbols-sharp">calendar_today</span>
                 <h3>Appointment</h3>
             </a>
-            <a href="../camp/Camp.php">
+            <a href="../donor/Donor.html">
+                <span class="material-symbols-sharp">person</span>
+                <h3>Donor Records</h3>
+            </a>
+            <a href="../camp/Camp.html">
                 <span class="material-symbols-sharp">campaign</span>
                 <h3>Camps</h3>
             </a>
             <a href="../request/Request.html">
                 <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request</h3>
+                <h3>Blood Request by Hospital</h3>
+            </a>
+            <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
             </a>
             <a href="../logout/logout.php" id="logout-btn">
                 <span class="material-symbols-sharp">logout</span>
@@ -194,15 +207,14 @@
         </div>
 </main>  
 
-    <br>
-<br>
+<
     <header>
         <h1>Listing
         </h1>
         </header>
         <br><br>
         <div class="bloodtable">
-<?php
+        <?php
     // Enable error reporting
     ini_set('display_errors', 1);
     error_reporting(E_ALL);

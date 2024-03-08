@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Database configuration
 $servername = "localhost";
 $username = "root";
@@ -15,15 +18,25 @@ if ($conn->connect_error) {
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $donor_name = $_POST["donor_name"];
+    $name = $_POST["name"];
+    $age = $_POST["age"];
+    $blood_group = $_POST["blood_group"];
+    $email = $_POST["email"];
+    $contact_number = $_POST["contact_number"];
+    $location = $_POST["location"];
     $appointment_date = $_POST["appointment_date"];
 
     // Prepare data for insertion (sanitize)
-    $donor_name = $conn->real_escape_string($donor_name);
+    $name = $conn->real_escape_string($name);
+    $age = $conn->real_escape_string($age);
+    $blood_group = $conn->real_escape_string($blood_group);
+    $email = $conn->real_escape_string($email);
+    $contact_number = $conn->real_escape_string($contact_number);
+    $location = $conn->real_escape_string($location);
     $appointment_date = $conn->real_escape_string($appointment_date);
 
     // Insert data into appointments table
-    $sql = "INSERT INTO appointments (donor_name, appointment_date) VALUES ('$donor_name', '$appointment_date')";
+    $sql = "INSERT INTO appointments (name, age, blood_group, email, contact_number, location, appointment_date) VALUES ('$name', '$age', '$blood_group', '$email', '$contact_number', '$location', '$appointment_date')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New appointment created successfully";

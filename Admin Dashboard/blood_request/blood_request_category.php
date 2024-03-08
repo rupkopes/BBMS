@@ -31,7 +31,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>S.No.</th>
                             <th>Blood Type</th>
                             <th>Quantity(Pints)</th>
                         </tr>
@@ -41,16 +40,25 @@
 
                     <?php
                             
-                            include ("../ad_min_connect.php");
+                            include ("../connect.php");
 
-                            $sql = "SELECT * FROM `blood_request_category`";
+                            $sql = "SELECT blood_type, available_units FROM blood_inventory ORDER BY
+                            CASE 
+                                WHEN blood_type = 'A+' THEN 1
+                                WHEN blood_type = 'A-' THEN 2
+                                WHEN blood_type = 'B+' THEN 3
+                                WHEN blood_type = 'B-' THEN 4
+                                WHEN blood_type = 'AB+' THEN 5
+                                WHEN blood_type = 'AB-' THEN 6
+                                WHEN blood_type = 'O+' THEN 7
+                                WHEN blood_type = 'O-' THEN 8
+                            END";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td><?php echo $row['sno'] ?></td>
                                 <td><?php echo $row['blood_type'] ?></td>
-                                <td><?php echo $row['quantity'] ?></td>
+                                <td><?php echo $row['available_units'] ?></td>
                             </tr>
 
                         <?php
@@ -68,6 +76,7 @@
             include_once("../right.php");        
         ?> 
     </div>    
+    <script src="../order.js"></script> 
     <script src="../script.js"></script> 
 </body>
 </html>

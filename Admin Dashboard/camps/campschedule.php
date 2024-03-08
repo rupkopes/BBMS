@@ -167,7 +167,7 @@
         <div class="camp">
             <h2 class="add">Add New Camp</h2>
             <br><br>
-            <form id="campForm" method="post" action="insert_camp.php">
+            <form id="campForm" method="post" action="/BBMS/Staff Dashboard/staff-bbms/camp/insert_camp.php">
                 <label for="campName">Camp Name:</label>
                 <input type="text" id="campName" name="campName" required><br><br>
                 <label for="campConductedBy">Camp Conducted By:</label>
@@ -282,7 +282,7 @@ while ($row = $result->fetch_assoc()) {
     // Display Camp Conducted By
     echo "<p>Camp Conducted By: " . $row["campConductedBy"] . "</p>";
     // Add a delete button for each camp
-    echo "<form style='display: inline-block; margin-right: 10px;' method='post' action='delete_camp.php'>";
+    echo "<form style='display: inline-block; margin-right: 10px;' method='post' action='/BBMS/Staff Dashboard/staff-bbms/camp/delete_camp.php'>";
     echo "<input type='hidden' name='camp_id' value='" . $row["id"] . "'>";
     echo "<button type='submit'>Delete</button>";
     echo "</form>";

@@ -19,10 +19,7 @@
         }
 
         header {
-            background-color: #2c3e50; /* Change header background color using CSS variables */
-            color: #ecf0f1; /* Change header text color using CSS variables */
-            text-align: center;
-            padding: 0.7rem 0;
+            margin-left: 340px;
         }
 
         h1 {
@@ -36,7 +33,7 @@
             border-radius: 5px;
             padding: 20px;
             box-shadow: var(--box-shadow); /* Utilize CSS variable for box shadow */
-            margin-left: 350px;
+            margin-left: 340px;
         }
 
         table {
@@ -157,22 +154,26 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Inventory</h3>
                 </a>
-                <a href="Donor.html" class="active">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3>Donor Records</h3>
-                </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="../camp/Camp.php">
+                <a href="Donor.html" class="active">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="../camp/Camp.html">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
                 <a href="../request/Request.html">
                     <span class="material-symbols-sharp">local_hospital</span>
-                    <h3>Blood Request</h3>
+                    <h3>Blood Request by Hospital</h3>
                 </a>
+                <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
+            </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>

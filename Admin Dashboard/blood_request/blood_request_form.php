@@ -1,13 +1,13 @@
 <?php
-    include ("../ad_min_connect.php");
+    include ("../connect.php");
 
     if (isset($_POST["submit"])) {
-        $org_name = $_POST['org_name'];
-        $blood_type = $_POST['blood_type'];
-        $quantity = $_POST['quantity'];
+        $hospital = $_POST['hospital'];
+        $bloodType = $_POST['bloodType'];
+        $bloodUnits = $_POST['bloodUnits'];
   
 
-        $sql = "INSERT INTO `blood_requests`(`org_id`, `org_name`, `blood_type`, `quantity`) VALUES (NULL,'$org_name','$blood_type','$quantity')";
+        $sql = "INSERT INTO `request`(`id`, `hospital`, `bloodType`, `bloodUnits`) VALUES (NULL,'$hospital','$bloodType','$bloodUnits')";
 
         $result = mysqli_query($conn, $sql);
 
@@ -45,12 +45,12 @@
 
                 <h1>Blood Request</h1>
                 <div class="input_box">
-                    <input type="text" name="org_name" placeholder="Organization Name" required>
+                    <input type="text" name="hospital" placeholder="Organization Name" required>
                 </div>
 
                 <div class="column">
                     <div class="select_box">
-                        <select name="blood_type">
+                        <select name="bloodType">
                             <option hidden>Blood Type</option>
                             <option>A+</option>
                             <option>B+</option>
@@ -63,7 +63,7 @@
                         </select>
                     </div>
                     <div class="input_quantity">
-                        <input type="number" name="quantity" placeholder="Quantity" required>
+                        <input type="number" name="bloodUnits" placeholder="Quantity" required>
                     </div>
                 </div>
                 <a href="blood_request_table.php"><button type="submit" name="submit">Request</button></a>

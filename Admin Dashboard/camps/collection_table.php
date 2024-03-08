@@ -34,7 +34,7 @@
                     include ("../connect.php");
 
                     // Retrieve blood inventory data and sort by blood type
-                    $sql = "SELECT * FROM blood_inventory ORDER BY
+                    $sql = "SELECT blood_type, available_units FROM blood_inventory ORDER BY
                     CASE 
                         WHEN blood_type = 'A+' THEN 1
                         WHEN blood_type = 'B+' THEN 2
@@ -53,7 +53,6 @@
                         echo "<table>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Blood Type</th>
                                     <th>Available Units</th>
                                 </tr>
@@ -61,7 +60,6 @@
                             <tbody>";
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
-                                <td>" . $row["id"] . "</td>
                                 <td>" . $row["blood_type"] . "</td>
                                 <td>" . $row["available_units"] . "</td>
                             </tr>";
@@ -76,9 +74,6 @@
                     $conn->close();
                 ?>
 
-
-                    
-                <a href="#">Show All</a>
             </div>
         </main>
 
@@ -86,6 +81,7 @@
             include_once("../right.php");        
         ?> 
     </div>    
+    <script src="../order.js"></script> 
     <script src="../script.js"></script> 
 </body>
 </html>

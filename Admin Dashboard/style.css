@@ -58,6 +58,13 @@ html {
     font-size: 14px;
 }
 
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 body {
 width: 100vw;
 height: 100vh;
@@ -112,12 +119,6 @@ small {
     font-size: 0.75rem;
 }
 
-.profile-photo {
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 50%;
-    overflow: hidden;
-}
 
 .text-muted {
     color: var(--color-info-dark);
@@ -243,6 +244,27 @@ aside .sidebar a.active span {
     margin-left: calc(1rem - 6px);
 }
 
+
+/* Change the color to suit your design */
+    /* Add other styles to highlight the active item */
+/* .sidebar .menu.active {
+    background: var(--color-light);
+    color: var(--color-primary);
+}
+
+.sidebar .menu.active:before {
+    content: "";
+    width: 5px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+.sidebar .menu.active span {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 6px);
+} */
+
+
 aside .sidebar a:hover {
     color: var(--color-primary);
     box-shadow: var(--box-shadow);
@@ -250,6 +272,11 @@ aside .sidebar a:hover {
 
 aside .sidebar a:hover span {
     margin-left: 1rem;
+}
+
+/* Rotate 90 degrees when hovered */
+aside .sidebar a:hover #arrow{
+    transform: rotate(90deg);
 }
 
 aside .sidebar .count {
@@ -434,15 +461,6 @@ main .insights small {
 
 /* **********************figure ends******************** */
 
-
-main .comment-photo {
-    width: 11rem;
-    height: 11rem;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 50%;
-    overflow: hidden;
-}
 
 /* -----------------------------------Tables-------------------------------------------- */
 

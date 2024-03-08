@@ -1,37 +1,55 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = ""; // Enter your MySQL password here
-$database = "Blood_Bank_Management_System"; // Change this to your database name
+session_start();
 
-$conn = new mysqli($servername, $username, $password, $database);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Establish database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "Blood_Bank_Management_System";
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Form data
-$username = $_POST['username'];
-$password = $_POST['password'];
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// SQL injection prevention
-$username = mysqli_real_escape_string($conn, $username);
-$password = mysqli_real_escape_string($conn, $password);
+    // Retrieve username and password from form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-// Query
-$query = "SELECT * FROM staff WHERE username='$username' AND password='$password'";
-$result = $conn->query($query);
+    // Prepare and execute SQL statement
+    $stmt = $conn->prepare("SELECT * FROM Staff WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-if ($result->num_rows == 1) {
-    // Successful login
-    session_start();
-    $_SESSION['username'] = $username;
-    header("Location: ../index.php"); // Redirect to dashboard page
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            // Password is correct, set session variables
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            echo "Login successful";
+        } else {
+            echo "Incorrect password";
+        }
+    } else {
+        echo "User not found";
+    }
+
+    // Check if the user is logged in
+if(isset($_SESSION['username'])) {
+    // Redirect to another page
+    header("Location: ../index.php");
+    exit(); // Make sure that code below doesn't get executed after redirect
 } else {
-    // Failed login
-    echo "Invalid username or password";
+    // Redirect to login page if not logged in
+    header("Location: login.html");
+    exit();
 }
 
-$conn->close();
-?>
+    $stmt->close();
+    $conn->close();
+}

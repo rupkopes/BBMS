@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBMS Staff</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../Admin Dashboard/style.css">
     <style>
         .approved {
             color: green;
@@ -32,12 +32,13 @@
             height: 100%;
           
         }
+      
        
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
@@ -58,21 +59,25 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Inventory</h3>
                 </a>
-                <a href="./donor/Donor.html">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3>Donor Records</h3>
-                </a>
                 <a href="./appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="./camp/Camp.php">
+                <a href="./donor/Donor.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="./camp/Camp.html">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
                 <a href="./request/Request.html">
                     <span class="material-symbols-sharp">local_hospital</span>
-                    <h3>Blood Request</h3>
+                    <h3>Blood Request by Hospital</h3>
+                </a>
+                <a href="./receiver/receiver.html">
+                    <span class="material-symbols-sharp">local_hospital</span>
+                    <h3>Blood Request by User</h3>
                 </a>
                 <a href="./logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
@@ -96,81 +101,81 @@
 
 
             <?php
-    // Enable error reporting
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
+                // Enable error reporting
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
 
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "Blood_Bank_Management_System";
+                // Database connection
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "Blood_Bank_Management_System";
 
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+                $conn = new mysqli($servername, $username, $password, $database);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
 
-    // Retrieve blood inventory data and sort by blood type
-    $sql = "SELECT blood_type, available_units FROM blood_inventory ORDER BY
-            CASE 
-                WHEN blood_type = 'A+' THEN 1
-                WHEN blood_type = 'A-' THEN 2
-                WHEN blood_type = 'B+' THEN 3
-                WHEN blood_type = 'B-' THEN 4
-                WHEN blood_type = 'AB+' THEN 5
-                WHEN blood_type = 'AB-' THEN 6
-                WHEN blood_type = 'O+' THEN 7
-                WHEN blood_type = 'O-' THEN 8
-            END";
-    $result = $conn->query($sql);
+                // Retrieve blood inventory data and sort by blood type
+                $sql = "SELECT blood_type, available_units FROM blood_inventory ORDER BY
+                        CASE 
+                            WHEN blood_type = 'A+' THEN 1
+                            WHEN blood_type = 'A-' THEN 2
+                            WHEN blood_type = 'B+' THEN 3
+                            WHEN blood_type = 'B-' THEN 4
+                            WHEN blood_type = 'AB+' THEN 5
+                            WHEN blood_type = 'AB-' THEN 6
+                            WHEN blood_type = 'O+' THEN 7
+                            WHEN blood_type = 'O-' THEN 8
+                        END";
+                $result = $conn->query($sql);
 
-    // Calculate total available units
-    $total_units = 0;
-    while ($row = $result->fetch_assoc()) {
-        $total_units += $row["available_units"];
-    }
+                // Calculate total available units
+                $total_units = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $total_units += $row["available_units"];
+                }
 
-    // Reset result set to beginning
-    $result->data_seek(0);
+                // Reset result set to beginning
+                $result->data_seek(0);
 
-    if ($result->num_rows > 0) {
-        echo '<div class="insights">';
+                if ($result->num_rows > 0) {
+                    echo '<div class="insights">';
 
-        while ($row = $result->fetch_assoc()) {
-            $blood_type = $row["blood_type"];
-            $available_units = $row["available_units"];
+                    while ($row = $result->fetch_assoc()) {
+                        $blood_type = $row["blood_type"];
+                        $available_units = $row["available_units"];
 
-            // Calculate blood percentage
-            $percentage = ($available_units / $total_units) * 100;
+                        // Calculate blood percentage
+                        $percentage = ($available_units / $total_units) * 100;
 
-            // Display blood type with percentage
-            echo '<div class="' . $blood_type . '">
-                    <div class="middle">
-                        <div class="left">
-                            <h1>' . $blood_type . '</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36" style="stroke-dasharray: ' . (2 * M_PI * 36) . '; stroke-dashoffset: ' . (2 * M_PI * 36 * (1 - $percentage / 100)) . ';"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>' . round($percentage, 2) . '%</p>
-                            </div>
-                        </div>
-                    </div>
-                <br>
-            </div>';
-        }
+                        // Display blood type with percentage
+                        echo '<div class="' . $blood_type . '">
+                                <div class="middle">
+                                    <div class="left">
+                                        <h1>' . $blood_type . '</h1>
+                                    </div>
+                                    <div class="progress">
+                                        <svg>
+                                            <circle cx="38" cy="38" r="36" style="stroke-dasharray: ' . (2 * M_PI * 36) . '; stroke-dashoffset: ' . (2 * M_PI * 36 * (1 - $percentage / 100)) . ';"></circle>
+                                        </svg>
+                                        <div class="number">
+                                            <p>' . round($percentage, 2) . '%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <br>
+                        </div>';
+                    }
 
-        echo '</div>'; // Close insights div
-    } else {
-        echo "0 results";
-    }
+                    echo '</div>'; // Close insights div
+                } else {
+                    echo "0 results";
+                }
 
-    // Close connection
-    $conn->close();
-?>
+                // Close connection
+                $conn->close();
+            ?>
 
 
             <!------------------------------ End of Insights ---------------------->
@@ -245,27 +250,10 @@
 
         <!-- End of Main -->
 
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-symbols-sharp">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-sharp active">light_mode</span>
-                    <span class="material-symbols-sharp">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <br>
-                        <p>Yo, <b>Admin</b></p>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="person.png" alt="Profile">
-                    </div>
-                </div>
-            </div>
-            <!-- End of Top -->
-        </div>
+        <?php
+            include_once("../../Admin Dashboard/right.php");        
+        ?>
+
     </div>
     <!-- End of Container -->
     <!-- <script src="order.js"></script> -->

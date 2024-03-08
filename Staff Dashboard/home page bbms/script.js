@@ -14,4 +14,4 @@ window.addEventListener('scroll',() => {
     photo3.style.left = value * 1 + 'px';
     photo4.style.left = value * 1 + 'px';
     photo5.style.top = value * -1 + 'px';
-})
+});

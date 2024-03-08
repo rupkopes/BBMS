@@ -2,29 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport">
     <title>Blood Bank Management System - Staff Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <h2>Staff Login</h2>
-        <form action="login_process.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+        <form action="../../staff-bbms/login/login_process.php" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <div class="forgot-password">
+                <a href="forgot_password.php" class="forgot-password">Forgot Password?</a>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
-            </div>
-            <button type="submit">Login</button>
-            <a href="forgot_password.php" class="forgot-password">Forgot Password?</a>
+            <input type="submit" value="Login">
+            <div id="error" class="error"></div>
         </form>
+        <div class="signup-link">
+            <p>Not registered yet? <a href="register_staff/register_staff.html">Sign Up</a></p>
+        </div>
     </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var error = document.getElementById("error");
+
+            if (username === "" || password === "") {
+                error.textContent = "Please fill in all fields.";
+                event.preventDefault();
+            } else {
+                error.textContent = "";
+            }
+        });
+    </script>
 </body>
 </html>

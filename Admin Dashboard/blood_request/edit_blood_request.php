@@ -1,14 +1,14 @@
 <?php
-    include ("../ad_min_connect.php");
-    $org_id = $_GET['org_id'];
+    include ("../connect.php");
+    $id = $_GET['id'];
 
     if (isset($_POST["submit"])) {
-        $org_name = $_POST['org_name'];
-        $blood_type = $_POST['blood_type'];
-        $quantity = $_POST['quantity'];
+        $hospital = $_POST['hospital'];
+        $bloodType = $_POST['bloodType'];
+        $bloodUnits = $_POST['bloodUnits'];
   
 
-        $sql = "UPDATE `blood_requests` SET `org_name`='$org_name',`blood_type`='$blood_type',`quantity`='$quantity' WHERE org_id=$org_id";
+        $sql = "UPDATE `request` SET `hospital`='$hospital',`bloodType`='$bloodType',`bloodUnits`='$bloodUnits' WHERE id=$id";
 
         $result = mysqli_query($conn, $sql);
 
@@ -36,7 +36,7 @@
 
     <div class="bbms blood_request_form">
         <?php
-            $sql = "SELECT * FROM `blood_requests` WHERE org_id = $org_id LIMIT 1";
+            $sql = "SELECT * FROM `request` WHERE id = $id LIMIT 1";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
         ?>
@@ -51,12 +51,12 @@
 
                 <h1>Blood Request</h1>
                 <div class="input_box">
-                    <input type="text" name="org_name" value = "<?php echo $row['org_name']?>">
+                    <input type="text" name="hospital" value = "<?php echo $row['hospital']?>">
                 </div>
 
                 <div class="column">
                     <div class="select_box">
-                        <select name="blood_type">
+                        <select name="bloodType">
                             <option hidden>Blood Type</option>
                             <option>A+</option>
                             <option>B+</option>
@@ -69,7 +69,7 @@
                         </select>
                     </div>
                     <div class="input_quantity">
-                        <input type="number" name="quantity" value = "<?php echo $row['quantity']?>">
+                        <input type="number" name="bloodUnits" value = "<?php echo $row['bloodUnits']?>">
                     </div>
                 </div>
                 <a href="blood_request_table.php"><button type="submit" name="submit">Update</button></a>

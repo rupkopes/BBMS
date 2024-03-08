@@ -16,7 +16,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 // Function to send an email for password reset
-function sendPasswordResetEmail($email, $token) {
+function sendPasswordResetEmail($email, $reset_token) {
     // Create a new PHPMailer instance
     $mail = new PHPMailer(true);
 
@@ -45,7 +45,7 @@ function sendPasswordResetEmail($email, $token) {
 
     // Email subject and body
     $mail->Subject = "Password Reset Request";
-    $mail->Body = "Please click the following link to reset your password: http://localhost:81/BBMS/staff-bbms/login/password_reset_confirmation.php?token=$token";
+    $mail->Body = "Please click the following link to reset your password: http://localhost:81/BBMS/staff-bbms/login/password_reset_confirmation.php?token=$reset_token";
 
     try {
         // Attempt to send the email

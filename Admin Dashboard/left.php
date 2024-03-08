@@ -33,7 +33,7 @@
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">token</span>
                          <h3>Blood Requests</h3>
-                        <span class="material-symbols-sharp">arrow_forward_ios</span>
+                        <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
                     </a>
                     <div class="sub_menu">
                         <a href="/BBMS/Admin Dashboard/blood_request/blood_request_form.php">
@@ -52,19 +52,11 @@
                 </div>
 
 
-                <!-- <div class="menu">
-                    <a href="#" class= "drop_down">
-                        <span class="material-symbols-sharp">monitoring</span>
-                            <h3>Stats</h3>
-                    </a>
-                </div> -->
-
-
                 <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">diversity_1</span>
                             <h3>Team Members</h3>
-                            <span class="material-symbols-sharp">arrow_forward_ios</span>
+                            <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
                     </a>
                     <div class="sub_menu">
                         <a href="#">
@@ -86,14 +78,10 @@
                 <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">campaign</span>
-                            <h3>Camps</h3>
-                            <span class="material-symbols-sharp">arrow_forward_ios</span>
+                            <h3>Camps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                            <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
                     </a>
                     <div class="sub_menu">
-                        <a href="/BBMS/Admin Dashboard/camps/blood_collection_form.php">
-                            <span class="material-symbols-sharp">bloodtype</span>
-                            <h3>Collect</h3>
-                        </a>
                         <a href="/BBMS/Admin Dashboard/camps/campschedule.php">
                             <span class="material-symbols-sharp">schedule</span>
                             <h3>Camp Schedule</h3>

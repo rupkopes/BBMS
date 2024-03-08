@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Management System</title>
+    <link rel="stylesheet" href="./home page bbms/homepage.css">
+    <style>
+    
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(82, 74, 74);
+    min-width: 120px; /* Adjust min-width as needed */
+    border-radius: 20px;
+    margin: 0;
+    padding: 10px 0; /* Adjust padding as needed */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: rgb(90, 80, 80);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    color: #f9f9f9;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.2em; /* Adjust font size as needed */
+}
+
+.dropbtn:hover {
+    background: rgb(82, 74, 74);
+}
+
+  
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2 class="logo"><img src="./home page bbms/logo1.png" alt="Logo"></h2>
+
+        <nav class="navigation">
+            <a href="index.php" class="active">Home</a>
+            <a href="#About">About</a>
+            <a href="#Service">Service</a>
+           
+
+            <div class="dropdown">
+              <button class="dropbtn">Request Blood</button>
+                 <div class="dropdown-content">
+                    <a href="./home page bbms/receiver/receiver.html">Blood request</a>
+                    <a href="./home page bbms/receiver/receiver_hospital.html">Blood request By Hospital</a>
+                </div>
+            </div>
+
+
+            <div class="dropdown">
+                <button class="dropbtn">Login</button>
+                <div class="dropdown-content">
+                  <a href="./Donor/login/login.html">Donor</a>
+                  <a href="./staff-bbms/login/login.html">Staff</a>
+                  <a href="#">Admin</a>
+                </div>
+
+              </div>
+             <div class="dropdown">
+                <button class="dropbtn">Sign Up</button>
+                <div class="dropdown-content">
+                  <a href="./Donor/register/donor.html">Donor Registration</a>
+                  <a href="./staff-bbms/login/register_staff/register_staff.html">Staff Registration</a>
+                </div>
+              </div>
+              <a href="#Contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="current-time" id="current-time"></div>
+
+    <div class="current-date" id="current-date"></div>
+    
+    <script src="./home page bbms/time.js"></script>
+
+    <section class="parallax">
+        <img src="./home page bbms/main(1).png" id="main">
+        <img src="./home page bbms/1.png" id="photo1">
+        <img src="./home page bbms/2.png" id="photo2">
+        <img src="./home page bbms/3.png" id="photo3">
+        <img src="./home page bbms/4.png" id="photo4">
+        <h2 id="text">Blood Bank Management System</h2>
+    </section>
+
+    <section class="sec" id="About">
+        <h2>Blood Bank Management System</h2>
+        <p>
+            In Nepal, the implementation of a Blood Bank Management System (BBMS) has brought significant advancements
+            in healthcare services. This system efficiently manages the storage, distribution, and utilization of blood
+            donations across various medical facilities in the country.<br><br>
+            One of the primary benefits of a BBMS in Nepal is the improved accessibility of blood supplies, especially
+            in remote or underserved regions. With a centralized system, it becomes easier to track blood inventory
+            levels, reducing shortages and ensuring timely access to blood for patients in need, irrespective of their
+            location.<br><br>
+            Moreover, the BBMS enhances the overall efficiency of blood collection drives by streamlining donor
+            registration, testing, and inventory management. It helps in maintaining a database of donors, ensuring safe
+            and healthy blood supply while also facilitating the tracing of specific blood units for any necessary
+            follow-ups or recalls.<br><br>
+            Another significant advantage is the reduction in wastage. With better inventory control and demand
+            prediction, the system minimizes expired or unused blood units, thus maximizing the utility of donated
+            blood.<br><br>
+            Additionally, the implementation of a BBMS in Nepal promotes transparency and accountability in the blood
+            donation process. It enables health authorities to monitor the entire blood supply chain, ensuring
+            compliance with safety standards, and facilitating prompt responses to emergencies.<br><br>
+            Overall, the introduction of a Blood Bank Management System in Nepal has revolutionized the blood donation
+            and distribution process, ensuring a more efficient, accessible, and accountable system for managing this
+            critical medical resource.
+        </p>
+    </section>
+
+    <section class="service" id="Service">
+        <h2>Our Services</h2>
+        <p>
+            <!-- Blood Donor Management Section -->
+        <h4>Donor Management</h4>
+        <ul>
+            <li>Donor registration</li>
+            <li>Profile management</li>
+            <li>Eligibility screening</li>
+        </ul>
+        <br><br>
+
+        <!-- Blood Receiver Management Section -->
+        <h4>Blood Receiver Management</h4>
+        <ul>
+            <li>Receiver registration</li>
+            <li>Blood type checks</li>
+        </ul>
+        <br><br>
+
+        <!-- Inventory Management Section -->
+        <h4>Inventory Management</h4>
+        <ul>
+            <li>Inventory tracking</li>
+            <li>Blood type and component management</li>
+        </ul>
+        <br><br>
+
+        <!-- Blood Camp Section -->
+        <h4>Blood Camp</h4>
+        <ul>
+            <li>Donor appointment scheduling</li>
+            <li>Coordination of blood donation camps</li>
+        </ul>
+        </p>
+    </section>
+
+    <section class="contact" id="Contact">
+        <h2>Contact Us</h2>
+
+        <form action="./home page bbms/contact.php" method="post">
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name" required><br><br>
+    
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="subject">Subject :</label>
+            <textarea id="subject" name="subject" rows="1" required></textarea><br><br>
+
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+    
+            <button type="submit" class="button">Send Message</button>
+            <button type="reset" class="reset">Reset Message</button>
+        </form>
+    </section> 
+
+    <footer>
+        <p>&copy; 2024 Blood Bank Management System. All rights reserved.</p>
+    </footer>
+
+    
+    <script src="./home page bbms/script.js"></script>
+    
+</body>
+
+</html>

@@ -16,13 +16,18 @@
             margin: 0;
             padding: 0;
         }
-        header {
+        /* header {
             background-color: #2c3e50;
             color: #ecf0f1;
             text-align: center;
             padding: 10px;
             margin-bottom: 10px;
+        } */
+        
+        header {
+            margin-left: 340px;
         }
+
         h1 {
             margin: 0;
         }
@@ -46,7 +51,7 @@
         table {
             width: 60%;
             border-collapse: collapse;
-            margin-left: 350px;
+            margin-left: 340px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -72,12 +77,11 @@
         }
 
         .request{
-            margin-left: 350px;
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin-left: 350px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            margin-left: 340px;
             transition: background-color 0.3s ease-in-out;
         }  
 
@@ -88,6 +92,14 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+        #searchHospital{
+            margin-left: 340px;
+            font-family: Arial, sans-serif;
+        }
+        button.delete {
+    background-color: #e74c3c;
+}
+
     </style>
 </head>
 <body1>
@@ -112,21 +124,25 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Inventory</h3>
                 </a>
-                <a href="../donor/Donor.html">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3>Donor Records</h3>
-                </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="../camp/Camp.php">
+                <a href="../donor/Donor.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="../camp/Camp.html">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
                 <a href="Request.html"  class="active">
                     <span class="material-symbols-sharp">local_hospital</span>
-                    <h3>Blood Request</h3>
+                    <h3>Blood Request by Hospital</h3>
+                </a>
+                <a href="../receiver/receiver.html">
+                    <span class="material-symbols-sharp">local_hospital</span>
+                    <h3>Blood Request by User</h3>
                 </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
@@ -149,8 +165,10 @@
     <br>
 
 <header>
-    <h1>Blood Request Management</h1>
+    <h1>Blood Request Management-Hospital</h1>
 </header>
+<br>
+
 
 <div id="addRequestForm" class="request">
     <h2>Add New Blood Request</h2>
@@ -181,6 +199,12 @@
 
 <div id="bloodRequests">
     <h2>Blood Requests</h2>
+    <div id="searchHospital">
+        <label for="searchHospitalInput">Search by Hospital:</label>
+        <input type="text" id="searchHospitalInput" name="searchHospitalInput">
+        <button onclick="searchByHospital()">Search</button>
+    </div>
+    <br>
     <table id="bloodRequestTable">
         <thead>
             <tr>
@@ -222,7 +246,8 @@
 
                         <!-- Inside the <td> for action -->
 <td>
-    <button onclick="deleteRequest(${request.id})">Delete</button>
+    <button class="delete" onclick="deleteRequest(${request.id})">Delete</button>
+
 </td>
 
                     `;
@@ -359,9 +384,25 @@ function performAction(requestId, action) {
     });
 }
 
-
-    // Initial display of blood requests
+    // Function to filter blood requests by hospital
+    function searchByHospital() {
+            const searchValue = document.getElementById('searchHospitalInput').value.toUpperCase();
+            const rows = document.getElementById('bloodRequestTable').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                const hospital = rows[i].getElementsByTagName('td')[1].innerText.toUpperCase();
+                
+                if (hospital.includes(searchValue)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+        
+        // Initial display of blood requests
     displayBloodRequests();
+
 </script>
 <div class="right">
     <div class="top">

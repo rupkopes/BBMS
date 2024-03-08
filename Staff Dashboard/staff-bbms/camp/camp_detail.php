@@ -14,6 +14,10 @@
   margin-left: 350px;
 }
 
+header {
+            margin-left: 350px;
+        }
+
 /* Style labels */
 .form label {
   display: inline-block;
@@ -56,6 +60,28 @@
             color: green;
             font-size: large;
         }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            margin-left: 340px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #ccc;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
         
         </style>
 </head>
@@ -81,22 +107,26 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Inventory</h3>
                 </a>
-                <a href="../donor/Donor.html">
-                    <span class="material-symbols-sharp">person</span>
-                    <h3>Donor Records</h3>
-                </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="../camp/Camp.php" class="active">
+                <a href="../donor/Donor.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="../camp/Camp.html" class="active">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
                 <a href="../request/Request.html">
                     <span class="material-symbols-sharp">local_hospital</span>
-                    <h3>Blood Request</h3>
+                    <h3>Blood Request by Hospital</h3>
                 </a>
+                <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
+            </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
@@ -116,8 +146,9 @@
         </main>
     </div>
     <br>
-
-<h2 class="blood">Blood Types - Total Blood Collected</h2>
+<header>
+<h1>Blood Types - Total Blood Collected</h1>
+</header>
 <br>
 
 <form method="post" class="form">
@@ -222,6 +253,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close connection
 $conn->close();
 ?>
+<br>
+<br>
+ <table>
+        <tr>
+            <th>Blood Type</th>
+            <th>Collected Blood Units</th>
+        </tr>
+        <?php
+        // PHP code to fetch data from the database and populate the table
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "Blood_Bank_Management_System";
+
+        $conn = new mysqli($servername, $username, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM camp_inventory";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row["blood_type"] . "</td><td>" . $row["available_units"] . "</td></tr>";
+            }
+        } else {
+            echo "<tr><td colspan='2'>0 results</td></tr>";
+        }
+        $conn->close();
+        ?>
+    </table>
+
  <div class="right">
         <div class="top">
             <button id="menu-btn">

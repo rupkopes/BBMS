@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Update password in the database
         try {
-            $stmt = $pdo->prepare("UPDATE staff SET password = :password WHERE reset_token = :token");
+            $stmt = $pdo->prepare("UPDATE Staff SET password = :password WHERE reset_token = :token");
             $stmt->bindParam(':password', $hashed_password);
             $stmt->bindParam(':token', $token);
             $stmt->execute();

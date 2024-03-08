@@ -33,7 +33,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>S.No.</th>
                             <th>ID</th>
                             <th>Organization Name</th>
                             <th>Blood Type</th>
@@ -48,25 +47,24 @@
 
                     <?php
                             
-                            include ("../ad_min_connect.php");
+                            include ("../connect.php");
 
-                            $sql = "SELECT * FROM `blood_requests`";
+                            $sql = "SELECT * FROM `request`";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td><?php echo $row['sno'] ?></td>
-                                <td><?php echo $row['org_id'] ?></td>
-                                <td><?php echo $row['org_name'] ?></td>
-                                <td><?php echo $row['blood_type'] ?></td>
-                                <td><?php echo $row['quantity'] ?></td>
+                                <td><?php echo $row['id'] ?></td>
+                                <td><?php echo $row['hospital'] ?></td>
+                                <td><?php echo $row['bloodType'] ?></td>
+                                <td><?php echo $row['bloodUnits'] ?></td>
                                 <td><?php echo $row['date_requests'] ?></td>
                                 <td><?php echo $row['status'] ?></td>
                                 <td>
-                                    <a href="edit_blood_request.php?org_id=<?php echo $row['org_id'] ?>"><div class="modify1"><span class="material-symbols-sharp">edit_square</span></div></a>
+                                    <a href="edit_blood_request.php?id=<?php echo $row['id'] ?>"><div class="modify1"><span class="material-symbols-sharp">edit_square</span></div></a>
                                 </td>
                                 <td>
-                                    <a href="delete_blood_request.php?org_id=<?php echo $row['org_id'] ?>"><div class="modify2"><span class="material-symbols-sharp">delete</span></div></a>
+                                    <a href="delete_blood_request.php?id=<?php echo $row['id'] ?>"><div class="modify2"><span class="material-symbols-sharp">delete</span></div></a>
                                 </td>
                             </tr>
 
@@ -88,6 +86,7 @@
             include_once("../right.php");        
         ?> 
     </div>    
+    <script src="../order.js"></script> 
     <script src="../script.js"></script> 
 </body>
 </html>

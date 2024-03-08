@@ -22,13 +22,18 @@
         .body1 {
             font-family: Arial, sans-serif;
         }
-        header {
+        /* header {
             background-color: #2c3e50;
             color: #ecf0f1;
             text-align: center;
             padding: 10px;
             margin-bottom: 10px;
+        } */
+
+        header {
+            margin-left: 340px;
         }
+
         h1 {
             margin: 0;
         }
@@ -39,6 +44,7 @@
             background-color: var(--color-white);
             border-radius: 5px;
             box-shadow: var(--box-shadow);
+            margin-left: 240px;
         }
 
         .filter-form {
@@ -166,6 +172,8 @@
 
         .mark {
             color: #28a745;
+            background-color: transparent;
+            cursor: pointer;
         }
         
         .del{
@@ -174,9 +182,25 @@
 
         .app{
             margin-left: 20px;
+            background-color: transparent;
+            color: blue;
+            font-size: 14px;
         }
-        
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #f2f2f2;
+        }
     </style>
 </head>
 
@@ -202,21 +226,25 @@
                 <span class="material-symbols-sharp">bloodtype</span>
                 <h3>Blood Inventory</h3>
             </a>
-            <a href="../donor/Donor.html">
-                <span class="material-symbols-sharp">person</span>
-                <h3>Donor Records</h3>
-            </a>
             <a href="Appointment.html" class="active">
                 <span class="material-symbols-sharp">calendar_today</span>
                 <h3>Appointment</h3>
             </a>
-            <a href="../camp/Camp.php">
+            <a href="../donor/Donor.html">
+                <span class="material-symbols-sharp">person</span>
+                <h3>Donor Records</h3>
+            </a>
+            <a href="../camp/Camp.html">
                 <span class="material-symbols-sharp">campaign</span>
                 <h3>Camps</h3>
             </a>
             <a href="../request/Request.html">
                 <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request</h3>
+                <h3>Blood Request by Hospital</h3>
+            </a>
+            <a href="../receiver/receiver.html">
+                <span class="material-symbols-sharp">local_hospital</span>
+                <h3>Blood Request by User</h3>
             </a>
             <a href="../logout/logout.php" id="logout-btn">
                 <span class="material-symbols-sharp">logout</span>
@@ -250,6 +278,9 @@
             <input type="submit" value="Apply" class="app"> 
         </form>
         <?php
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         // Database configuration
         $servername = "localhost";
         $username = "root";
@@ -304,20 +335,47 @@
 
         // Check if appointments exist
         if ($result->num_rows > 0) {
-            echo "<div class='appointment-list'>";
-            echo "<h2>Appointment List</h2>";
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='appointment-item'>";
-                echo "<span class='donor-name'>" . $row["donor_name"] . "</span>";
-                echo "<span class='status " . ($row["status"] == "Completed" ? "completed" : "not-completed") . "'>" . $row["status"] . "</span>";
-                // Add a button to mark appointment as Completed
-                echo "<a href='?complete=true&id=" . $row['id'] . "' class='mark'>Mark as Completed</a>";
-                // Add a button to delete the appointment
-                echo "<a href='?delete=true&id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this appointment?\")' class='del'>Delete</a>";
-                echo "</div>";
-            }
-            echo "</div>";
+            echo "<table>";
+            echo "<tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Blood Group</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                    <th>Location</th>
+                    <th>Appointment Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>";
+          // Output data of each row
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row["name"] . "</td>";
+    echo "<td>" . $row["age"] . "</td>";
+    echo "<td>" . $row["blood_group"] . "</td>";
+    echo "<td>" . $row["email"] . "</td>";
+    echo "<td>" . $row["contact_number"] . "</td>";
+    echo "<td>" . $row["location"] . "</td>";
+    echo "<td>" . $row["appointment_date"] . "</td>";
+    echo "<td class='" . ($row["status"] == "Completed" ? "completed" : "not-completed") . "'>" . $row["status"] . "</td>";
+    echo "<td>
+                        <form action='donors.php' method='POST' id='markAsCompletedForm'>
+                            <input type='hidden' name='name' value='" . $row['name'] . "'>
+                            <input type='hidden' name='age' value='" . $row['age'] . "'>
+                            <input type='hidden' name='email' value='" . $row['email'] . "'>
+                            <input type='hidden' name='contact' value='" . $row['contact_number'] . "'>
+                            <input type='hidden' name='location' value='" . $row['location'] . "'>
+                            <input type='hidden' name='blood_group' value='" . $row['blood_group'] . "'>
+                            <button type='submit' class='mark'>Mark as Completed</button>
+                        </form>
+                      </td>";
+    echo "<td>
+    <a href='?delete=true&id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this appointment?\")'><span class='material-symbols-sharp del'>delete</span></a>
+
+          </td>";
+    echo "</tr>";
+}
+            echo "</table>";
         } else {
             echo "No appointments found";
         }
@@ -350,6 +408,13 @@
     </div>
 
     <script src="../script.js"></script>
+    <script>
+    document.getElementById("markAsCompletedForm").addEventListener("submit", function() {
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // Reload the page after 1 second (1000 milliseconds)
+    });
+</script>
 </body>
 
 </html>

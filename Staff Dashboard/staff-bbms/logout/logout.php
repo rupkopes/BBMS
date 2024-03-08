@@ -6,6 +6,6 @@ session_start();
 session_destroy();
 
 // Redirect the user to a login page or any other desired page
-header("Location: ../login/login.html"); // Replace "login.php" with the desired destination
+header("Location: ../../index.html"); // Replace "login.php" with the desired destination
 exit;
 ?>

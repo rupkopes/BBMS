@@ -1,7 +1,7 @@
 <?php
-include "../ad_min_connect.php";
-$org_id = $_GET['org_id'];
-$sql = "DELETE FROM `blood_requests` WHERE org_id = $org_id";
+include "../connect.php";
+$id = $_GET['id'];
+$sql = "DELETE FROM `request` WHERE id = $id";
 $result = mysqli_query($conn, $sql);
 if($result){
     header("Location: blood_request_table.php?msg=Record Deleted Successfully");
