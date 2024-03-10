@@ -357,6 +357,7 @@ main .insights > div:hover {
         transform: scale(1.1) translate(5px, 5px);
     }
 
+
     .number {
         top: 5px;
         left: 8px;

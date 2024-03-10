@@ -52,7 +52,7 @@
                 </div>
 
 
-                <div class="menu">
+                <!-- <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">diversity_1</span>
                             <h3>Team Members</h3>
@@ -72,7 +72,7 @@
                             <h3>Team Requests</h3>
                         </a>
                     </div>
-                </div>
+                </div> -->
 
 
                 <div class="menu">
@@ -93,8 +93,14 @@
                     </div>
                 </div>
 
-
                 <div class="menu">
+                    <a href="/BBMS/Admin Dashboard/certificate/certificate.php">
+                        <span class="material-symbols-sharp">card_membership</span>
+                            <h3>Certificate</h3>
+                    </a>    
+                </div>
+
+                <!-- <div class="menu">
                     <a href="#">
                         <span class="material-symbols-sharp">contacts</span>
                             <h3>Contacts</h3>
@@ -107,12 +113,14 @@
                         <span class="material-symbols-sharp">help</span>
                             <h3>Help</h3>
                     </a>    
-                </div>
+                </div> -->
+
+
             </div>
             <div class="sidebar">
 
                 <div class="menu">
-                    <a href="/BBMS/Reg_Login/login/admin_login.php">
+                    <a href="/BBMS/Staff Dashboard/index.html">
                         <span class="material-symbols-sharp">logout</span>
                             <h3>Logout</h3>
                     </a>    

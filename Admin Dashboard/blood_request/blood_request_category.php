@@ -28,47 +28,94 @@
 
             <div class="recent-orders">
                 <h2>Blood Category</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Blood Type</th>
-                            <th>Quantity(Pints)</th>
-                        </tr>
-                    </thead>
 
                     <tbody>
 
-                    <?php
-                            
+                    <?php  
                             include ("../connect.php");
 
-                            $sql = "SELECT blood_type, available_units FROM blood_inventory ORDER BY
-                            CASE 
-                                WHEN blood_type = 'A+' THEN 1
-                                WHEN blood_type = 'A-' THEN 2
-                                WHEN blood_type = 'B+' THEN 3
-                                WHEN blood_type = 'B-' THEN 4
-                                WHEN blood_type = 'AB+' THEN 5
-                                WHEN blood_type = 'AB-' THEN 6
-                                WHEN blood_type = 'O+' THEN 7
-                                WHEN blood_type = 'O-' THEN 8
-                            END";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-                            <tr>
-                                <td><?php echo $row['blood_type'] ?></td>
-                                <td><?php echo $row['available_units'] ?></td>
-                            </tr>
-
-                        <?php
+                            include ("category.php");
+                            ?>
+                            <br><br>
+                            <?php
+include ("../connect.php");
+                            // Function to generate table for blood request inventory
+                            function generateBloodRequestInventoryTable() {
+                                global $conn;
+                                
+                                // Query to fetch blood request inventory for hospitals
+                                $hospital_query = "SELECT bloodType, 
+                                                        SUM(bloodUnits) AS totalRequestedUnits,
+                                                        SUM(CASE WHEN status = 'Approved' THEN bloodUnits ELSE 0 END) AS approvedUnits,
+                                                        SUM(CASE WHEN status = 'Not Approved' THEN bloodUnits ELSE 0 END) AS notApprovedUnits,
+                                                        SUM(CASE WHEN status = 'Pending' THEN bloodUnits ELSE 0 END) AS pendingUnits
+                                                FROM request
+                                                GROUP BY bloodType";
+                                // Query to fetch blood request inventory for users
+                                $user_query = "SELECT bloodType, 
+                                                    SUM(bloodUnits) AS totalRequestedUnits,
+                                                    SUM(CASE WHEN status = 'Approved' THEN bloodUnits ELSE 0 END) AS approvedUnits,
+                                                    SUM(CASE WHEN status = 'Not Approved' THEN bloodUnits ELSE 0 END) AS notApprovedUnits,
+                                                    SUM(CASE WHEN status = 'Pending' THEN bloodUnits ELSE 0 END) AS pendingUnits
+                                            FROM receiver
+                                            GROUP BY bloodType";
+                                
+                                echo "<br><h2>Blood Request Inventory for Hospitals</h2>";
+                                echo "<table border='1'>
+                                        <tr>
+                                            <th>Blood Type</th>
+                                            <th>Total Requested Units</th>
+                                            <th>Approved Units</th>
+                                            <th>Not Approved Units</th>
+                                            <th>Pending Units</th>
+                                        </tr>";
+                                if ($result = $conn->query($hospital_query)) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>
+                                                <td>".$row['bloodType']."</td>
+                                                <td>".$row['totalRequestedUnits']."</td>
+                                                <td>".$row['approvedUnits']."</td>
+                                                <td>".$row['notApprovedUnits']."</td>
+                                                <td>".$row['pendingUnits']."</td>
+                                            </tr>";
+                                    }
+                                    $result->free();
+                                }
+                                echo "</table>";
+                                
+                                echo "<h2><br><br>Blood Request Inventory for Users</h2>";
+                                echo "<table border='1'>
+                                        <tr>
+                                            <th>Blood Type</th>
+                                            <th>Total Requested Units</th>
+                                            <th>Approved Units</th>
+                                            <th>Not Approved Units</th>
+                                            <th>Pending Units</th>
+                                        </tr>";
+                                if ($result = $conn->query($user_query)) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>
+                                                <td>".$row['bloodType']."</td>
+                                                <td>".$row['totalRequestedUnits']."</td>
+                                                <td>".$row['approvedUnits']."</td>
+                                                <td>".$row['notApprovedUnits']."</td>
+                                                <td>".$row['pendingUnits']."</td>
+                                            </tr>";
+                                    }
+                                    $result->free();
+                                }
+                                echo "</table>";
                             }
-                        ?>
 
+                            // Call the function to generate the table
+                            generateBloodRequestInventoryTable();
+
+                            // Close connection
+                            $conn->close();
+                    ?>
 
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
             </div>
         </main>
 
