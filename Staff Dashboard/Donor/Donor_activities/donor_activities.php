@@ -81,7 +81,7 @@
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Schedule an Appointment</h3>
                 </a>
-                <a href="donor_acrivities.php" class="active">
+                <a href="donor_activities.php" class="active">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Donation Tracking</h3>
                 </a>

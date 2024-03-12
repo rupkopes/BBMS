@@ -9,15 +9,6 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-        :root {
-            --color-background: #f2f2f2;
-            --color-background-dark: #333;
-            --color-dark: #333;
-            --color-white: #fff;
-            --color-info-dark: #2c3e50;
-            --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
         
         .body1 {
             font-family: Arial, sans-serif;
@@ -44,7 +35,7 @@
             background-color: var(--color-white);
             border-radius: 5px;
             box-shadow: var(--box-shadow);
-            margin-left: 240px;
+            margin-left: 340px;
         }
 
         .filter-form {
@@ -224,7 +215,7 @@
             </a>
             <a href="../inventory/Inventory.html">
                 <span class="material-symbols-sharp">bloodtype</span>
-                <h3>Blood Inventory</h3>
+                <h3>Available Blood Inventory</h3>
             </a>
             <a href="Appointment.html" class="active">
                 <span class="material-symbols-sharp">calendar_today</span>
@@ -246,6 +237,14 @@
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by User</h3>
             </a>
+            <a href="../request_inventory/request_inventory.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Blood Request Inventory</h3>
+                </a>
+                <a href="../request_inventory/all.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Available And Request Blood Inventory</h3>
+                </a>
             <a href="../logout/logout.php" id="logout-btn">
                 <span class="material-symbols-sharp">logout</span>
                 <h3>Logout</h3>

@@ -198,6 +198,7 @@ aside .sidebar {
     top: 1.3rem;
 }
 
+
 aside .sub_menu {
     display: none;
     height: 20vh;
@@ -341,33 +342,33 @@ main .insights > div {
 }
 
 main .insights > div:hover {
-    box-shadow: none;
-    font-size: 18px;
-    height: 165px;
+        box-shadow: none;
+        font-size: 18px;
+        height: 165px;
 
-    h1 {
-        font-size: 30px;
-        transition: all 0.2s ease;
-    }
+        h1 {
+            font-size: 30px;
+            transition: all 0.2s ease;
+        }
 
-    circle {
-        stroke-width: 12;
-        stroke: red;
-        transition: all 0.2s ease;
-        transform: scale(1.1) translate(5px, 5px);
-    }
+        circle {
+            stroke-width: 12;
+            stroke: red;
+            transition: all 0.2s ease;
+            transform: scale(1.1) translate(5px, 5px);
+        }
 
 
-    .number {
-        top: 5px;
-        left: 8px;
-        transition: all 0.1s ease;
-    }
+        .number {
+            top: 5px;
+            left: 6px;
+            transition: all 0.1s ease;
+        }
 
-    small {
-        font-size: 11px;
-        transition: all 0.1s ease;
-    }
+        small {
+            font-size: 11px;
+            transition: all 0.1s ease;
+        }
 }
 
 

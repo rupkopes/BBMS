@@ -201,7 +201,7 @@
 
     <div class="containers">
         <section>
-            <form action="../../staff-bbms/appointment/appointment.php" method="post">
+            <form action="../../staff-bbms/appointment/Appointment.html" method="post">
                 <div class="form-group">
                     <label for="donor_name">Donor Name:</label>
                     <input type="text" id="name" name="name" value="<?php echo $username; ?>" required>

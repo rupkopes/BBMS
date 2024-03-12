@@ -1,0 +1,35 @@
+<?php
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = ""; // Enter your MySQL password here
+$database = "Blood_Bank_Management_System"; // Change this to your database name
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Form data
+$token = $_POST['token']; // Added token field
+$password = $_POST['password'];
+
+// SQL injection prevention
+$token = mysqli_real_escape_string($conn, $token); // Added token field
+$password = mysqli_real_escape_string($conn, $password);
+
+// Query to update password based on token
+$stmt = $conn->prepare("UPDATE donor_register_data SET password = ?, reset_token = NULL WHERE reset_token = ?");
+$stmt->bind_param("ss", password_hash($password, PASSWORD_DEFAULT), $token);
+$stmt->execute();
+
+if ($stmt->affected_rows > 0) {
+    echo "Password updated successfully";
+} else {
+    echo "Invalid token or password update failed";
+}
+
+$conn->close();
+?>

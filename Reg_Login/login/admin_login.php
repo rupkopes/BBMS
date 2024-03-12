@@ -14,7 +14,7 @@
         <div class="login-box">
             <form action="">
                 <div class="arrow1">
-                    <a href="org_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_left</span></a>
+                    <a href="staff_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_left</span></a>
                 </div>
                 <div class="arrow2">
                     <a href="donor_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_right</span></a>
@@ -37,9 +37,8 @@
                     <label for="remember"><input type="checkbox">Remember Me</label>
                     <a href="#">Forgot Password?</a>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit"><a href="/BBMS/Admin Dashboard/index.php">Login</a></button>
                 <div class="register-link">
-                    <a href="/BBMS/Reg_Login/register/admin_register.php">Don't have an account? Create Now!</a>
                 </div>
             </form>
         </div>

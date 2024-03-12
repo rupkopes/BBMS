@@ -1,122 +1,112 @@
 <?php
 
-session_start();
-
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Load PHPMailer library
-require "../../../BBMS/home page bbms/vendor/autoload.php";
+require "../../home page bbms/vendor/autoload.php";
 
-// Load username and password from config.php 
-require "../../../BBMS/home page bbms/config.php";
-
-// Import necessary classes
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-// Function to send an email for password reset
-function sendPasswordResetEmail($email, $reset_token) {
-    // Create a new PHPMailer instance
-    $mail = new PHPMailer(true);
+// Include your database connection code here
+$servername = "localhost"; // Change this to your MySQL server hostname
+$username = "root"; // Change this to your MySQL username
+$password = ""; // Change this to your MySQL password
+$database = "Blood_Bank_Management_System"; // Change this to your MySQL database name
 
-    // Enable SMTP debugging
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
 
-    // Set mailer to use SMTP
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;
-
-    // SMTP configuration for Gmail
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
-
-    // Gmail account credentials
-    global $config;
-    $mail->Username = $config['email'];
-    $mail->Password = $config['password']; 
-
-    // Set the "From" address
-    $mail->setFrom($config['email'], "Blood Bank Management System");
-
-    // Add recipient
-    $mail->addAddress($email);
-
-    // Email subject and body
-    $mail->Subject = "Password Reset Request";
-    $mail->Body = "Please click the following link to reset your password: http://localhost:81/BBMS/staff-bbms/login/password_reset_confirmation.php?token=$reset_token";
-
-    try {
-        // Attempt to send the email
-        if ($mail->send()) {
-            // Email sent successfully
-            return true;
-        } else {
-            // Failed to send email
-            return false;
-        }
-    } catch (Exception $e) {
-        // Exception occurred
-        return false;
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Function to generate a random token
-function generateToken() {
-    return bin2hex(random_bytes(32));
-}
-
-// Handle forget password form submission
+// Process forgot password form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve email from form
-    $email = $_POST["email"];
+    $email = $_POST['email'];
 
-    // Check if email exists in database and generate/reset token
-    // For demonstration, assuming the email exists and generate/reset token
-    $token = generateToken(); // Generate token
-    // Store the token in the database with the user's email address
+    // Generate a unique token
+    $token = bin2hex(random_bytes(16));
 
-    // Send password reset email
-    if (sendPasswordResetEmail($email, $token)) {
-        // Password reset email sent successfully
-        $_SESSION["reset_success"] = true;
-        header("Location: forgot_password.php");
-        exit();
-    } else {
-        // Failed to send password reset email
-        $_SESSION["reset_error"] = "Failed to send password reset email.";
+    // Store token in the database
+    $stmt = $conn->prepare("UPDATE Staff SET reset_token = ? WHERE email = ?");
+    $stmt->bind_param("ss", $token, $email);
+    $stmt->execute();
+
+    // Send email with password reset link
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'bbms2080@gmail.com'; // Your Gmail email address
+        $mail->Password = 'xlfq excu mgrw fdlm'; // Your Gmail password or app-specific password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        //Recipients
+        $mail->setFrom('bbms2080@gmail.com', 'Blood Bank Management System');
+        $mail->addAddress($email);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Reset Your Password';
+        $mail->Body    = 'Click the link below to reset your password:<br><br><a href="http://localhost:81/Blood%20Bank%20Management%20System/staff-bbms/login/reset_password.php?token=' . $token . '">Reset Password</a>';
+
+        $mail->send();
+        echo "Instructions to reset your password have been sent to your email address.";
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="login-container">
-        <h2>Forgot Password</h2>
-        <?php if(isset($_SESSION["reset_error"])): ?>
-            <div class="error"><?php echo $_SESSION["reset_error"]; ?></div>
-            <?php unset($_SESSION["reset_error"]); ?>
-        <?php endif; ?>
-        <?php if(isset($_SESSION["reset_success"])): ?>
-            <div class="success">Password reset email sent successfully.</div>
-            <?php unset($_SESSION["reset_success"]); ?>
-        <?php endif; ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <button type="submit">Reset Password</button>
-        </form>
-    </div>
-</body>
-</html>
+<!-- HTML form for forgot password -->
+<style>
+
+form {
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Change to desired button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Change to desired hover color */
+}
+
+
+</style>
+<form method="post" action="">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+</form>

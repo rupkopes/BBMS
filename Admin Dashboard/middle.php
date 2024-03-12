@@ -1,8 +1,5 @@
 <main>
     <h1>Dashboard</h1>
-    <div class="date">
-        <input type="date">
-    </div>
     <div class="insights">
 
         <?php             

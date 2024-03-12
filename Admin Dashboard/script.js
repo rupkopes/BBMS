@@ -13,34 +13,47 @@ closeBtn.addEventListener('click', () => {
     sideMenu.style.display = 'none';
 })
 
+
+
 // -------------------------------Change theme-----------------------------
+// Function to apply theme based on stored preference
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme-variables');
+        themeToggler.querySelector('span:nth-child(1)').classList.add('active');
+        themeToggler.querySelector('span:nth-child(2)').classList.remove('active');
+    } else {
+        document.body.classList.remove('dark-theme-variables');
+        themeToggler.querySelector('span:nth-child(1)').classList.remove('active');
+        themeToggler.querySelector('span:nth-child(2)').classList.add('active');
+    }
+}
+
 // Function to toggle between light and dark theme
 function toggleTheme() {
-    // Toggle the dark-theme-variables class on the body
-    document.body.classList.toggle('dark-theme-variables');
-
-    // Toggle the active class on the themeToggler span elements
-    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
-    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
+    const currentTheme = document.body.classList.contains('dark-theme-variables') ? 'light' : 'dark';
+    applyTheme(currentTheme);
 
     // Update URL with theme parameter only when the theme toggler button is clicked
-    const currentTheme = document.body.classList.contains('dark-theme-variables') ? 'dark' : 'light';
     const url = new URL(window.location.href);
     url.searchParams.set('theme', currentTheme);
     history.replaceState(null, '', url.toString());
+
+    // Save theme preference in local storage
+    localStorage.setItem('theme', currentTheme);
 }
 
 // Add event listener for theme toggler
 themeToggler.addEventListener('click', toggleTheme);
 
-// Apply the theme based on URL parameter on page load only if the theme toggler button was not clicked
+// Apply the theme based on local storage on page load
 window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const theme = urlParams.get('theme');
-    if (theme === 'dark' && !document.body.classList.contains('dark-theme-variables')) {
-        toggleTheme(); // Apply dark theme if 'dark' theme parameter is present
-    }
+    const theme = localStorage.getItem('theme') || urlParams.get('theme') || 'light';
+    applyTheme(theme);
 });
+
+
 
 
 // -----------------------Fill orders in table------------------------------------
@@ -73,34 +86,67 @@ Orders.forEach(order => {
         });
 
 
-        // const menuItems = document.querySelectorAll('.sidebar .menu');
 
-        // menuItems.forEach(menuItem => {
-        //     menuItem.addEventListener('click', function (event) {
-        //         // Prevent the default behavior of the hyperlink
-        //         event.preventDefault();
+
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const menuItems = document.querySelectorAll('.menu a');
         
-        //         // Remove 'active' class from all menu items
-        //         menuItems.forEach(item => {
-        //             item.classList.remove('active');
-        //         });
-        
-        //         // Add 'active' class to the clicked menu item
-        //         this.classList.add('active');
-        
-        //         // Close all dropdowns except the clicked one
-        //         const subMenu = this.querySelector('.sub_menu');
-        //         if (subMenu) {
-        //             const openSubMenus = document.querySelectorAll('.sidebar .sub_menu');
-        //             openSubMenus.forEach(openSubMenu => {
-        //                 if (openSubMenu !== subMenu && openSubMenu.style.display === 'block') {
-        //                     openSubMenu.style.display = 'none';
-        //                 }
+        //     menuItems.forEach(item => {
+        //         item.addEventListener('click', function() {
+        //             // Remove 'active' class from all menu items
+        //             menuItems.forEach(menuItem => {
+        //                 menuItem.classList.remove('active');
         //             });
-        //             subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-        //         }
+        
+        //             // Add 'active' class to the clicked menu item
+        //             this.classList.add('active');
+        
+        //             // Toggle display of the submenu
+        //             const subMenu = this.nextElementSibling;
+        //             if (subMenu) {
+        //                 subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+        //             }
+        //         });
         //     });
         // });
+        
+
+
+
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const menuItems = document.querySelectorAll('.menu a');
+        
+        //     menuItems.forEach(item => {
+        //         item.addEventListener('click', function(event) {
+        //             // Prevent default link behavior
+        //             event.preventDefault();
+        
+        //             // Remove 'active' class from all menu items
+        //             menuItems.forEach(menuItem => {
+        //                 menuItem.classList.remove('active');
+        //             });
+        
+        //             // Toggle submenu if applicable
+        //             const subMenu = this.nextElementSibling;
+        //             if (subMenu && subMenu.classList.contains('sub_menu')) {
+        //                 subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+        //             }
+        
+        //             // Add 'active' class to the clicked menu item
+        //             this.classList.add('active');
+        //         });
+        //     });
+        // });
+             
+           
+        
+
+
+          
+
+
 
 
         

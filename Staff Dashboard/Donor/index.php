@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donor</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="./styless.css">
     <style>
-
+       
 
         /* Add CSS for the Edit Profile button */
         .button {
@@ -77,9 +77,9 @@
         .rights {
     position: fixed;
     top: -10px;
-    right: 250px; /* Adjust as needed */
-    padding: 20px; /* Add padding to prevent content from sticking to edges */
-    z-index: 1000; /* Set a higher z-index to ensure it's on top of other content */
+    right: 250px; 
+    padding: 20px; 
+    z-index: 1000; 
 }
 
         /* Add additional styling as needed */
@@ -257,7 +257,7 @@
                             <br>
                             <?php
                             // Check if user is logged in and show appropriate greeting
-                            // session_start();
+                            session_start();
                             if (isset($_SESSION['username'])) {
                                 echo "<p>Yo, <b>" . $_SESSION['username'] . "</b></p>";
                                 // Add Edit Profile button

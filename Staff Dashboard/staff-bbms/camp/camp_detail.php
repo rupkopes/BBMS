@@ -8,50 +8,50 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
     <link rel="stylesheet" href="../style.css">
     <style>
-       /* Style the form container */
-.form {
-  width: 300px;
-  margin-left: 350px;
-}
-
-header {
+        /* Style the form container */
+        .form {
+            width: 300px;
             margin-left: 350px;
         }
 
-/* Style labels */
-.form label {
-  display: inline-block;
-  width: 80px;
-  font-weight: bold;
-}
+        header {
+            margin-left: 350px;
+        }
 
-/* Style input fields */
-.form input[type="number"] {
-  width: 150px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
+        /* Style labels */
+        .form label {
+            display: inline-block;
+            width: 80px;
+            font-weight: bold;
+        }
 
-/* Style submit button */
-.form input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #2c3e50;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+        /* Style input fields */
+        .form input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
 
-/* Style submit button on hover */
-.form input[type="submit"]:hover {
-  background-color: #45a049;
-}
+        /* Style submit button */
+        .form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Style submit button on hover */
+        .form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
 
 
-        .blood{
+        .blood {
             margin-left: 350px;
         }
 
@@ -68,7 +68,9 @@ header {
             margin-left: 340px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -82,9 +84,9 @@ header {
         tr:hover {
             background-color: #ddd;
         }
-        
-        </style>
+    </style>
 </head>
+
 <body>
     <div class="container">
         <aside>
@@ -105,7 +107,7 @@ header {
                 </a>
                 <a href="../inventory/Inventory.html">
                     <span class="material-symbols-sharp">bloodtype</span>
-                    <h3>Blood Inventory</h3>
+                    <h3>Available Blood Inventory</h3>
                 </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
@@ -124,9 +126,17 @@ header {
                     <h3>Blood Request by Hospital</h3>
                 </a>
                 <a href="../receiver/receiver.html">
-                <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request by User</h3>
-            </a>
+                    <span class="material-symbols-sharp">local_hospital</span>
+                    <h3>Blood Request by User</h3>
+                </a>
+                <a href="../request_inventory/request_inventory.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Blood Request Inventory</h3>
+                </a>
+                <a href="../request_inventory/all.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Available And Request Blood Inventory</h3>
+                </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
@@ -146,148 +156,157 @@ header {
         </main>
     </div>
     <br>
-<header>
-<h1>Blood Types - Total Blood Collected</h1>
-</header>
-<br>
+    <header>
+        <h1>Blood Types - Total Blood Collected</h1>
+    </header>
+    <br>
 
-<form method="post" class="form">
-    <label for="blood_type_Aplus">A+:</label>
-    <input type="number" id="blood_type_Aplus" name="blood_type_Aplus" min="0"><br><br>
-    
-    <label for="blood_type_Aminus">A-:</label>
-    <input type="number" id="blood_type_Aminus" name="blood_type_Aminus" min="0"><br><br>
-    
-    <label for="blood_type_Bplus">B+:</label>
-    <input type="number" id="blood_type_Bplus" name="blood_type_Bplus" min="0"><br><br>
-    
-    <label for="blood_type_Bminus">B-:</label>
-    <input type="number" id="blood_type_Bminus" name="blood_type_Bminus" min="0"><br><br>
-    
-    <label for="blood_type_ABplus">AB+:</label>
-    <input type="number" id="blood_type_ABplus" name="blood_type_ABplus" min="0"><br><br>
-    
-    <label for="blood_type_ABminus">AB-:</label>
-    <input type="number" id="blood_type_ABminus" name="blood_type_ABminus" min="0"><br><br>
-    
-    <label for="blood_type_Oplus">O+:</label>
-    <input type="number" id="blood_type_Oplus" name="blood_type_Oplus" min="0"><br><br>
-    
-    <label for="blood_type_Ominus">O-:</label>
-    <input type="number" id="blood_type_Ominus" name="blood_type_Ominus" min="0"><br><br>
+    <form method="post" class="form">
 
-    <input type="submit" value="Submit">
-</form>
+        <label for="attendees">Number of Attendees:</label>
+        <input type="number" id="attendees" name="attendees" min="0"><br><br>
 
-<div id="message"></div> <!-- This div will display the success message -->
 
-<?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "Blood_Bank_Management_System";
+        <label for="blood_type_Aplus">A+:</label>
+        <input type="number" id="blood_type_Aplus" name="blood_type_Aplus" min="0"><br><br>
 
-$conn = new mysqli($servername, $username, $password, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        <label for="blood_type_Aminus">A-:</label>
+        <input type="number" id="blood_type_Aminus" name="blood_type_Aminus" min="0"><br><br>
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $blood_types = [
-        'A+' => $_POST['blood_type_Aplus'],
-        'A-' => $_POST['blood_type_Aminus'],
-        'B+' => $_POST['blood_type_Bplus'],
-        'B-' => $_POST['blood_type_Bminus'],
-        'AB+' => $_POST['blood_type_ABplus'],
-        'AB-' => $_POST['blood_type_ABminus'],
-        'O+' => $_POST['blood_type_Oplus'],
-        'O-' => $_POST['blood_type_Ominus']
-    ];
+        <label for="blood_type_Bplus">B+:</label>
+        <input type="number" id="blood_type_Bplus" name="blood_type_Bplus" min="0"><br><br>
 
-    foreach ($blood_types as $type => $units) {
-        // Update blood inventory for each blood type
-        $update_sql = "UPDATE blood_inventory SET available_units = available_units + ? WHERE blood_type = ?";
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param("is", $units, $type);
-        if ($update_stmt->execute()) {
-            echo "Units for blood type $type updated successfully.<br>";
-        } else {
-            echo "Error updating units for blood type $type: " . $conn->error . "<br>";
-        }
-        $update_stmt->close();
+        <label for="blood_type_Bminus">B-:</label>
+        <input type="number" id="blood_type_Bminus" name="blood_type_Bminus" min="0"><br><br>
+
+        <label for="blood_type_ABplus">AB+:</label>
+        <input type="number" id="blood_type_ABplus" name="blood_type_ABplus" min="0"><br><br>
+
+        <label for="blood_type_ABminus">AB-:</label>
+        <input type="number" id="blood_type_ABminus" name="blood_type_ABminus" min="0"><br><br>
+
+        <label for="blood_type_Oplus">O+:</label>
+        <input type="number" id="blood_type_Oplus" name="blood_type_Oplus" min="0"><br><br>
+
+        <label for="blood_type_Ominus">O-:</label>
+        <input type="number" id="blood_type_Ominus" name="blood_type_Ominus" min="0"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="message"></div> <!-- This div will display the success message -->
+
+    <?php
+    // Database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "Blood_Bank_Management_System";
+
+    $conn = new mysqli($servername, $username, $password, $database);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-    // Display success message
-    echo '<script>document.getElementById("message").innerHTML = "Units are added successfully";</script>';
-}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $blood_types = [
-        'A+' => $_POST['blood_type_Aplus'],
-        'A-' => $_POST['blood_type_Aminus'],
-        'B+' => $_POST['blood_type_Bplus'],
-        'B-' => $_POST['blood_type_Bminus'],
-        'AB+' => $_POST['blood_type_ABplus'],
-        'AB-' => $_POST['blood_type_ABminus'],
-        'O+' => $_POST['blood_type_Oplus'],
-        'O-' => $_POST['blood_type_Ominus']
-    ];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $blood_types = [
+            'A+' => $_POST['blood_type_Aplus'],
+            'A-' => $_POST['blood_type_Aminus'],
+            'B+' => $_POST['blood_type_Bplus'],
+            'B-' => $_POST['blood_type_Bminus'],
+            'AB+' => $_POST['blood_type_ABplus'],
+            'AB-' => $_POST['blood_type_ABminus'],
+            'O+' => $_POST['blood_type_Oplus'],
+            'O-' => $_POST['blood_type_Ominus']
+        ];
 
-    foreach ($blood_types as $type => $units) {
-        // Insert data into blood_inventory table
-        $insert_sql = "INSERT INTO camp_inventory (blood_type, available_units) VALUES (?, ?)";
+        foreach ($blood_types as $type => $units) {
+            // Update blood inventory for each blood type
+            $update_sql = "UPDATE blood_inventory SET available_units = available_units + ? WHERE blood_type = ?";
+            $update_stmt = $conn->prepare($update_sql);
+            $update_stmt->bind_param("is", $units, $type);
+            if ($update_stmt->execute()) {
+                echo "Units for blood type $type updated successfully.<br>";
+            } else {
+                echo "Error updating units for blood type $type: " . $conn->error . "<br>";
+            }
+            $update_stmt->close();
+        }
+        // Display success message
+        echo '<script>document.getElementById("message").innerHTML = "Units are added successfully";</script>';
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the number of attendees from the form
+        $attendees = $_POST['attendees'];
+    
+        // Insert data into camp_inventory table
+        $insert_sql = "INSERT INTO camp_inventory (blood_type, available_units, attendees) VALUES (?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bind_param("si", $type, $units);
-        if ($insert_stmt->execute()) {
-            echo "Units for blood type $type inserted successfully.<br>";
-        } else {
-            echo "Error inserting units for blood type $type: " . $conn->error . "<br>";
+        
+        foreach ($blood_types as $type => $units) {
+            $insert_stmt->bind_param("sii", $type, $units, $attendees);
+            if ($insert_stmt->execute()) {
+                echo "Units for blood type $type inserted successfully.<br>";
+            } else {
+                echo "Error inserting units for blood type $type: " . $conn->error . "<br>";
+            }
         }
         $insert_stmt->close();
+    
+        // Display success message
+        echo '<script>document.getElementById("message").innerHTML = "Units and attendees are added successfully";</script>';
     }
-    // Display success message
-    echo '<script>document.getElementById("message").innerHTML = "Units are added successfully";</script>';
-}
+    
 
+    // Close connection
+    $conn->close();
+    ?>
+    <br>
+    <br>
+  <table>
+    <tr>
+        <th>Blood Type</th>
+        <th>Collected Blood Units</th>
+        <th>Number of Attendees</th> <!-- New Table Header -->
+    </tr>
+    <?php
+    // PHP code to fetch data from the database and populate the table
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "Blood_Bank_Management_System";
 
-// Close connection
-$conn->close();
-?>
-<br>
-<br>
- <table>
-        <tr>
-            <th>Blood Type</th>
-            <th>Collected Blood Units</th>
-        </tr>
-        <?php
-        // PHP code to fetch data from the database and populate the table
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "Blood_Bank_Management_System";
+    $conn = new mysqli($servername, $username, $password, $database);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-        $conn = new mysqli($servername, $username, $password, $database);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+    $sql = "SELECT * FROM camp_inventory";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["blood_type"] . "</td><td>" . $row["available_units"] . "</td><td>" . $row["attendees"] . "</td></tr>";
         }
+    } else {
+        echo "<tr><td colspan='3'>0 results</td></tr>";
+    }
+    $conn->close();
+    ?>
+</table>
 
-        $sql = "SELECT * FROM camp_inventory";
-        $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["blood_type"] . "</td><td>" . $row["available_units"] . "</td></tr>";
-            }
-        } else {
-            echo "<tr><td colspan='2'>0 results</td></tr>";
-        }
-        $conn->close();
-        ?>
-    </table>
 
- <div class="right">
+
+
+
+
+
+
+
+    <div class="right">
         <div class="top">
             <button id="menu-btn">
                 <span class="material-symbols-sharp">menu</span>
@@ -312,7 +331,7 @@ $conn->close();
 
     <script>
         // JavaScript code to remove the message after 3 seconds
-        setTimeout(function(){
+        setTimeout(function() {
             var message = document.getElementById('message');
             if (message) {
                 message.parentNode.removeChild(message);
@@ -321,6 +340,6 @@ $conn->close();
     </script>
 
     <script src="../script.js"></script>
-    </body>
+</body>
 
 </html>

@@ -129,6 +129,18 @@
             background-color: #27ae60;
             color: white;
         }
+/* CSS for Generate Certificate button */
+td a.generate-certificate-button {
+            color: green;
+}
+
+td a.generate-certificate-button:hover {
+   
+            color: white;
+            cursor: pointer;
+}
+
+
     </style>
     <title>Donor Listing</title>
 </head>
@@ -152,7 +164,7 @@
                 </a>
                 <a href="../inventory/Inventory.html">
                     <span class="material-symbols-sharp">bloodtype</span>
-                    <h3>Blood Inventory</h3>
+                    <h3>Available Blood Inventory</h3>
                 </a>
                 <a href="../appointment/Appointment.html">
                     <span class="material-symbols-sharp">calendar_today</span>
@@ -174,6 +186,14 @@
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by User</h3>
             </a>
+            <a href="../request_inventory/request_inventory.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Blood Request Inventory</h3>
+                </a>
+                <a href="../request_inventory/all.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Available And Request Blood Inventory</h3>
+                </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
@@ -220,6 +240,7 @@
                     <th>Location</th>
                     <th>Donation Date</th>
                     <th>Days Remaining</th>
+                    <th>Generate Certificate</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -271,6 +292,7 @@
                             echo "<td>" . $row["location"] . "</td>";
                             echo "<td>" . date('Y-m-d', $donation_date) . "</td>"; // Format the donation date
                             echo "<td>" . $remaining_days . "</td>";
+                            echo "<td><a href='certificate.php?donor_id=".$row['id']."' class='generate-certificate-button'>Generate Certificate</a></td>";
                             echo "<td><button class='delete-button' onclick=\"window.location.href='?delete_id=".$row['id']."'\">Delete</button></td>";
                             echo "</tr>";
                         }

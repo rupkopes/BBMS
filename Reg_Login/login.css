@@ -24,31 +24,31 @@
 } */
 
 .admin-login {
-    background: url("/BBMS/images/admin.jpg") no-repeat;
+    background: url("/BBMS/images/homepage.png") no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .staff-login {
-    background: url("/BBMS/images/regis_back.png") no-repeat;
+    background: url("/BBMS/images/homepage.png") no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .org-login {
-    background: url("/BBMS/images/org.jpg") no-repeat;
+    background: url("/BBMS/images/homepage.png") no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .hos-login {
-    background: url("/BBMS/images/hos.jpg") no-repeat;
+    background: url("/BBMS/images/homepage.png") no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .donor-login {
-    background: url("/BBMS/images/donor.jpeg") no-repeat;
+    background: url("/BBMS/images/homepage.png") no-repeat;
     background-size: cover;
     background-position: center;
 }

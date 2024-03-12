@@ -28,10 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            // Password is correct, set session variables
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username;
-            echo "Login successful";
+            // Password is correct, check approval status
+            if ($row['approval_status'] == 'approved') {
+                // Set session variables
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+                echo "Login successful";
+            } else {
+                echo "Your account is pending approval or not approved by the admin";
+            }
         } else {
             echo "Incorrect password";
         }
@@ -40,16 +45,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if the user is logged in
-if(isset($_SESSION['username'])) {
-    // Redirect to another page
-    header("Location: ../index.php");
-    exit(); // Make sure that code below doesn't get executed after redirect
-} else {
-    // Redirect to login page if not logged in
-    header("Location: login.html");
-    exit();
-}
+    if(isset($_SESSION['loggedin'])) {
+        // Redirect to another page
+        header("Location: ../index.php");
+        exit(); // Make sure that code below doesn't get executed after redirect
+    } else {
+        // Redirect to login page if not logged in
+        header("Location: login.html");
+        exit();
+    }
 
     $stmt->close();
     $conn->close();
 }
+?>

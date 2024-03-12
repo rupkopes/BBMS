@@ -17,7 +17,7 @@
                     <a href="donor_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_left</span></a>
                 </div>
                 <div class="arrow2">
-                    <a href="hos_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_right</span></a>
+                    <a href="admin_login.php"><span class="material-symbols-sharp">keyboard_double_arrow_right</span></a>
                 </div>
                 <h1>Staff</h1>
                 <h2>Login</h2>

@@ -31,13 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hash the password before storing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+    // Generate a unique token for the user
+    $token = bin2hex(random_bytes(16));
+
     // Prepare SQL statement to insert data into the database
-    $stmt = $conn->prepare("INSERT INTO donor_register_data (blood_type, first_name, middle_name, last_name, dob, gender, email, phone, current_address, permanent_address, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssssss", $blood_type, $first_name, $middle_name, $last_name, $dob, $gender, $email, $phone, $current_address, $permanent_address, $username, $hashed_password);
+    $stmt = $conn->prepare("INSERT INTO donor_register_data (blood_type, first_name, middle_name, last_name, dob, gender, email, phone, current_address, permanent_address, username, password, reset_token) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssssssss", $blood_type, $first_name, $middle_name, $last_name, $dob, $gender, $email, $phone, $current_address, $permanent_address, $username, $hashed_password, $token);
 
     // Execute the statement
     if ($stmt->execute()) {
-        // Redirect to login page
+        // Redirect to login page or wherever you want
         header("Location: donor.html");
         exit();
     } else {

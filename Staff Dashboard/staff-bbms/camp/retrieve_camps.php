@@ -110,6 +110,14 @@
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by User</h3>
             </a>
+            <a href="../request_inventory/request_inventory.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Blood Request Inventory</h3>
+                </a>
+                <a href="../request_inventory/all.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Available And Request Blood Inventory</h3>
+                </a>
                 <a href="../logout/logout.php" id="logout-btn">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
