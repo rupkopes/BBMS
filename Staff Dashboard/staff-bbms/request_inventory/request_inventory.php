@@ -1,3 +1,7 @@
+<?php
+            include_once("../profile_name.php");        
+        ?>    
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,15 +25,19 @@
             border-bottom: 1px solid #ddd;
         }
 
+        .reports {
+            font-size: 14px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../logo1.jpg" alt="person">
+                    <img src="../logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -42,27 +50,27 @@
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="../inventory/Inventory.html">
+                <a href="../inventory/Inventory.php">
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Available Blood Inventory</h3>
                 </a>
-                <a href="../appointment/Appointment.html">
+                <a href="../appointment/Appointment.php">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="../donor/Donor.html">
+                <a href="../donor/Donor.php">
                     <span class="material-symbols-sharp">person</span>
                     <h3>Donor Records</h3>
                 </a>
-                <a href="../camp/Camp.html">
+                <a href="../camp/Camp.php">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
-                <a href="../request/Request.html">
+                <a href="../request/Request.php">
                     <span class="material-symbols-sharp">local_hospital</span>
                     <h3>Blood Request by Hospital</h3>
                 </a>
-                <a href="../receiver/receiver.html">
+                <a href="../receiver/receiver.php">
                     <span class="material-symbols-sharp">local_hospital</span>
                     <h3>Blood Request by User</h3>
                 </a>
@@ -96,12 +104,13 @@
             <h1>Blood Request Inventory</h1>
         <br>
         <br>
+        <div class="reports">
         <?php
 // Database configuration
 $servername = "localhost";
 $username = "root";
 $password = ""; 
-$dbname = "Blood_Bank_Management_System"; 
+$dbname = "blood_bank_management_system"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -150,7 +159,7 @@ $conn->close();
 $servername = "localhost";
 $username = "root"; 
 $password = ""; 
-$dbname = "Blood_Bank_Management_System"; 
+$dbname = "blood_bank_management_system"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -230,6 +239,7 @@ generateBloodRequestInventoryTable();
 // Close connection
 $conn->close();
 ?>
+        </div>
 
         </main>
         <!------------------------------------- End of Main ----------------------------------->
@@ -238,25 +248,38 @@ $conn->close();
         <!-- End of Main -->
 
         <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-symbols-sharp">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-sharp active">light_mode</span>
-                    <span class="material-symbols-sharp">dark_mode</span>
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-symbols-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <br>
+                    <?php
+                    // Check if user is logged in and show appropriate greeting
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Yo, <b>" . $userData['first_name'] . "</b></p>";
+                        echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
+                    } else {
+                        echo "<p>You are not logged in</p>";
+                        // Add some debugging information to see if session variables are set
+                        var_dump($_SESSION);
+                    }
+                    ?>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <br>
-                        <p>Yo, <b>Admin</b></p>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="../person.png" alt="Profile">
-                    </div>
-                </div>
+                <div class="profile-photo">
+    <a href="../edit_profile/edit_profile_page.php?staff_id=<?php echo $_SESSION['staff_id']; ?>">
+        <img src="../person.png" alt="Profile">
+    </a>
+</div>
             </div>
         </div>
+        <!-- End of Top -->
+    </div>
     </div>
 
     <script src="../script.js"></script>

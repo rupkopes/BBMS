@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "Blood_Bank_Management_System";
+$database = "blood_bank_management_system";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -22,7 +22,7 @@ if(isset($_POST['mark_completed']) && isset($_POST['appointment_id'])) {
     
     if ($conn->query($updateSql) === TRUE) {
         // Appointment marked as completed successfully
-        header("Location: Appointment.html"); // Redirect to appointment page after updating status
+        header("Location: Appointment.php"); // Redirect to appointment page after updating status
         exit();
     } else {
         // Error updating appointment status

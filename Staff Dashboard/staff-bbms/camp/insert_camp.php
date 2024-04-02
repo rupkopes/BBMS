@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Blood_Bank_Management_System";
+$dbname = "blood_bank_management_system";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -32,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO camps (name, date, time, location, contact, campConductedBy) VALUES ('$campName', '$campDate', '$campTime', '$campLocation', '$campContact', ' $campConductedBy')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "<script>alert('Successfully Added Camp:  $campName Conducted By $campConductedBy In the location: $campLocation on $campDate.');</script>";
+        echo "<script>window.location.href = 'Camp.php';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

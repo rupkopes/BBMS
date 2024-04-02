@@ -124,7 +124,7 @@ class POP3
     protected $connected = false;
 
     /**
-     * Error container.
+     * Error bbms.
      *
      * @var array
      */

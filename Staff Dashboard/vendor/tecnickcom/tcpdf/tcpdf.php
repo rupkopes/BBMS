@@ -6376,7 +6376,7 @@ class TCPDF {
 	 * @param boolean $firstblock if true the string is the starting of a line.
 	 * @param float $maxh maximum height. It should be >= $h and less then remaining space to the bottom of the page, or 0 for disable this feature.
 	 * @param float $wadj first line width will be reduced by this amount (used in HTML mode).
-	 * @param array|null $margin margin array of the parent container
+	 * @param array|null $margin margin array of the parent bbms
 	 * @return mixed Return the number of cells or the remaining string if $firstline = true.
 	 * @public
 	 * @since 1.5
@@ -23552,7 +23552,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 *	 <li>CNZ: Clipping mode (using the even-odd rule to determine which regions lie inside the clipping path).</li>
 	 *	 <li>CEO: Clipping mode (using the nonzero winding number rule to determine which regions lie inside the clipping path).</li>
 	 * </ul>
-	 * @return array of container box measures (x, y, w, h)
+	 * @return array of bbms box measures (x, y, w, h)
 	 * @author Nicola Asuni
 	 * @since 5.0.000 (2010-05-02)
 	 * @protected

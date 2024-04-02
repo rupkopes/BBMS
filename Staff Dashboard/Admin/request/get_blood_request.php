@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // Replace with your database username
 $password = ""; // Replace with your database password
-$dbname = "Blood_Bank_Management_System"; // Replace with your database name
+$dbname = "blood_bank_management_system"; // Replace with your database name
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection

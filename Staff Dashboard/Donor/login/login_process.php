@@ -1,11 +1,11 @@
 <?php
 // Database connection
 $servername = "localhost";
-$username = "root";
-$password = ""; // Enter your MySQL password here
-$database = "Blood_Bank_Management_System"; // Change this to your database name
+$username_db = "root";
+$password_db = ""; // Enter your MySQL password here
+$database = "blood_bank_management_system"; // Change this to your database name
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username_db, $password_db, $database);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -32,19 +32,21 @@ if ($result) {
             // Successful login
             session_start();
             $_SESSION['username'] = $username;
+            $_SESSION['Donor_id'] = $row['Donor_id'];
+            echo "Login successful";
             header("Location: ../index.php"); // Redirect to dashboard page
             exit(); // Make sure to exit after redirection
         } else {
-            // Incorrect password
-            echo "Invalid password";
+            // Incorrect password, generate alert
+            echo '<script>alert("Incorrect password"); window.location.href = "login.html";</script>';
         }
     } else {
-        // No user found
-        echo "User not found";
+        // No user found, generate alert
+        echo '<script>alert("Incorrect password"); window.location.href = "login.html";</script>';
     }
 } else {
-    // SQL query execution error
-    echo "Error executing query: " . $conn->error;
+    // SQL query execution error, generate alert
+    echo '<script>alert("Error executing query: ' . $conn->error . '");</script>';
 }
 
 $conn->close();

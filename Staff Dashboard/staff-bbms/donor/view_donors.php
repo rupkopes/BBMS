@@ -1,10 +1,15 @@
+<?php
+            include_once("../profile_name.php");        
+        ?>    
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor-List</title>
+    <title>BBMS Staff</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
     <link rel="stylesheet" href="../style.css">
     <style>
@@ -18,28 +23,24 @@
             color: var(--color-dark); /* Change text color using CSS variables */
         }
 
-        header {
-            margin-left: 340px;
-        }
-
         h1 {
             margin: 0;
         }
 
         section {
-            width: 60%;
-            margin: 20px;
+            width: 100%;
+            /* margin: 20px; */
             background-color: var(--color-white); /* Change section background color using CSS variables */
             border-radius: 5px;
             padding: 20px;
             box-shadow: var(--box-shadow); /* Utilize CSS variable for box shadow */
-            margin-left: 340px;
+            /* margin-left: 340px; */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-right: 350px;
+            
         }
 
         th, td {
@@ -53,8 +54,9 @@
             color: white;
         }
 
+        
         tr:hover {
-            background-color: #2c3e50;
+            background-color:#2c3e50;
             color: #ecf0f1;
             cursor: pointer;
         }
@@ -144,12 +146,12 @@ td a.generate-certificate-button:hover {
     </style>
     <title>Donor Listing</title>
 </head>
-<body1>
-<div class="container">
+<body>
+<div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../logo1.jpg" alt="person">
+                    <img src="../logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -162,27 +164,27 @@ td a.generate-certificate-button:hover {
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="../inventory/Inventory.html">
+                <a href="../inventory/Inventory.php">
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Available Blood Inventory</h3>
                 </a>
-                <a href="../appointment/Appointment.html">
+                <a href="../appointment/Appointment.php">
                     <span class="material-symbols-sharp">calendar_today</span>
                     <h3>Appointment</h3>
                 </a>
-                <a href="Donor.html" class="active">
+                <a href="Donor.php" class="active">
                     <span class="material-symbols-sharp">person</span>
                     <h3>Donor Records</h3>
                 </a>
-                <a href="../camp/Camp.html">
+                <a href="../camp/Camp.php">
                     <span class="material-symbols-sharp">campaign</span>
                     <h3>Camps</h3>
                 </a>
-                <a href="../request/Request.html">
+                <a href="../request/Request.php">
                     <span class="material-symbols-sharp">local_hospital</span>
                     <h3>Blood Request by Hospital</h3>
                 </a>
-                <a href="../receiver/receiver.html">
+                <a href="../receiver/receiver.php">
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by User</h3>
             </a>
@@ -201,7 +203,6 @@ td a.generate-certificate-button:hover {
 
             </div>
         </aside>
-    </div>
 
     <main>
         <div class="date">
@@ -211,7 +212,7 @@ td a.generate-certificate-button:hover {
 
             <script src="../../home page bbms/time.js"></script>
         </div>
-    </main>
+    <br>
     <br>
 
     <header>
@@ -221,7 +222,7 @@ td a.generate-certificate-button:hover {
     <section>
         <div class="message" id="message"></div>
         <div class="add-donor-button">
-            <a href="Donor.html">Add Donor</a>
+            <a href="Donor.php">Add Donor</a>
         </div>
         <br>
         <div class="add-donor-button">
@@ -250,7 +251,7 @@ td a.generate-certificate-button:hover {
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
-                $database = "Blood_Bank_Management_System";
+                $database = "blood_bank_management_system";
 
                 $conn = new mysqli($servername, $username, $password, $database);
                 if ($conn->connect_error) {
@@ -293,7 +294,7 @@ td a.generate-certificate-button:hover {
                             echo "<td>" . date('Y-m-d', $donation_date) . "</td>"; // Format the donation date
                             echo "<td>" . $remaining_days . "</td>";
                             echo "<td><a href='certificate.php?donor_id=".$row['id']."' class='generate-certificate-button'>Generate Certificate</a></td>";
-                            echo "<td><button class='delete-button' onclick=\"window.location.href='?delete_id=".$row['id']."'\">Delete</button></td>";
+                            echo "<td><button class='delete-button' onclick=\"confirmDelete(".$row['id'].")\">Delete</button></td>";
                             echo "</tr>";
                         }
                     }
@@ -307,17 +308,8 @@ td a.generate-certificate-button:hover {
             </tbody>
         </table>
     </section>
-
-    <script>
-        function showMessage(message) {
-            var msgElement = document.getElementById("message");
-            msgElement.innerText = message;
-            msgElement.style.display = "block";
-            setTimeout(function(){
-                msgElement.style.display = "none";
-            }, 5000); // 5 seconds
-        }
-    </script>
+    </main>
+    
     
      <div class="right">
         <div class="top">
@@ -330,16 +322,51 @@ td a.generate-certificate-button:hover {
             </div>
             <div class="profile">
                 <div class="info">
-                    <br><p>Yo, <b>Admin</b></p>
+                    <br>
+                     <?php
+                    // Check if user is logged in and show appropriate greeting
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Yo, <b>" . $userData['first_name'] . "</b></p>";
+                        echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
+                    } else {
+                        echo "<p>You are not logged in</p>";
+                        // Add some debugging information to see if session variables are set
+                        var_dump($_SESSION);
+                    }
+                    ?>
                 </div>
                 <div class="profile-photo">
-                    <img src="../person.png" alt="Profile">
-                </div>
+    <a href="../edit_profile/edit_profile_page.php?staff_id=<?php echo $_SESSION['staff_id']; ?>">
+        <img src="../person.png" alt="Profile">
+    </a>
+</div>
             </div>
         </div>
         <!-- End of Top -->
     </div>
+</div>
+
     <script src="../script.js"></script>
+
+    <script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure you want to delete this donor with ID " + id + "?")) {
+            window.location.href = "?delete_id=" + id;
+        }
+    }
+</script>
+
+<script>
+        function showMessage(message) {
+            var msgElement = document.getElementById("message");
+            msgElement.innerText = message;
+            msgElement.style.display = "block";
+            setTimeout(function(){
+                msgElement.style.display = "none";
+            }, 5000); // 5 seconds
+        }
+    </script>
+
 </body>
 
 </html>

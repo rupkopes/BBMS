@@ -5,12 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Staff Register Form</title>
 <link rel="stylesheet" href="style.css">
+<script>
+    function validateAge() {
+        var dobInput = document.getElementById('dob').value;
+        var dob = new Date(dobInput);
+        var today = new Date();
+        var age = today.getFullYear() - dob.getFullYear();
+        var monthDiff = today.getMonth() - dob.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+        if (age < 18 || age > 60) {
+            alert("You must be between 18 and 60 years old to register.");
+            return false;
+        }
+        return true;
+    }
+
+    //..................... Preview photo in comment section ..........................
+    function previewFile() {
+        const preview = document.getElementById('preview-image');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function() {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "/BBMS/images/camera.jpg";
+        }
+    }
+
+</script>
+<style>
+
+    .profile-photo {
+        width: 11rem;
+        height: 11rem;
+        background-color: silver;
+        cursor: pointer;
+        border-radius: 10%;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+    }
+
+    #photo-upload {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    #preview-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .comment {
+        color: var(--color-dark);
+        font-size: 17px;
+    }
+
+    .button {
+        color: var(--color-dark);
+        background-color:  var(--color-background);
+        background-color: blue;
+        font-size: 17px;
+        border-radius: 10%;
+    }
+
+</style>
 </head>
 <body>
-<div class="container">
+<div class="bbms">
     <h2>Staff Register Form</h2>
-    <form action="register_staff.php" method="post" enctype="multipart/form-data">
+    <form action="register_staff.php" method="post" enctype="multipart/form-data" onsubmit="return validateAge()">
         <div class="form-group">
+
+            <div class="profile-photo">
+                <label for="photo-upload">
+                    <img id="preview-image" src="/BBMS/images/camera.jpg" alt="Your Photo">
+                </label>
+                <input type="file" id="photo-upload" name="photo" accept="image/*" onchange="previewFile()">
+            </div>
+
+
             <label for="position">Position:</label>
             <select id="position" name="position" required>
                 <option value="">Select Position</option>
@@ -19,6 +105,7 @@
                 <option value="other">Other</option>
             </select>
         </div>
+        
         <div class="form-group">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>
@@ -50,7 +137,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" id="phone" name="phone" required maxlength="10" pattern="[0-9]{10}">
         </div>
         <div class="form-group">
             <label for="current_address">Current Address:</label>
@@ -60,6 +147,11 @@
             <label for="permanent_address">Permanent Address:</label>
             <textarea id="permanent_address" name="permanent_address" required></textarea>
         </div>
+        <div class="form-group">
+            <p class="loginpara">Login Information :</p>
+        </div>
+        <hr class="hr">
+        <br>
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -77,7 +169,7 @@
         </div>
     </form>
     <hr>
-        <p class="already-have-account">Already have an account? <a href="../login.html">Login</a></p>
-    </div>
+    <p class="already-have-account">Already have an account? <a href="../login.html">Login</a></p>
+</div>
 </body>
 </html>

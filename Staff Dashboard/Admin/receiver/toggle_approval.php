@@ -6,7 +6,7 @@ $requestData = json_decode(file_get_contents('php://input'), true);
 $servername = "localhost";
 $username = "root"; // Replace with your database username
 $password = ""; // Replace with your database password
-$dbname = "Blood_Bank_Management_System"; // Replace with your database name
+$dbname = "blood_bank_management_system"; // Replace with your database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

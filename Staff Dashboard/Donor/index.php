@@ -1,12 +1,44 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+
+// Database connection
+$servername = "localhost"; // Change this to your MySQL server hostname
+$db_username = "root"; // Change this to your MySQL username
+$db_password = ""; // Change this to your MySQL password
+$database = "blood_bank_management_system"; // Change this to your MySQL database name
+
+// Create connection
+$conn = new mysqli($servername, $db_username, $db_password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve user data from the database
+$stmt = $conn->prepare("SELECT * FROM donor_register_data WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$userData = $result->fetch_assoc();
+
+// Close the statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor</title>
+    <title>BBMS Donor</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="./styless.css">
+    <link rel="stylesheet" href="../staff-bbms/style.css">
     <style>
        
 
@@ -47,10 +79,12 @@
             display: block;
         }
 
-        .containers {
-            margin: 0 auto;
-            padding: 20px;
-            margin-left: 340px;
+        
+
+        .bbmss {
+            
+          
+            font-size: 14px;
         }
 
         #reasons ul {
@@ -69,7 +103,7 @@
                 padding: 15px 0;
             }
 
-            .container {
+            .bbms {
                 padding: 10px;
             }
         }
@@ -77,21 +111,22 @@
         .rights {
     position: fixed;
     top: -10px;
-    right: 250px; 
+    right: 310px; 
     padding: 20px; 
     z-index: 1000; 
 }
+
 
         /* Add additional styling as needed */
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../staff-bbms/logo1.jpg" alt="person">
+                    <img src="../staff-bbms/logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -129,17 +164,14 @@
 
                 <script src="../home page bbms/time.js"></script>
             </div>
+            <br>
+            <br>
             <h1>Dashboard</h1>
-        </main>
-    </div>
-
+<br>
     <div class="rights">
-        <div class="button-container">
+        <div class="button-bbms">
             <button class="button" onclick="location.href='./Donor_activities/donor_activities.php';">
         <?php
-        // Calculate days remaining functionality
-        // Start session if not already started
-        session_start();
 
         // Check if user is logged in
         if (isset($_SESSION['username'])) {
@@ -147,7 +179,7 @@
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $dbname = "Blood_Bank_Management_System";
+            $dbname = "blood_bank_management_system";
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
@@ -202,18 +234,20 @@
             </div>
 
         <div>
-            <div class="containers">
+            <div class="bbmss">
                 <div class="image-carousel">
-                    <img src="image1.jpg" alt="Image 1" class="active">
-                    <img src="image2.webp" alt="Image 2">
-                    <img src="image3.jpg" alt="Image 3">
-                    <img src="image4.jpg" alt="Image 4">
-                    <img src="image5.png" alt="Image 5">
-                    <img src="image6.jpg" alt="Image 6">
-                    <img src="Frame 3.svg" alt="Image 7">
+                    <img src="image10.png" alt="Image 1" class="active">
+                    <img src="image1.jpg" alt="Image 2">
+                    <img src="image2.webp" alt="Image 3">
+                    <img src="image3.jpg" alt="Image 4">
+                    <img src="image4.jpg" alt="Image 5">
+                    <img src="image5.png" alt="Image 6">
+                    <img src="image6.jpg" alt="Image 7">
+                    <img src="Frame 3.svg" alt="Image 8">
                 </div>
                 <br>
                 <br>
+                <div class="text">
                 <section id="reasons">
                     <h1>Reasons to Donate Blood</h1>
                     <ul>
@@ -240,7 +274,9 @@
                 <p>Aside from the tangible benefits, blood donation fosters a sense of community and altruism. It brings together people from all walks of life, united by a common goal of helping others in need. The act of giving blood instills a profound sense of satisfaction and fulfillment, knowing that one has made a tangible difference in someone else's life.</p>
                 <p>In conclusion, blood donors are indispensable contributors to the healthcare ecosystem. Their willingness to donate blood not only saves lives but also strengthens the fabric of society. It is imperative that we recognize and appreciate the invaluable role of blood donors and encourage others to join this noble cause.</p>
             </div>
-
+            </div>
+        </div>
+        </main>
 
             <div class="right">
                 <div class="top">
@@ -258,29 +294,28 @@
                             <?php
                             // Check if user is logged in and show appropriate greeting
                             session_start();
-                            if (isset($_SESSION['username'])) {
-                                echo "<p>Yo, <b>" . $_SESSION['username'] . "</b></p>";
+                            if (isset($userData['first_name'])) {
+                                echo "<p>Yo, <b>" .$userData['first_name'] . "</b></p>";
                                 // Add Edit Profile button
                                 echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
                             } else {
                                 echo "<p>You are not logged in</p>";
                             }
                             ?>
-                        </div>
-                        <br>
+                        </div>  
                     </div>
 
                     <div class="profile-photo">
-                        <img src="person.png" alt="Profile">
-                    </div>
+    <a href="./edit_profile/edit_profile_page.php?Donor_id=<?php echo $_SESSION['Donor_id']; ?>">
+        <img src="person.png" alt="Profile">
+    </a>
+</div>
                 </div>
             </div>
-            <!-- End of Top -->
-
         </div>
 
 
-        <!-- End of Container -->
+        <!-- End of bbms -->
         <!-- <script src="order.js"></script> -->
         <script src="../staff-bbms/script.js"></script>
         <script>

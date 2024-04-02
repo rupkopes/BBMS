@@ -1,25 +1,46 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+
+// Database connection
+$servername = "localhost"; // Change this to your MySQL server hostname
+$db_username = "root"; // Change this to your MySQL username
+$db_password = ""; // Change this to your MySQL password
+$database = "blood_bank_management_system"; // Change this to your MySQL database name
+
+// Create connection
+$conn = new mysqli($servername, $db_username, $db_password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve user data from the database
+$stmt = $conn->prepare("SELECT * FROM donor_register_data WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$userData = $result->fetch_assoc();
+
+// Close the statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment</title>
+    <title>BBMS Donor</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="../styless.css">
+    <link rel="stylesheet" href="../../staff-bbms/style.css">
     <style>
 
-<?php
-        // Check if user is logged in and show appropriate greeting
-        session_start();
-        if (isset($_SESSION['username'])) {
-            echo "<p>Yo, <b>" . $_SESSION['username'] . "</b></p>";
-            // Add Edit Profile button
-            // echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
-        } else {
-            echo "<p>You are not logged in</p>";
-        }
-        ?>
         .body1 {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -27,13 +48,12 @@
             padding: 0;
         }
 
-        .containers {
+        .bbmss {
             max-width: 800px;
-            margin: 20px auto;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-left: 340px;
+            font-size: 16px;
         }
 
         /* h2 {
@@ -60,11 +80,11 @@
 </head>
     <body1>
 
-    <div class="container">
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../../staff-bbms/logo1.jpg" alt="person">
+                    <img src="../../staff-bbms/logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -100,18 +120,18 @@
                 <div class="current-date" id="current-date"></div>
 
                 <script src="../../home page bbms/time.js"></script>
-            </div>
-        </main>
     </div>
 
-
-    <div class="containers">
+<br>
+<br>
+<br>
+    <div class="bbmss">
     <?php
   // Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Blood_Bank_Management_System";
+$dbname = "blood_bank_management_system";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -150,8 +170,10 @@ if ($result->num_rows > 0) {
 
         // Display donor details and days remaining
         echo "<h2>Donation Tracking</h2>";
+        echo "<br>";
         echo "<div class='donor-details'>";
         echo "<h3>Donor Details</h3>";
+        echo "<br>";
         echo "<p><strong>Name:</strong> " . $donorDetails['name'] . "</p>";
         echo "<p><strong>Email:</strong> " . $donorDetails['email'] . "</p>";
         echo "<p><strong>Contact:</strong> " . $donorDetails['contact'] . "</p>";
@@ -168,9 +190,9 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-
-
 </div>
+        </main>
+
 <div class="right">
         <div class="top">
             <button id="menu-btn">
@@ -186,8 +208,8 @@ $conn->close();
                     <?php
                     // Check if user is logged in and show appropriate greeting
                     session_start();
-                    if (isset($_SESSION['username'])) {
-                        echo "<p>Yo, <b>" . $_SESSION['username'] . "</b></p>";
+                    if (isset($userData['first_name'])) {
+                        echo "<p>Yo, <b>" . $userData['first_name'] . "</b></p>";
                         echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
                     } else {
                         echo "<p>You are not logged in</p>";
@@ -197,11 +219,14 @@ $conn->close();
                     ?>
                 </div>
                 <div class="profile-photo">
-                    <img src="../person.png" alt="Profile">
-                </div>
+    <a href="../edit_profile/edit_profile_page.php?Donor_id=<?php echo $_SESSION['Donor_id']; ?>">
+        <img src="person.png" alt="Profile">
+    </a>
+</div>
             </div>
         </div>
         <!-- End of Top -->
+    </div>
     </div>
 
     <script src="../../staff-bbms/script.js"></script>

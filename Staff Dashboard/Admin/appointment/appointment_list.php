@@ -6,38 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../staff-bbms/style.css">
     <style>
+        
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-       
-        
-        .body1 {
+        .body {
             font-family: Arial, sans-serif;
         }
-        /* header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 10px;
-        } */
 
-        header {
-            margin-left: 340px;
-        }
+        
 
-        h1 {
-            margin: 0;
-        }
-        .containers {
-            max-width: 1100px;
+        .bbmss {
+            max-width: 100%;
             margin: 20px auto;
             padding: 20px;
             background-color: var(--color-white);
             border-radius: 5px;
             box-shadow: var(--box-shadow);
-            margin-left: 340px;
+            /* margin-left: 340px; */
         }
 
         .filter-form {
@@ -103,10 +90,12 @@
 
         .completed {
             background-color: #28a745;
+            color: white;
         }
 
         .not-completed {
             background-color: #dc3545;
+            color: white;
         }
 
         .action-buttons a {
@@ -126,17 +115,48 @@
             background-color: #ccc;
         }
 
+
+        section.dark-mode {
+            background-color: var(--color-dark);
+            color: #ecf0f1;
+        }
+
+        .delete-button.dark-mode {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        #delete-success-message {
+            color: #e74c3c;
+        }
+
+        .delete-button.dark-mode:hover {
+            background-color: #c0392b;
+        }
+
+        .message.dark-mode {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .appointment-item.dark-mode {
+            background-color: #2c3e50;
+            /* Change to desired background color */
+            color: #ecf0f1;
+            /* Change to desired text color */
+        }
+
         .mark {
             color: #28a745;
             background-color: transparent;
             cursor: pointer;
         }
-        
-        .del{
+
+        .del {
             color: #dc3545;
         }
 
-        .app{
+        .app {
             margin-left: 20px;
             background-color: transparent;
             color: blue;
@@ -144,29 +164,35 @@
             cursor: pointer;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+     /* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #ddd; /* Border color for the entire table */
+}
 
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+/* Style for table headers */
+th {
+  /* background-color: #f2f2f2; Background color for headers */
+  border: 1px solid #ddd; /* Border color for headers */
+  padding: 8px; /* Padding within headers */
+}
 
-        th {
-            background-color: #2c3e50;
-            color: #f2f2f2;
-        }
+/* Style for table cells */
+td {
+  border: 1px solid #ddd; /* Border color for cells */
+  padding: 8px; /* Padding within cells */
+}
+
     </style>
 </head>
 
 <body1>
-<div class="container">
+<div class="bbms">
     <aside>
         <div class="top">
             <div class="logo">
-                <img src="../logo1.jpg" alt="person">
+                <img src="../logo1.png" alt="person">
                 <h2>BB<span class="danger">MS</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -235,14 +261,14 @@
 
         <script src="../../home page bbms/time.js"></script>
     </div>
-</main>
 
+<br>
 <br>
     <header>
     <h1>Appointment List</h1>
 </header>
-<br>
-    <div class="containers">
+
+    <div class="bbmss">
         <form class="filter-form" method="GET" action="">
             <label for="status">Filter by Status:</label><br>
             <input type="radio" id="status" name="status" value="all" checked> All
@@ -258,7 +284,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "Blood_Bank_Management_System";
+        $database = "blood_bank_management_system";
 
         // Enable error reporting
         error_reporting(E_ALL);
@@ -357,6 +383,7 @@ while ($row = $result->fetch_assoc()) {
         $conn->close();
         ?>
     </div>
+</main>
 
     <div class="right">
         <div class="top">

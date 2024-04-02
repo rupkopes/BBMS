@@ -1,14 +1,19 @@
+<?php
+            include_once("../profile_name.php");        
+        ?>    
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing</title>
+    <title>BBMS Staff</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
     <link rel="stylesheet" href="../style.css">
-    <title>Blood Inventory Management</title>
+    <title>BBMS Staff</title>
     <style>
-
+        
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
          /* Light Mode */
@@ -36,7 +41,7 @@
             --box-shadow: 0 2rem 3rem var(--color-light);
         }
 
-        .container {
+        .bbms {
             font-family: 'Poppins', sans-serif;
             color: var(--color-dark);
         }
@@ -49,12 +54,8 @@
             margin-bottom: 10px;
         } */
 
-        header {
-            margin-left: 350px;
-        }
-
         h1 {
-            font-size: 35px ;
+            font-size: 28px ;
             margin-left: 350px;
         }
 
@@ -95,15 +96,15 @@
         }
 
         table {
-            width: 80%;
+            width: 100%;
             margin: 20px auto;
             border-collapse: collapse;
-            margin-left: 240px;
+            margin-left: -100px;
         }
 
         th,
         td {
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             padding: 8px;
             text-align: center;
         }
@@ -117,7 +118,7 @@
             display: block;
             margin: 20px auto;
             background-color: #2c3e50;
-            color: white;
+            color: #ddd;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -125,16 +126,14 @@
             font-size: 16px;
             text-decoration: none;
             transition: background-color 0.3s;
+            margin-left: 0px;
         }
 
-        button:hover {
-            background-color: #34495e;
-        }
-
-        a {
+        .button{
             color: white;
-            text-decoration: none;
         }
+       
+      
         .bloodtable{
             margin-left: 100px;
         }
@@ -143,15 +142,16 @@
             background-color: #2c3e49;
             color: #ecf0f1;
         }
+
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="bbms">
     <aside>
         <div class="top">
             <div class="logo">
-                <img src="../logo1.jpg" alt="person">
+                <img src="../logo1.png" alt="person">
                 <h2>BB<span class="danger">MS</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -164,27 +164,27 @@
                 <span class="material-symbols-sharp">grid_view</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="./Inventory.html"  class="active">
+            <a href="./Inventory.php"  class="active">
                 <span class="material-symbols-sharp">bloodtype</span>
                 <h3>Available Blood Inventory</h3>
             </a>
-            <a href="../appointment/Appointment.html">
+            <a href="../appointment/Appointment.php">
                 <span class="material-symbols-sharp">calendar_today</span>
                 <h3>Appointment</h3>
             </a>
-            <a href="../donor/Donor.html">
+            <a href="../donor/Donor.php">
                 <span class="material-symbols-sharp">person</span>
                 <h3>Donor Records</h3>
             </a>
-            <a href="../camp/Camp.html">
+            <a href="../camp/Camp.php">
                 <span class="material-symbols-sharp">campaign</span>
                 <h3>Camps</h3>
             </a>
-            <a href="../request/Request.html">
+            <a href="../request/Request.php">
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by Hospital</h3>
             </a>
-            <a href="../receiver/receiver.html">
+            <a href="../receiver/receiver.php">
                 <span class="material-symbols-sharp">local_hospital</span>
                 <h3>Blood Request by User</h3>
             </a>
@@ -203,7 +203,6 @@
             
         </div>
     </aside>
-    </div>
 
     <main>
         <div class="date">
@@ -213,15 +212,16 @@
 
 <script src="../../home page bbms/time.js"></script>
         </div>
-</main>  
+ 
 
-<
+<br><br>
     <header>
         <h1>Listing
         </h1>
         </header>
-        <br><br>
+        <br>
         <div class="bloodtable">
+
         <?php
     // Enable error reporting
     ini_set('display_errors', 1);
@@ -231,7 +231,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "Blood_Bank_Management_System";
+    $database = "blood_bank_management_system";
 
     $conn = new mysqli($servername, $username, $password, $database);
     if ($conn->connect_error) {
@@ -279,27 +279,47 @@
     $conn->close();
 ?>
 
-        </div>
-    <button><a href="Blood_Inventory.php">New Listing</a></button>
+</div>
+
+    <button><a href="Inventory.php" class="button">New Listing</a></button>
+
+    
+
+    </main>
+
     <div class="right">
-    <div class="top">
-        <button id="menu-btn">
-            <span class="material-symbols-sharp">menu</span>
-        </button>
-        <div class="theme-toggler">
-            <span class="material-symbols-sharp active">light_mode</span>
-            <span class="material-symbols-sharp">dark_mode</span>
-        </div>
-        <div class="profile">
-            <div class="info">
-                <br><p>Yo, <b>Admin</b></p>
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-symbols-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">dark_mode</span>
             </div>
-            <div class="profile-photo">
-                <img src="../person.png" alt="Profile">
+            <div class="profile">
+                <div class="info">
+                    <br>
+                    <?php
+                    // Check if user is logged in and show appropriate greeting
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Yo, <b>" . $userData['first_name'] . "</b></p>";
+                        echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
+                    } else {
+                        echo "<p>You are not logged in</p>";
+                        // Add some debugging information to see if session variables are set
+                        var_dump($_SESSION);
+                    }
+                    ?>
+                </div>
+                <div class="profile-photo">
+    <a href="../edit_profile/edit_profile_page.php?staff_id=<?php echo $_SESSION['staff_id']; ?>">
+        <img src="../person.png" alt="Profile">
+    </a>
+</div>
             </div>
         </div>
+        <!-- End of Top -->
     </div>
-    <!-- End of Top -->
     </div>
      <script src="../script.js"></script>
 </body>

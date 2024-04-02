@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost"; // Change this if your database is hosted elsewhere
 $username = "root"; // Change this to your MySQL username
 $password = ""; // Change this to your MySQL password
-$database = "Blood_Bank_Management_System"; // Change this to the name of your MySQL database
+$database = "blood_bank_management_system"; // Change this to the name of your MySQL database
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "Blood_Bank_Management_System";
+    $dbname = "blood_bank_management_system";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -30,32 +30,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             // Password is correct, check approval status
             if ($row['approval_status'] == 'approved') {
-                // Set session variables
+                // Set session variables including staff_id
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                echo "Login successful";
+                $_SESSION['staff_id'] = $row['staff_id']; // Add staff_id to session
+                $redirect_url = "../index.php"; // Set the redirection URL
             } else {
-                echo "Your account is pending approval or not approved by the admin";
+                echo "<script>alert('Your account is pending approval or not approved by the admin');</script>";
+                $redirect_url = "login.html"; // Set the redirection URL
             }
         } else {
-            echo "Incorrect password";
+            echo "<script>alert('Incorrect password');</script>";
+            $redirect_url = "login.html"; // Set the redirection URL
         }
     } else {
-        echo "User not found";
+        echo "<script>alert('User not found');</script>";
+        $redirect_url = "login.html"; // Set the redirection URL
     }
 
-    // Check if the user is logged in
-    if(isset($_SESSION['loggedin'])) {
-        // Redirect to another page
-        header("Location: ../index.php");
-        exit(); // Make sure that code below doesn't get executed after redirect
-    } else {
-        // Redirect to login page if not logged in
-        header("Location: login.html");
-        exit();
-    }
-
+    // Close prepared statement
     $stmt->close();
     $conn->close();
+
+    // Redirect user after script execution
+    header("Location: $redirect_url");
+    exit();
 }
 ?>

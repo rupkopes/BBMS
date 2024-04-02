@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Blood_Bank_Management_System";
+$dbname = "blood_bank_management_system";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

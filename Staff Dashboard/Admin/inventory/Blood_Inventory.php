@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../staff-bbms/style.css">
     <title>Blood Inventory Management</title>
     <style>
     table {
@@ -28,11 +28,11 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../logo1.jpg" alt="person">
+                    <img src="../logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -119,7 +119,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "Blood_Bank_Management_System";
+        $database = "blood_bank_management_system";
 
         $conn = new mysqli($servername, $username, $password, $database);
         if ($conn->connect_error) {
@@ -171,7 +171,7 @@
     </div>
     </main>
 
-    </div>
+
     <div class="right">
         <div class="top">
             <button id="menu-btn">

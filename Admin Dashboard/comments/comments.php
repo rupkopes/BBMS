@@ -100,7 +100,7 @@ if (isset($_POST["submit"])) {
         <?php include_once("../left.php"); ?>    
         <main>
             <br><br><h2><marquee bgcolor="green">*******<em>Blood Bank Management System</em>*******</marquee></h2><br>
-            <h1><i>Comments:</i></h1><br>
+            <h1><i>Recent Updates:</i></h1><br>
             <form action="" method="post" enctype="multipart/form-data"> <!-- Add enctype attribute -->
                 <div class="comment-photo">
                     <label for="photo-upload">

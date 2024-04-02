@@ -6,138 +6,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donor-List</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../staff-bbms/style.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-        .body1 {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-background); /* Change background color using CSS variables */
-            color: var(--color-dark); /* Change text color using CSS variables */
-        }
+.body1 {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background); /* Change background color using CSS variables */
+    color: var(--color-dark); /* Change text color using CSS variables */
+}
 
-        header {
-            margin-left: 340px;
-        }
+h1 {
+    margin: 0;
+}
 
-        h1 {
-            margin: 0;
-        }
+section {
+    width: 100%;
+    /* margin: 20px; */
+    background-color: var(--color-white); /* Change section background color using CSS variables */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: var(--box-shadow); /* Utilize CSS variable for box shadow */
+    /* margin-left: 340px; */
+}
 
-        section {
-            width: 60%;
-            margin: 20px;
-            background-color: var(--color-white); /* Change section background color using CSS variables */
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: var(--box-shadow); /* Utilize CSS variable for box shadow */
-            margin-left: 340px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-right: 350px;
-        }
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+th {
+    background-color: #2c3e50;
+    color: white;
+}
 
-        th {
-            background-color: #2c3e50;
-            color: white;
-        }
 
-        tr:hover {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            cursor: pointer;
-        }
+tr:hover {
+    background-color:#2c3e50;
+    color: #ecf0f1;
+    cursor: pointer;
+}
 
-        .add-donor-button {
-            margin-bottom: 20px;
-           
-        }
+.add-donor-button {
+    margin-bottom: 20px;
+   
+}
 
-        .add-donor-button a {
-            text-decoration: none;
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.add-donor-button a {
+    text-decoration: none;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .add-donor-button a:hover {
-            background-color: #34495e;
-        }
+.add-donor-button a:hover {
+    background-color: #34495e;
+}
 
-        .delete-button {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-        .delete-button:hover {
-            background-color: #c0392b;
-        }
+.delete-button:hover {
+    background-color: #c0392b;
+}
 
-        .message {
-            background-color: var(--color-white);
-            color: red;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-            display: none; /* Corrected property */
-        }
-        
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--color-background-dark);
-            color: #ecf0f1;
-        }
+.message {
+    background-color: var(--color-white);
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: none; /* Corrected property */
+}
 
-        header.dark-mode {
-            background-color: var(--color-info-dark);
-            color: #ecf0f1;
-        }
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: var(--color-background-dark);
+    color: #ecf0f1;
+}
 
-        section.dark-mode {
-            background-color: var(--color-dark);
-            color: #ecf0f1;
-        }
+header.dark-mode {
+    background-color: var(--color-info-dark);
+    color: #ecf0f1;
+}
 
-        .delete-button.dark-mode {
-            background-color: #e74c3c;
-            color: white;
-        }
+section.dark-mode {
+    background-color: var(--color-dark);
+    color: #ecf0f1;
+}
 
-        .delete-button.dark-mode:hover {
-            background-color: #c0392b;
-        }
+.delete-button.dark-mode {
+    background-color: #e74c3c;
+    color: white;
+}
 
-        .message.dark-mode {
-            background-color: #27ae60;
-            color: white;
-        }
+.delete-button.dark-mode:hover {
+    background-color: #c0392b;
+}
+
+.message.dark-mode {
+    background-color: #27ae60;
+    color: white;
+}
+/* CSS for Generate Certificate button */
+td a.generate-certificate-button {
+    color: green;
+}
+
+td a.generate-certificate-button:hover {
+
+    color: white;
+    cursor: pointer;
+}
+
     </style>
     <title>Donor Listing</title>
 </head>
 <body1>
-<div class="container">
+<div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../logo1.jpg" alt="person">
+                    <img src="../logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -197,7 +206,7 @@
 
             </div>
         </aside>
-    </div>
+
 
     <main>
         <div class="date">
@@ -207,7 +216,8 @@
 
             <script src="../../home page bbms/time.js"></script>
         </div>
-    </main>
+    
+    <br>
     <br>
 
     <header>
@@ -241,7 +251,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "Blood_Bank_Management_System";
+$database = "blood_bank_management_system";
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
@@ -299,17 +309,9 @@ $conn->close();
             </tbody>
         </table>
     </section>
+    </main>
 
-    <script>
-        function showMessage(message) {
-            var msgElement = document.getElementById("message");
-            msgElement.innerText = message;
-            msgElement.style.display = "block";
-            setTimeout(function(){
-                msgElement.style.display = "none";
-            }, 5000); // 5 seconds
-        }
-    </script>
+  
     
      <div class="right">
         <div class="top">
@@ -331,7 +333,19 @@ $conn->close();
         </div>
         <!-- End of Top -->
     </div>
+</div>
     <script src="../../staff-bbms/script.js"></script>
+
+    <script>
+        function showMessage(message) {
+            var msgElement = document.getElementById("message");
+            msgElement.innerText = message;
+            msgElement.style.display = "block";
+            setTimeout(function(){
+                msgElement.style.display = "none";
+            }, 5000); // 5 seconds
+        }
+    </script>
 
 </body>
 

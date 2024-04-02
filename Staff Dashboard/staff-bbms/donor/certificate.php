@@ -5,7 +5,7 @@ require_once '../../vendor/autoload.php';
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "Blood_Bank_Management_System";
+$database = "blood_bank_management_system";
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
@@ -80,7 +80,7 @@ $pdf->writeHTML($google_fonts_import, true, false, true, false, '', false, false
 
         $certificate_content2 = "
 <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333;'>
-<div><strong>&nbsp;$bottom_margin_htmls$left_margin_htmls$donor_blood_group ,</strong></div>
+<div><strong>&nbsp;$bottom_margin_htmls$left_margin_htmls$donor_blood_group,</strong></div>
 </div>
 ";
 

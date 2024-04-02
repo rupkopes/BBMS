@@ -10,14 +10,15 @@
             </div>
 
 
-            <div class="sidebar">
 
+            <div class="sidebar">
                 <div class="menu">
                     <a href="/BBMS/Admin Dashboard/index.php" class="active">
                         <span class="material-symbols-sharp">grid_view</span>
                          <h3>Dashboard</h3>
                     </a>
                 </div>
+
 
 
                 <div class="menu">
@@ -33,13 +34,13 @@
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">token</span>
                          <h3>Blood Requests</h3>
-                        <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
+                        <!-- <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span> -->
                     </a>
                     <div class="sub_menu">
-                        <a href="/BBMS/Admin Dashboard/blood_request/blood_request_form.php">
+                        <!-- <a href="/BBMS/Admin Dashboard/blood_request/blood_request_form.php">
                             <span class="material-symbols-sharp">add</span>
                             <h3>Add Requests</h3>
-                        </a>
+                        </a> -->
                         <a href="/BBMS/Admin Dashboard/blood_request/blood_request_category.php">
                             <span class="material-symbols-sharp">format_list_bulleted</span>
                             <h3>Category</h3>
@@ -52,17 +53,17 @@
                 </div>
 
 
-                <!-- <div class="menu">
+                <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">diversity_1</span>
                             <h3>Team Members</h3>
-                            <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
+                            <!-- <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span> -->
                     </a>
                     <div class="sub_menu">
-                        <a href="#">
+                        <!-- <a href="#">
                             <span class="material-symbols-sharp">person_add</span>
                             <h3>Add Members</h3>
-                        </a>
+                        </a> -->
                         <a href="/BBMS/Admin Dashboard/team_members/team_members_table.php">
                             <span class="material-symbols-sharp">format_list_bulleted</span>
                             <h3>Total Members</h3>
@@ -72,14 +73,14 @@
                             <h3>Team Requests</h3>
                         </a>
                     </div>
-                </div> -->
+                </div>
 
 
                 <div class="menu">
                     <a href="#" class= "drop_down">
                         <span class="material-symbols-sharp">campaign</span>
                             <h3>Camps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                            <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span>
+                            <!-- <span id="arrow" class="material-symbols-sharp">arrow_forward_ios</span> -->
                     </a>
                     <div class="sub_menu">
                         <a href="/BBMS/Admin Dashboard/camps/campschedule.php">

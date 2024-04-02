@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = ""; // Enter your MySQL password here
-$database = "Blood_Bank_Management_System"; // Change this to your database name
+$database = "blood_bank_management_system"; // Change this to your database name
 
 $conn = new mysqli($servername, $username, $password, $database);
 

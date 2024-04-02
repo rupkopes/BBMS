@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
+    <div class="login-bbms">
         <h2>Staff Login</h2>
-        <form action="../../staff-bbms/login/login_process.php" method="POST">
+      
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>

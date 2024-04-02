@@ -4174,7 +4174,7 @@ class PHPMailer
     }
 
     /**
-     * Add an error message to the error container.
+     * Add an error message to the error bbms.
      *
      * @param string $msg
      */

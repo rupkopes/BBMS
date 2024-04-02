@@ -1,22 +1,75 @@
 const sideMenu = document.querySelector("aside");
-const menuBtn = document.querySelector("#menu-btn");
-const closeBtn = document.querySelector("#close-btn");
-const themeToggler = document.querySelector(".theme-toggler");
+
+
+
 
 // -------------------------Show sidebar-----------------------------
+const menuBtn = document.querySelector("#menu-btn");
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';
 })
 
 // --------------------------Close sidebar-------------------------------
+const closeBtn = document.querySelector("#close-btn");
 closeBtn.addEventListener('click', () => {
     sideMenu.style.display = 'none';
 })
 
 
 
+
+
+
+//--------------------------------Dropdown sub-menu items in sidebar-------------------------------
+// const dropDowns = document.querySelectorAll('.drop_down');
+// dropDowns.forEach(dropDown => {
+//     dropDown.addEventListener('click', function () {
+//         const subMenu = this.nextElementSibling;
+//         if (subMenu.style.display === 'block') {
+//             subMenu.style.display = 'none';
+//         } else {
+//             subMenu.style.display = 'block';
+//         }
+//     });
+// });
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const menuItems = document.querySelectorAll('.menu a');
+
+//     menuItems.forEach(item => {
+//         item.addEventListener('click', function(event) {
+//             // Prevent default link behavior
+//             event.preventDefault();
+
+//             // Remove 'active' class from all menu items
+//             menuItems.forEach(menuItem => {
+//                 menuItem.classList.remove('active');
+//             });
+
+//             // Toggle submenu if applicable
+//             const subMenu = this.nextElementSibling;
+//             if (subMenu && subMenu.classList.contains('sub_menu')) {
+//                 subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+//             }
+
+//             // Add 'active' class to the clicked menu item
+//             this.classList.add('active');
+//         });
+//     });
+// });
+ 
+   
+
+
+
 // -------------------------------Change theme-----------------------------
-// Function to apply theme based on stored preference
+// Function to apply theme based on stored preference (based on local storage)
+const themeToggler = document.querySelector(".theme-toggler");
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark-theme-variables');
@@ -57,95 +110,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // -----------------------Fill orders in table------------------------------------
-Orders.forEach(order => {
-    const tr = document.createElement('tr');
-    const trContent = `
-                        <td>${order.org_id}</td>
-                        <td>${order.org_name}</td>
-                        <td>${order.blood_type}</td>
-                        <td>${order.quantity}</td>
-                        <td class="${order.status === 'Rejected' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
+// Orders.forEach(order => {
+//     const tr = document.createElement('tr');
+//     const trContent = `
+//                         <td>${order.org_id}</td>
+//                         <td>${order.org_name}</td>
+//                         <td>${order.blood_type}</td>
+//                         <td>${order.quantity}</td>
+//                         <td class="${order.status === 'Rejected' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
 
-                        <td class="primary">Details</td>
-                        `;
-    tr.innerHTML = trContent;
-    document.querySelector('table tbody').appendChild(tr);
-})
-
-//--------------------------------Dropdown sub-menu items in sidebar-------------------------------
-        const dropDowns = document.querySelectorAll('.drop_down');
-        dropDowns.forEach(dropDown => {
-            dropDown.addEventListener('click', function () {
-                const subMenu = this.nextElementSibling;
-                if (subMenu.style.display === 'block') {
-                    subMenu.style.display = 'none';
-                } else {
-                    subMenu.style.display = 'block';
-                }
-            });
-        });
-
-
-
-
-
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const menuItems = document.querySelectorAll('.menu a');
-        
-        //     menuItems.forEach(item => {
-        //         item.addEventListener('click', function() {
-        //             // Remove 'active' class from all menu items
-        //             menuItems.forEach(menuItem => {
-        //                 menuItem.classList.remove('active');
-        //             });
-        
-        //             // Add 'active' class to the clicked menu item
-        //             this.classList.add('active');
-        
-        //             // Toggle display of the submenu
-        //             const subMenu = this.nextElementSibling;
-        //             if (subMenu) {
-        //                 subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-        //             }
-        //         });
-        //     });
-        // });
-        
-
-
-
-
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const menuItems = document.querySelectorAll('.menu a');
-        
-        //     menuItems.forEach(item => {
-        //         item.addEventListener('click', function(event) {
-        //             // Prevent default link behavior
-        //             event.preventDefault();
-        
-        //             // Remove 'active' class from all menu items
-        //             menuItems.forEach(menuItem => {
-        //                 menuItem.classList.remove('active');
-        //             });
-        
-        //             // Toggle submenu if applicable
-        //             const subMenu = this.nextElementSibling;
-        //             if (subMenu && subMenu.classList.contains('sub_menu')) {
-        //                 subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
-        //             }
-        
-        //             // Add 'active' class to the clicked menu item
-        //             this.classList.add('active');
-        //         });
-        //     });
-        // });
-             
-           
-        
-
-
-          
-
+//                         <td class="primary">Details</td>
+//                         `;
+//     tr.innerHTML = trContent;
+//     document.querySelector('table tbody').appendChild(tr);
+// })
 
 
 

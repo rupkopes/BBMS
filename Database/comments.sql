@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 03:47 PM
+-- Generation Time: Apr 02, 2024 at 01:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `message` varchar(50) NOT NULL,
+  `message` varchar(55) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,10 +40,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `photo`, `name`, `message`, `timestamp`) VALUES
-(54, 'mrunal.jpg', 'Sweaksha Jha', 'never been happier like this before.', '2024-03-07 09:11:28'),
-(55, 'jassita.jpg', 'Rahila Eram', 'liked the hard work of BBMS creators.', '2024-03-07 10:17:31'),
-(60, 'rupkopes.jpg', 'Rupesh Choudhary', 'saved by BBMS, accident held on Biratnagar.', '2024-03-07 13:55:08'),
-(61, 'srk.jpg', 'Kunal Bhattarai', 'keep on doing hard work guys and never give up.', '2024-03-07 13:56:22');
+(54, 'mrunal.jpg', 'Sweaksha Jha', 'circular progress bar with color indication is added.', '2024-03-07 09:11:28'),
+(55, 'jassita.jpg', 'Rahila Eram', 'certificate for donors are now finally available.', '2024-03-07 10:17:31'),
+(60, 'rupkopes.jpg', 'Rupesh Choudhary', 'light mode was beautiful but dark mode is awesome.', '2024-03-07 13:55:08'),
+(61, 'srk.jpg', 'Kunal Bhattarai', 'finally, the validation problem is solved.', '2024-03-07 13:56:22');
 
 --
 -- Indexes for dumped tables

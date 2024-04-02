@@ -6,7 +6,7 @@ $requestData = json_decode(file_get_contents('php://input'), true);
 $servername = "localhost";
 $username = "root"; // Replace with your database username
 $password = ""; // Replace with your database password
-$dbname = "Blood_Bank_Management_System"; // Replace with your database name
+$dbname = "blood_bank_management_system"; // Replace with your database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -58,11 +58,26 @@ if ($stmt->execute()) {
                     $update_inventory_stmt->execute();
                     $update_inventory_stmt->close();
                 } else {
-                    // If there are not enough available units, return an error message
+                    // If there are not enough available units, set status to Pending
+                    $status = 'Pending';
+                    $stmt->close();
+                    $stmt = $conn->prepare("UPDATE receiver SET status = ? WHERE id = ?");
+                    $stmt->bind_param("si", $status, $id);
+                    $stmt->execute();
+                    $stmt->close();
+                    $conn->close();
                     echo json_encode(array('success' => false, 'message' => 'Not enough blood units available in inventory'));
                     exit;
                 }
+            } else {
+                // If the blood type is not found in inventory, return an error message
+                echo json_encode(array('success' => false, 'message' => 'Blood type not found in inventory'));
+                exit;
             }
+        } else {
+            // If the request is not found, return an error message
+            echo json_encode(array('success' => false, 'message' => 'Request not found'));
+            exit;
         }
     }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Inventory Management</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../staff-bbms/style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -24,9 +24,6 @@
             margin-bottom: 10px;
         } */
         
-        header {
-            margin-left: 340px;
-        }
 
         h1 {
             margin: 0;
@@ -49,9 +46,8 @@
             color: #fff;
         }
         table {
-            width: 61%;
+            width: 100%;
             border-collapse: collapse;
-            margin-left: 340px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -93,22 +89,19 @@
             box-sizing: border-box;
             font-size: 16px;
         }
-        .filter{
-            margin-left: 340px;
-        }
-
+       
         button.delete {
     background-color: #e74c3c;
 }
 
     </style>
 </head>
-<body1>
-    <div class="container">
+<body>
+    <div class="bbms">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../logo1.jpg" alt="person">
+                    <img src="../logo1.png" alt="person">
                     <h2>BB<span class="danger">MS</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -168,7 +161,7 @@
 
             </div>
         </aside>
-    </div>
+    
 
     <main>
         <div class="date">
@@ -178,7 +171,8 @@
 
             <script src="../../home page bbms/time.js"></script>
         </div>
-    </main>
+    
+    <br>
     <br>
 
 <header>
@@ -190,10 +184,10 @@
     <form id="bloodRequestForm">
        
     </form>
-</div>
 
 <div id="bloodRequests">
     <h2>Blood Requests</h2>
+    <br>
     <!-- Filter input fields -->
 <div class="filter">
     <input type="text" id="nameFilter" placeholder="Search by Name">
@@ -420,6 +414,8 @@
     displayBloodRequests();
     filterBloodRequests(); // Call filter function initially
 </script>
+</main>
+
 <div class="right">
     <div class="top">
         <button id="menu-btn">
@@ -440,6 +436,7 @@
         </div>
     </div>
     <!-- End of Top -->
+</div>
 </div>
 <script src="../../staff-bbms/script.js"></script>
 

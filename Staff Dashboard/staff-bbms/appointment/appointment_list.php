@@ -1,41 +1,34 @@
+<?php
+            include_once("../profile_name.php");        
+        ?>    
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment</title>
+    <title>BBMS Staff</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
     <link rel="stylesheet" href="../style.css">
     <style>
+       
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        .body1 {
+
+        .body {
             font-family: Arial, sans-serif;
         }
-        /* header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 10px;
-        } */
 
-        header {
-            margin-left: 340px;
-        }
 
-        h1 {
-            margin: 0;
-        }
-        .containers {
-            max-width: 1100px;
+        .bbmss {
+            max-width: 100%;
             margin: 20px auto;
             padding: 20px;
             background-color: var(--color-white);
             border-radius: 5px;
             box-shadow: var(--box-shadow);
-            margin-left: 340px;
+            /* margin-left: 340px; */
         }
 
         .filter-form {
@@ -101,10 +94,12 @@
 
         .completed {
             background-color: #28a745;
+            color: white;
         }
 
         .not-completed {
             background-color: #dc3545;
+            color: white;
         }
 
         .action-buttons a {
@@ -124,16 +119,6 @@
             background-color: #ccc;
         }
 
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--color-background-dark);
-            color: #ecf0f1;
-        }
-
-        header.dark-mode {
-            background-color: var(--color-info-dark);
-            color: #ecf0f1;
-        }
 
         section.dark-mode {
             background-color: var(--color-dark);
@@ -143,6 +128,10 @@
         .delete-button.dark-mode {
             background-color: #e74c3c;
             color: white;
+        }
+
+        #delete-success-message {
+            color: #e74c3c;
         }
 
         .delete-button.dark-mode:hover {
@@ -166,78 +155,85 @@
             background-color: transparent;
             cursor: pointer;
         }
-        
-        .del{
+
+        .del {
             color: #dc3545;
         }
 
-        .app{
+        .app {
             margin-left: 20px;
             background-color: transparent;
             color: blue;
             font-size: 14px;
+            cursor: pointer;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+     /* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #ddd; /* Border color for the entire table */
+}
 
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+/* Style for table headers */
+th {
+  /* background-color: #f2f2f2; Background color for headers */
+  border: 1px solid #ddd; /* Border color for headers */
+  padding: 8px; /* Padding within headers */
+}
 
-        th {
-            background-color: #2c3e50;
-            color: #f2f2f2;
-        }
+/* Style for table cells */
+td {
+  border: 1px solid #ddd; /* Border color for cells */
+  padding: 8px; /* Padding within cells */
+}
+
     </style>
 </head>
 
-<body1>
-<div class="container">
-    <aside>
-        <div class="top">
-            <div class="logo">
-                <img src="../logo1.jpg" alt="person">
-                <h2>BB<span class="danger">MS</span></h2>
+<body>
+    <div class="bbms">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="../logo1.png" alt="person">
+                    <h2>BB<span class="danger">MS</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
             </div>
-            <div class="close" id="close-btn">
-                <span class="material-symbols-sharp">close</span>
-            </div>
-        </div>
 
-        <div class="sidebar">
-            <a href="../index.php">
-                <span class="material-symbols-sharp">grid_view</span>
-                <h3>Dashboard</h3>
-            </a>
-            <a href="../inventory/Inventory.html">
-                <span class="material-symbols-sharp">bloodtype</span>
-                <h3>Available Blood Inventory</h3>
-            </a>
-            <a href="Appointment.html" class="active">
-                <span class="material-symbols-sharp">calendar_today</span>
-                <h3>Appointment</h3>
-            </a>
-            <a href="../donor/Donor.html">
-                <span class="material-symbols-sharp">person</span>
-                <h3>Donor Records</h3>
-            </a>
-            <a href="../camp/Camp.html">
-                <span class="material-symbols-sharp">campaign</span>
-                <h3>Camps</h3>
-            </a>
-            <a href="../request/Request.html">
-                <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request by Hospital</h3>
-            </a>
-            <a href="../receiver/receiver.html">
-                <span class="material-symbols-sharp">local_hospital</span>
-                <h3>Blood Request by User</h3>
-            </a>
-            <a href="../request_inventory/request_inventory.php">
+            <div class="sidebar">
+                <a href="../index.php">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../inventory/Inventory.php">
+                    <span class="material-symbols-sharp">bloodtype</span>
+                    <h3>Available Blood Inventory</h3>
+                </a>
+                <a href="Appointment.php" class="active">
+                    <span class="material-symbols-sharp">calendar_today</span>
+                    <h3>Appointment</h3>
+                </a>
+                <a href="../donor/Donor.php">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Donor Records</h3>
+                </a>
+                <a href="../camp/Camp.php">
+                    <span class="material-symbols-sharp">campaign</span>
+                    <h3>Camps</h3>
+                </a>
+                <a href="../request/Request.php">
+                    <span class="material-symbols-sharp">local_hospital</span>
+                    <h3>Blood Request by Hospital</h3>
+                </a>
+                <a href="../receiver/receiver.php">
+                    <span class="material-symbols-sharp">local_hospital</span>
+                    <h3>Blood Request by User</h3>
+                </a>
+                <a href="../request_inventory/request_inventory.php">
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Blood Request Inventory</h3>
                 </a>
@@ -245,36 +241,35 @@
                     <span class="material-symbols-sharp">bloodtype</span>
                     <h3>Available And Request Blood Inventory</h3>
                 </a>
-            <a href="../logout/logout.php" id="logout-btn">
-                <span class="material-symbols-sharp">logout</span>
-                <h3>Logout</h3>
-            </a>
+                <a href="../logout/logout.php" id="logout-btn">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
 
-        </div>
-    </aside>
+            </div>
+        </aside>
 
-<main>
-    <div class="date">
-        <div class="current-time" id="current-time"></div>
+        <main>
+            <div class="date">
+                <div class="current-time" id="current-time"></div>
 
-        <div class="current-date" id="current-date"></div>
+                <div class="current-date" id="current-date"></div>
 
-        <script src="../../home page bbms/time.js"></script>
-    </div>
-</main>
-</div>
-<br>
+                <script src="../../home page bbms/time.js"></script>
+            </div>
+    <br>
+    <br>
     <header>
-    <h1>Appointment List</h1>
-</header>
-<br>
-    <div class="containers">
+        <h1>Appointment List</h1>
+    </header>
+   
+    <div class="bbmss">
         <form class="filter-form" method="GET" action="">
             <label for="status">Filter by Status:</label><br>
             <input type="radio" id="status" name="status" value="all" checked> All
             <input type="radio" id="status" name="status" value="completed"> Completed
             <input type="radio" id="status" name="status" value="notcompleted"> Not Completed
-            <input type="submit" value="Apply" class="app"> 
+            <input type="submit" value="Apply" class="app">
         </form>
         <?php
         ini_set('display_errors', 1);
@@ -284,7 +279,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "Blood_Bank_Management_System";
+        $database = "blood_bank_management_system";
 
         // Enable error reporting
         error_reporting(E_ALL);
@@ -346,18 +341,18 @@
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>";
-          // Output data of each row
-while ($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>" . $row["name"] . "</td>";
-    echo "<td>" . $row["age"] . "</td>";
-    echo "<td>" . $row["blood_group"] . "</td>";
-    echo "<td>" . $row["email"] . "</td>";
-    echo "<td>" . $row["contact_number"] . "</td>";
-    echo "<td>" . $row["location"] . "</td>";
-    echo "<td>" . $row["appointment_date"] . "</td>";
-    echo "<td class='" . ($row["status"] == "Completed" ? "completed" : "not-completed") . "'>" . $row["status"] . "</td>";
-    echo "<td>
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["name"] . "</td>";
+                echo "<td>" . $row["age"] . "</td>";
+                echo "<td>" . $row["blood_group"] . "</td>";
+                echo "<td>" . $row["email"] . "</td>";
+                echo "<td>" . $row["contact_number"] . "</td>";
+                echo "<td>" . $row["location"] . "</td>";
+                echo "<td>" . $row["appointment_date"] . "</td>";
+                echo "<td class='" . ($row["status"] == "Completed" ? "completed" : "not-completed") . "'>" . $row["status"] . "</td>";
+                echo "<td>
                         <form action='donors.php' method='POST' id='markAsCompletedForm'>
                             <input type='hidden' name='name' value='" . $row['name'] . "'>
                             <input type='hidden' name='age' value='" . $row['age'] . "'>
@@ -368,12 +363,12 @@ while ($row = $result->fetch_assoc()) {
                             <button type='submit' class='mark'>Mark as Completed</button>
                         </form>
                       </td>";
-    echo "<td>
+                echo "<td>
     <a href='?delete=true&id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this appointment?\")'><span class='material-symbols-sharp del'>delete</span></a>
 
           </td>";
-    echo "</tr>";
-}
+                echo "</tr>";
+            }
             echo "</table>";
         } else {
             echo "No appointments found";
@@ -383,6 +378,8 @@ while ($row = $result->fetch_assoc()) {
         $conn->close();
         ?>
     </div>
+        </main>
+
 
     <div class="right">
         <div class="top">
@@ -396,24 +393,41 @@ while ($row = $result->fetch_assoc()) {
             <div class="profile">
                 <div class="info">
                     <br>
-                    <p>Yo, <b>Admin</b></p>
+                    <?php
+                    // Check if user is logged in and show appropriate greeting
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Yo, <b>" .$userData['first_name'] . "</b></p>";
+                        echo "<button class=\"button\" onclick=\"location.href='edit_profile.php';\">Edit Profile</button>";
+                    } else {
+                        echo "<p>You are not logged in</p>";
+                        // Add some debugging information to see if session variables are set
+                        var_dump($_SESSION);
+                    }
+                    ?>
                 </div>
                 <div class="profile-photo">
-                    <img src="../person.png" alt="Profile">
-                </div>
+    <a href="../edit_profile/edit_profile_page.php?staff_id=<?php echo $_SESSION['staff_id']; ?>">
+        <img src="../person.png" alt="Profile">
+    </a>
+</div>
             </div>
         </div>
         <!-- End of Top -->
     </div>
-
+    </div>
     <script src="../script.js"></script>
     <script>
-    document.getElementById("markAsCompletedForm").addEventListener("submit", function() {
-        setTimeout(function() {
-            location.reload();
-        }, 1000); // Reload the page after 1 second (1000 milliseconds)
+    document.querySelectorAll(".mark").forEach(button => {
+        button.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            // Display an alert message
+            alert("Appointment marked as completed!");
+            // Submit the form
+            this.closest("form").submit();
+        });
     });
 </script>
-</body>
+
+    </body>
 
 </html>

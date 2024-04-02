@@ -1,6 +1,6 @@
 <?php
     $con=mysqli_connect("localhost","root","","blood_bank_management_system");
-    $res=mysqli_query($con, "SELECT * FROM donors WHERE status=1 LIMIT 10");
+    $res=mysqli_query($con, "SELECT * FROM donors WHERE status=0 LIMIT 10");
     if(mysqli_num_rows($res)>0) {
 
         header ('content-type:image/png');
@@ -20,7 +20,7 @@
             $file = $row['name'] . '_' . $row['id'];
             imagepng($image,"certificate/".$file.".jpg");
             imagedestroy($image); // Destroy image after each certificate is created
-            mysqli_query($con,"UPDATE donors SET status=0 WHERE id='".$row['id']."'");
+            mysqli_query($con,"UPDATE donors SET status=1 WHERE id='".$row['id']."'");
         }
     }
 ?>

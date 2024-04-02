@@ -13,7 +13,7 @@ use PHPMailer\PHPMailer\Exception;
 $servername = "localhost"; // Change this to your MySQL server hostname
 $username = "root"; // Change this to your MySQL username
 $password = ""; // Change this to your MySQL password
-$database = "Blood_Bank_Management_System"; // Change this to your MySQL database name
+$database = "blood_bank_management_system"; // Change this to your MySQL database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);

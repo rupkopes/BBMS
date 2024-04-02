@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "Blood_Bank_Management_System";
+$database = "blood_bank_management_system";
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_stmt = $conn->prepare($update_sql);
         $update_stmt->bind_param("is", $available_units, $blood_type);
         if ($update_stmt->execute()) {
-            echo "Units added successfully";
+            echo "<script>alert('Units added successfully: $available_units units of $blood_type');</script>";
+            echo "<script>window.location.href = 'Inventory.php';</script>";
         } else {
             echo "Error updating record: " . $conn->error;
         }
@@ -38,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_stmt = $conn->prepare($insert_sql);
         $insert_stmt->bind_param("si", $blood_type, $available_units);
         if ($insert_stmt->execute()) {
-            echo "New record created successfully";
+            echo "<script>alert('New record created successfully: $available_units units of $blood_type');</script>";
+            echo "<script>window.location.href = 'Inventory.php';</script>";
         } else {
             echo "Error: " . $insert_sql . "<br>" . $conn->error;
         }

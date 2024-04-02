@@ -22,7 +22,7 @@
         
     </div>
     <!---------------------- order.js must be before script.js -------------->
-    <script src="order.js"></script> 
+    <!-- <script src="order.js"></script>  -->
     <script src="script.js"></script> 
 </body>
 </html>

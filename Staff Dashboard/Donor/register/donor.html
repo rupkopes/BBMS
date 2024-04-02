@@ -5,11 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Staff Register Form</title>
 <link rel="stylesheet" href="style.css">
+<script>
+    function validateAge() {
+        var dobInput = document.getElementById('dob').value;
+        var dob = new Date(dobInput);
+        var today = new Date();
+        var age = today.getFullYear() - dob.getFullYear();
+        var monthDiff = today.getMonth() - dob.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+        if (age < 18 || age > 60) {
+            alert("You must be between 18 and 60 years old to register.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </head>
 <body>
-<div class="container">
+<div class="bbms">
     <h2>Donor Register Form</h2>
-    <form action="donor.php" method="post" enctype="multipart/form-data">
+    <form action="donor.php" method="post" enctype="multipart/form-data" onsubmit="return validateAge()">
         <div class="form-group"><label for="blood_type" class="blood-type-label">Select Blood Type:</label>
         <select id="blood_type" name="blood_type" class="blood-type-select" required>
             <option value="" disabled selected>Please select blood type</option>
@@ -54,7 +71,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" title="Please enter a valid phone number starting with +977" required>
+            <input type="text" id="phone" name="phone" required maxlength="10" pattern="[0-9]{10}">
         </div>
         <div class="form-group">
             <label for="current_address">Current Address:</label>
